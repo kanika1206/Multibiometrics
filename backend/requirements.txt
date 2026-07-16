@@ -1,0 +1,18 @@
+# Python dependencies for the biometric pipeline (extractTemplate.py,
+# matchFaceTemplate.py, matchVoiceTemplate.py, extractAudio*.py,
+# speechToTexty.py). Versions pinned from the working venv.
+# ffmpeg must also be installed on the system and available on PATH.
+insightface==1.0.1
+onnxruntime==1.27.0
+opencv-python==5.0.0.93
+numpy==2.4.6
+librosa==0.11.0
+scikit-learn==1.9.0
+pydub==0.25.1
+SpeechRecognition==3.17.0
+# Voice factor: ECAPA-TDNN speaker embedding (replaces the non-discriminative
+# MFCC-distance matcher — see docs/voice-verification.md). CPU wheels; install
+# torch/torchaudio from https://download.pytorch.org/whl/cpu.
+torch==2.13.0
+torchaudio==2.11.0
+speechbrain==1.1.0

@@ -1,0 +1,1813 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "Multibiometric_Code",
+    "is_monorepo": true,
+    "total_files": 47,
+    "entry_points": [
+      "backend/server.js",
+      "frontend/src/App.js"
+    ],
+    "tech_stack": [],
+    "entry_candidates": [
+      "backend/server.js",
+      "frontend/src/App.js"
+    ],
+    "graph_mode": "flow"
+  },
+  "nodes": [
+    {
+      "id": "file:README.md",
+      "type": "document",
+      "filePath": "README.md",
+      "language": "markdown",
+      "symbolCount": 0,
+      "lineCount": 96,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 6,
+      "tags": [],
+      "summary": "Project overview and entry point for new readers."
+    },
+    {
+      "id": "file:backend/captchaStore.js",
+      "type": "file",
+      "filePath": "backend/captchaStore.js",
+      "language": "javascript",
+      "symbolCount": 6,
+      "lineCount": 40,
+      "complexity": "moderate",
+      "pagerank": 0.01177,
+      "communityId": 2,
+      "tags": [],
+      "summary": "Application module captchaStore defining issueCaptcha, takeCaptcha, normalizeCaptcha."
+    },
+    {
+      "id": "file:backend/controllers/appController.js",
+      "type": "file",
+      "filePath": "backend/controllers/appController.js",
+      "language": "javascript",
+      "symbolCount": 8,
+      "lineCount": 264,
+      "complexity": "moderate",
+      "pagerank": 0.012028,
+      "communityId": 3,
+      "tags": [],
+      "summary": "API module appController defining verifyUser, register, runPy.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:backend/controllers/mailer.js",
+      "type": "file",
+      "filePath": "backend/controllers/mailer.js",
+      "language": "javascript",
+      "symbolCount": 3,
+      "lineCount": 40,
+      "complexity": "simple",
+      "pagerank": 0.012028,
+      "communityId": 4,
+      "tags": [],
+      "summary": "API module mailer defining registerMail.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:backend/controllers/test.js",
+      "type": "file",
+      "filePath": "backend/controllers/test.js",
+      "language": "javascript",
+      "symbolCount": 1,
+      "lineCount": 91,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 7,
+      "tags": [],
+      "summary": "API module test (1 symbols).",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:backend/controllers/testo.js",
+      "type": "file",
+      "filePath": "backend/controllers/testo.js",
+      "language": "javascript",
+      "symbolCount": 1,
+      "lineCount": 83,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 8,
+      "tags": [],
+      "summary": "API module testo (1 symbols).",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:backend/database/conn.js",
+      "type": "file",
+      "filePath": "backend/database/conn.js",
+      "language": "javascript",
+      "symbolCount": 1,
+      "lineCount": 14,
+      "complexity": "simple",
+      "pagerank": 0.010492,
+      "communityId": 2,
+      "tags": [],
+      "summary": "Application module conn defining connect.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:backend/extractAudio.py",
+      "type": "file",
+      "filePath": "backend/extractAudio.py",
+      "language": "python",
+      "symbolCount": 2,
+      "lineCount": 13,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 9,
+      "tags": [],
+      "summary": "Application module extractAudio defining convert_video_to_audio_ffmpeg.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:backend/extractAudio_login.py",
+      "type": "file",
+      "filePath": "backend/extractAudio_login.py",
+      "language": "python",
+      "symbolCount": 2,
+      "lineCount": 13,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 10,
+      "tags": [],
+      "summary": "Application module extractAudio_login defining convert_video_to_audio_ffmpeg.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:backend/matchAudio.py",
+      "type": "file",
+      "filePath": "backend/matchAudio.py",
+      "language": "python",
+      "symbolCount": 1,
+      "lineCount": 36,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 11,
+      "tags": [],
+      "summary": "Application module matchAudio (1 symbols).",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:backend/matchFaces.py",
+      "type": "file",
+      "filePath": "backend/matchFaces.py",
+      "language": "python",
+      "symbolCount": 4,
+      "lineCount": 94,
+      "complexity": "moderate",
+      "pagerank": 0.009798,
+      "communityId": 1,
+      "tags": [],
+      "summary": "Application module matchFaces defining sample_embeddings, main."
+    },
+    {
+      "id": "file:backend/middleware/auth.js",
+      "type": "file",
+      "filePath": "backend/middleware/auth.js",
+      "language": "javascript",
+      "symbolCount": 2,
+      "lineCount": 20,
+      "complexity": "simple",
+      "pagerank": 0.012028,
+      "communityId": 4,
+      "tags": [],
+      "summary": "Middleware module auth defining Auth, localVariables.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:backend/model/User.model.js",
+      "type": "file",
+      "filePath": "backend/model/User.model.js",
+      "language": "javascript",
+      "symbolCount": 1,
+      "lineCount": 20,
+      "complexity": "simple",
+      "pagerank": 0.01177,
+      "communityId": 2,
+      "tags": [],
+      "summary": "Application module User.model (1 symbols).",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:backend/package.json",
+      "type": "config",
+      "filePath": "backend/package.json",
+      "language": "json",
+      "symbolCount": 0,
+      "lineCount": 20,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 12,
+      "tags": [
+        "config"
+      ],
+      "summary": "Node package manifest: dependencies, scripts, and metadata."
+    },
+    {
+      "id": "file:backend/paper_reference/README.md",
+      "type": "document",
+      "filePath": "backend/paper_reference/README.md",
+      "language": "markdown",
+      "symbolCount": 0,
+      "lineCount": 47,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 13,
+      "tags": [],
+      "summary": "Project overview and entry point for new readers."
+    },
+    {
+      "id": "file:backend/paper_reference/extractFrames.py",
+      "type": "file",
+      "filePath": "backend/paper_reference/extractFrames.py",
+      "language": "python",
+      "symbolCount": 3,
+      "lineCount": 17,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 14,
+      "tags": [],
+      "summary": "Application module extractFrames (3 symbols)."
+    },
+    {
+      "id": "file:backend/paper_reference/extractFrameslogin.py",
+      "type": "file",
+      "filePath": "backend/paper_reference/extractFrameslogin.py",
+      "language": "python",
+      "symbolCount": 3,
+      "lineCount": 22,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 15,
+      "tags": [],
+      "summary": "Application module extractFrameslogin (3 symbols)."
+    },
+    {
+      "id": "file:backend/paper_reference/hamming.py",
+      "type": "file",
+      "filePath": "backend/paper_reference/hamming.py",
+      "language": "python",
+      "symbolCount": 1,
+      "lineCount": 12,
+      "complexity": "simple",
+      "pagerank": 0.018126,
+      "communityId": 5,
+      "tags": [],
+      "summary": "Application module hamming defining hamming_distance."
+    },
+    {
+      "id": "file:backend/paper_reference/matchFrames.py",
+      "type": "file",
+      "filePath": "backend/paper_reference/matchFrames.py",
+      "language": "python",
+      "symbolCount": 6,
+      "lineCount": 30,
+      "complexity": "moderate",
+      "pagerank": 0.009798,
+      "communityId": 5,
+      "tags": [],
+      "summary": "Application module matchFrames (6 symbols)."
+    },
+    {
+      "id": "file:backend/router/route.js",
+      "type": "file",
+      "filePath": "backend/router/route.js",
+      "language": "javascript",
+      "symbolCount": 0,
+      "lineCount": 28,
+      "complexity": "simple",
+      "pagerank": 0.010492,
+      "communityId": 4,
+      "tags": [],
+      "summary": "Application module route.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:backend/scripts/encrypt_existing.mjs",
+      "type": "file",
+      "filePath": "backend/scripts/encrypt_existing.mjs",
+      "language": "javascript",
+      "symbolCount": 2,
+      "lineCount": 33,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 3,
+      "tags": [],
+      "summary": "Docs & Tooling module encrypt_existing (2 symbols)."
+    },
+    {
+      "id": "file:backend/scripts/measure_performance.mjs",
+      "type": "file",
+      "filePath": "backend/scripts/measure_performance.mjs",
+      "language": "javascript",
+      "symbolCount": 4,
+      "lineCount": 84,
+      "complexity": "moderate",
+      "pagerank": 0.009798,
+      "communityId": 3,
+      "tags": [],
+      "summary": "Docs & Tooling module measure_performance defining timeStage, stat."
+    },
+    {
+      "id": "file:backend/secureStore.js",
+      "type": "file",
+      "filePath": "backend/secureStore.js",
+      "language": "javascript",
+      "symbolCount": 3,
+      "lineCount": 64,
+      "complexity": "simple",
+      "pagerank": 0.014546,
+      "communityId": 3,
+      "tags": [],
+      "summary": "Application module secureStore defining key, encryptToFile, decryptToFile."
+    },
+    {
+      "id": "file:backend/server.js",
+      "type": "file",
+      "filePath": "backend/server.js",
+      "language": "javascript",
+      "symbolCount": 2,
+      "lineCount": 98,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 2,
+      "tags": [
+        "entry_point"
+      ],
+      "summary": "Application module server defining handleUpload.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:backend/speechToTexty.py",
+      "type": "file",
+      "filePath": "backend/speechToTexty.py",
+      "language": "python",
+      "symbolCount": 3,
+      "lineCount": 50,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 16,
+      "tags": [],
+      "summary": "Application module speechToTexty (3 symbols).",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:docs/DEPLOYMENT.md",
+      "type": "document",
+      "filePath": "docs/DEPLOYMENT.md",
+      "language": "markdown",
+      "symbolCount": 0,
+      "lineCount": 185,
+      "complexity": "moderate",
+      "pagerank": 0.009798,
+      "communityId": 17,
+      "tags": [],
+      "summary": "Documentation: DEPLOYMENT.md."
+    },
+    {
+      "id": "file:docs/TESTING_WINDOWS.md",
+      "type": "document",
+      "filePath": "docs/TESTING_WINDOWS.md",
+      "language": "markdown",
+      "symbolCount": 0,
+      "lineCount": 110,
+      "complexity": "moderate",
+      "pagerank": 0.009798,
+      "communityId": 18,
+      "tags": [],
+      "summary": "Documentation: TESTING_WINDOWS.md."
+    },
+    {
+      "id": "file:frontend/README.md",
+      "type": "document",
+      "filePath": "frontend/README.md",
+      "language": "markdown",
+      "symbolCount": 0,
+      "lineCount": 83,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 19,
+      "tags": [],
+      "summary": "Project overview and entry point for new readers."
+    },
+    {
+      "id": "file:frontend/package.json",
+      "type": "config",
+      "filePath": "frontend/package.json",
+      "language": "json",
+      "symbolCount": 0,
+      "lineCount": 31,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 20,
+      "tags": [
+        "config"
+      ],
+      "summary": "Node package manifest: dependencies, scripts, and metadata."
+    },
+    {
+      "id": "file:frontend/postcss.config.js",
+      "type": "file",
+      "filePath": "frontend/postcss.config.js",
+      "language": "javascript",
+      "symbolCount": 0,
+      "lineCount": 2,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 21,
+      "tags": [],
+      "summary": "Application module postcss.config.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:frontend/public/manifest.json",
+      "type": "config",
+      "filePath": "frontend/public/manifest.json",
+      "language": "json",
+      "symbolCount": 0,
+      "lineCount": 12,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 22,
+      "tags": [
+        "config"
+      ],
+      "summary": "Configuration file: manifest.json."
+    },
+    {
+      "id": "file:frontend/src/App.js",
+      "type": "file",
+      "filePath": "frontend/src/App.js",
+      "language": "javascript",
+      "symbolCount": 1,
+      "lineCount": 23,
+      "complexity": "simple",
+      "pagerank": 0.020903,
+      "communityId": 1,
+      "tags": [
+        "entry_point"
+      ],
+      "summary": "Application module App defining App.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:frontend/src/components/PageNotFound.js",
+      "type": "file",
+      "filePath": "frontend/src/components/PageNotFound.js",
+      "language": "javascript",
+      "symbolCount": 1,
+      "lineCount": 3,
+      "complexity": "simple",
+      "pagerank": 0.012019,
+      "communityId": 1,
+      "tags": [],
+      "summary": "UI module PageNotFound defining PageNotFound.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:frontend/src/components/Password.js",
+      "type": "file",
+      "filePath": "frontend/src/components/Password.js",
+      "language": "javascript",
+      "symbolCount": 1,
+      "lineCount": 148,
+      "complexity": "moderate",
+      "pagerank": 0.012019,
+      "communityId": 0,
+      "tags": [],
+      "summary": "UI module Password defining Password.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:frontend/src/components/Profile.js",
+      "type": "file",
+      "filePath": "frontend/src/components/Profile.js",
+      "language": "javascript",
+      "symbolCount": 1,
+      "lineCount": 124,
+      "complexity": "moderate",
+      "pagerank": 0.012019,
+      "communityId": 0,
+      "tags": [],
+      "summary": "UI module Profile defining Profile.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:frontend/src/components/Register.js",
+      "type": "file",
+      "filePath": "frontend/src/components/Register.js",
+      "language": "javascript",
+      "symbolCount": 2,
+      "lineCount": 191,
+      "complexity": "moderate",
+      "pagerank": 0.012019,
+      "communityId": 0,
+      "tags": [],
+      "summary": "UI module Register defining LivePreview, Register.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:frontend/src/components/Username.js",
+      "type": "file",
+      "filePath": "frontend/src/components/Username.js",
+      "language": "javascript",
+      "symbolCount": 1,
+      "lineCount": 59,
+      "complexity": "simple",
+      "pagerank": 0.012019,
+      "communityId": 1,
+      "tags": [],
+      "summary": "UI module Username defining Username.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:frontend/src/components/captcha.js",
+      "type": "file",
+      "filePath": "frontend/src/components/captcha.js",
+      "language": "javascript",
+      "symbolCount": 3,
+      "lineCount": 16,
+      "complexity": "simple",
+      "pagerank": 0.01082,
+      "communityId": 1,
+      "tags": [],
+      "summary": "UI module captcha defining CaptchaTest, componentDidMount, render.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:frontend/src/helper/convert.js",
+      "type": "file",
+      "filePath": "frontend/src/helper/convert.js",
+      "language": "javascript",
+      "symbolCount": 1,
+      "lineCount": 9,
+      "complexity": "simple",
+      "pagerank": 0.012097,
+      "communityId": 0,
+      "tags": [],
+      "summary": "Application module convert defining convertToBase64.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:frontend/src/helper/helper.js",
+      "type": "file",
+      "filePath": "frontend/src/helper/helper.js",
+      "language": "javascript",
+      "symbolCount": 6,
+      "lineCount": 66,
+      "complexity": "moderate",
+      "pagerank": 0.02241,
+      "communityId": 0,
+      "tags": [],
+      "summary": "Application module helper defining getUsername, authenticate, getUser.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:frontend/src/helper/validate.js",
+      "type": "file",
+      "filePath": "frontend/src/helper/validate.js",
+      "language": "javascript",
+      "symbolCount": 5,
+      "lineCount": 42,
+      "complexity": "moderate",
+      "pagerank": 0.013799,
+      "communityId": 0,
+      "tags": [],
+      "summary": "Application module validate defining usernameValidate, usernameVerify, registerValidation.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:frontend/src/hooks/fetch.hook.js",
+      "type": "file",
+      "filePath": "frontend/src/hooks/fetch.hook.js",
+      "language": "javascript",
+      "symbolCount": 1,
+      "lineCount": 30,
+      "complexity": "simple",
+      "pagerank": 0.012097,
+      "communityId": 0,
+      "tags": [],
+      "summary": "Application module fetch.hook defining useFetch.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:frontend/src/index.js",
+      "type": "file",
+      "filePath": "frontend/src/index.js",
+      "language": "javascript",
+      "symbolCount": 0,
+      "lineCount": 6,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 1,
+      "tags": [
+        "barrel"
+      ],
+      "summary": "Re-export barrel for src/.",
+      "primaryOwner": "vishallygupta12345"
+    },
+    {
+      "id": "file:frontend/src/middleware/auth.js",
+      "type": "file",
+      "filePath": "frontend/src/middleware/auth.js",
+      "language": "javascript",
+      "symbolCount": 2,
+      "lineCount": 16,
+      "complexity": "simple",
+      "pagerank": 0.012019,
+      "communityId": 1,
+      "tags": [],
+      "summary": "Middleware module auth defining AuthorizeUser, ProtectRoute.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:frontend/src/store/store.js",
+      "type": "file",
+      "filePath": "frontend/src/store/store.js",
+      "language": "javascript",
+      "symbolCount": 0,
+      "lineCount": 5,
+      "complexity": "simple",
+      "pagerank": 0.01763,
+      "communityId": 1,
+      "tags": [],
+      "summary": "Data module store.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:frontend/tailwind.config.js",
+      "type": "file",
+      "filePath": "frontend/tailwind.config.js",
+      "language": "javascript",
+      "symbolCount": 0,
+      "lineCount": 4,
+      "complexity": "simple",
+      "pagerank": 0.009798,
+      "communityId": 23,
+      "tags": [],
+      "summary": "Application module tailwind.config.",
+      "primaryOwner": "aditi"
+    },
+    {
+      "id": "file:report/SYSTEM_BEFORE_AFTER.md",
+      "type": "document",
+      "filePath": "report/SYSTEM_BEFORE_AFTER.md",
+      "language": "markdown",
+      "symbolCount": 0,
+      "lineCount": 263,
+      "complexity": "moderate",
+      "pagerank": 0.009798,
+      "communityId": 24,
+      "tags": [],
+      "summary": "Documentation: SYSTEM_BEFORE_AFTER.md."
+    },
+    {
+      "id": "function:backend/paper_reference/hamming.py:hamming_distance",
+      "type": "function",
+      "filePath": "backend/paper_reference/hamming.py",
+      "name": "hamming_distance",
+      "language": "python",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:frontend/src/App.js:App",
+      "type": "function",
+      "filePath": "frontend/src/App.js",
+      "name": "App",
+      "language": "javascript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:frontend/src/helper/helper.js:authenticate",
+      "type": "function",
+      "filePath": "frontend/src/helper/helper.js",
+      "name": "authenticate",
+      "language": "javascript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:frontend/src/helper/helper.js:getUser",
+      "type": "function",
+      "filePath": "frontend/src/helper/helper.js",
+      "name": "getUser",
+      "language": "javascript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:frontend/src/helper/helper.js:getUsername",
+      "type": "function",
+      "filePath": "frontend/src/helper/helper.js",
+      "name": "getUsername",
+      "language": "javascript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:frontend/src/helper/helper.js:registerUser",
+      "type": "function",
+      "filePath": "frontend/src/helper/helper.js",
+      "name": "registerUser",
+      "language": "javascript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:frontend/src/helper/helper.js:updateUser",
+      "type": "function",
+      "filePath": "frontend/src/helper/helper.js",
+      "name": "updateUser",
+      "language": "javascript",
+      "tags": [],
+      "summary": ""
+    },
+    {
+      "id": "function:frontend/src/helper/helper.js:verifyPassword",
+      "type": "function",
+      "filePath": "frontend/src/helper/helper.js",
+      "name": "verifyPassword",
+      "language": "javascript",
+      "tags": [],
+      "summary": ""
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:backend/controllers/appController.js",
+      "target": "file:backend/captchaStore.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/appController.js",
+      "target": "file:backend/model/User.model.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/appController.js",
+      "target": "file:backend/secureStore.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/appController.js",
+      "target": "file:external:child_process",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/appController.js",
+      "target": "file:external:fs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/appController.js",
+      "target": "file:external:jsonwebtoken",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/appController.js",
+      "target": "file:external:os",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/appController.js",
+      "target": "file:external:path",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/mailer.js",
+      "target": "file:external:mailgen",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/controllers/mailer.js",
+      "target": "file:external:nodemailer",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/database/conn.js",
+      "target": "file:external:mongodb-memory-server",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/database/conn.js",
+      "target": "file:external:mongoose",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/matchFaces.py",
+      "target": "file:frontend/src/App.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/middleware/auth.js",
+      "target": "file:external:jsonwebtoken",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/model/User.model.js",
+      "target": "file:external:mongoose",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/paper_reference/hamming.py",
+      "target": "function:backend/paper_reference/hamming.py:hamming_distance",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/paper_reference/matchFrames.py",
+      "target": "file:backend/paper_reference/hamming.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/router/route.js",
+      "target": "file:backend/controllers/appController.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/router/route.js",
+      "target": "file:backend/controllers/mailer.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/router/route.js",
+      "target": "file:backend/middleware/auth.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/router/route.js",
+      "target": "file:external:express",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/scripts/encrypt_existing.mjs",
+      "target": "file:backend/secureStore.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/scripts/encrypt_existing.mjs",
+      "target": "file:external:fs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/scripts/encrypt_existing.mjs",
+      "target": "file:external:path",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/scripts/measure_performance.mjs",
+      "target": "file:external:child_process",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/scripts/measure_performance.mjs",
+      "target": "file:external:fs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/scripts/measure_performance.mjs",
+      "target": "file:external:os",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/scripts/measure_performance.mjs",
+      "target": "file:external:path",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/scripts/measure_performance.mjs",
+      "target": "file:external:perf_hooks",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/secureStore.js",
+      "target": "file:external:crypto",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/secureStore.js",
+      "target": "file:external:fs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/captchaStore.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/database/conn.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/model/User.model.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/router/route.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:backend/secureStore.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:external:cors",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:external:dotenv/config",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:external:express",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:external:fs",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:external:morgan",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:external:multer",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:backend/server.js",
+      "target": "file:external:svg-captcha",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/App.js",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/App.js",
+      "target": "file:external:react-router-dom",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/App.js",
+      "target": "file:frontend/src/components/PageNotFound.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/App.js",
+      "target": "file:frontend/src/components/Password.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/App.js",
+      "target": "file:frontend/src/components/Profile.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/App.js",
+      "target": "file:frontend/src/components/Register.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/App.js",
+      "target": "file:frontend/src/components/Username.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/App.js",
+      "target": "file:frontend/src/middleware/auth.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/App.js",
+      "target": "function:frontend/src/App.js:App",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/PageNotFound.js",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Password.js",
+      "target": "file:external:axios",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Password.js",
+      "target": "file:external:crypto-js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Password.js",
+      "target": "file:external:formik",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Password.js",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Password.js",
+      "target": "file:external:react-hot-toast",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Password.js",
+      "target": "file:external:react-media-recorder",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Password.js",
+      "target": "file:external:react-router-dom",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Password.js",
+      "target": "file:frontend/src/helper/helper.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Password.js",
+      "target": "file:frontend/src/hooks/fetch.hook.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Password.js",
+      "target": "file:frontend/src/store/store.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Profile.js",
+      "target": "file:external:formik",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Profile.js",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Profile.js",
+      "target": "file:external:react-hot-toast",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Profile.js",
+      "target": "file:external:react-router-dom",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Profile.js",
+      "target": "file:frontend/src/helper/convert.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Profile.js",
+      "target": "file:frontend/src/helper/helper.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Profile.js",
+      "target": "file:frontend/src/helper/validate.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Profile.js",
+      "target": "file:frontend/src/hooks/fetch.hook.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Register.js",
+      "target": "file:external:axios",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Register.js",
+      "target": "file:external:formik",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Register.js",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Register.js",
+      "target": "file:external:react-hot-toast",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Register.js",
+      "target": "file:external:react-media-recorder",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Register.js",
+      "target": "file:external:react-router-dom",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Register.js",
+      "target": "file:frontend/src/components/captcha.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Register.js",
+      "target": "file:frontend/src/helper/convert.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Register.js",
+      "target": "file:frontend/src/helper/helper.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Register.js",
+      "target": "file:frontend/src/helper/validate.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Username.js",
+      "target": "file:external:formik",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Username.js",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Username.js",
+      "target": "file:external:react-hot-toast",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Username.js",
+      "target": "file:external:react-router-dom",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Username.js",
+      "target": "file:frontend/src/helper/validate.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/Username.js",
+      "target": "file:frontend/src/store/store.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/captcha.js",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/components/captcha.js",
+      "target": "file:external:react-simple-captcha",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/helper/helper.js",
+      "target": "file:external:axios",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/helper/helper.js",
+      "target": "file:external:jwt-decode",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/helper/helper.js",
+      "target": "function:frontend/src/helper/helper.js:authenticate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/helper/helper.js",
+      "target": "function:frontend/src/helper/helper.js:getUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/helper/helper.js",
+      "target": "function:frontend/src/helper/helper.js:getUsername",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/helper/helper.js",
+      "target": "function:frontend/src/helper/helper.js:registerUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/helper/helper.js",
+      "target": "function:frontend/src/helper/helper.js:updateUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/helper/helper.js",
+      "target": "function:frontend/src/helper/helper.js:verifyPassword",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/helper/validate.js",
+      "target": "file:external:react-hot-toast",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/helper/validate.js",
+      "target": "file:frontend/src/helper/helper.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/hooks/fetch.hook.js",
+      "target": "file:external:axios",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/hooks/fetch.hook.js",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/hooks/fetch.hook.js",
+      "target": "file:frontend/src/helper/helper.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/index.js",
+      "target": "file:external:react",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/index.js",
+      "target": "file:external:react-dom/client",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/index.js",
+      "target": "file:frontend/src/App.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/middleware/auth.js",
+      "target": "file:external:react-router-dom",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/middleware/auth.js",
+      "target": "file:frontend/src/store/store.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:frontend/src/store/store.js",
+      "target": "file:external:zustand",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 1.0
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:ui",
+      "name": "UI",
+      "description": "",
+      "nodeIds": [
+        "file:frontend/src/components/PageNotFound.js",
+        "file:frontend/src/components/Password.js",
+        "file:frontend/src/components/Profile.js",
+        "file:frontend/src/components/Register.js",
+        "file:frontend/src/components/Username.js",
+        "file:frontend/src/components/captcha.js"
+      ],
+      "display_order": 0,
+      "order_basis": "imports"
+    },
+    {
+      "id": "layer:api",
+      "name": "API",
+      "description": "",
+      "nodeIds": [
+        "file:backend/controllers/appController.js",
+        "file:backend/controllers/mailer.js",
+        "file:backend/controllers/test.js",
+        "file:backend/controllers/testo.js"
+      ],
+      "display_order": 1,
+      "order_basis": "imports"
+    },
+    {
+      "id": "layer:middleware",
+      "name": "Middleware",
+      "description": "",
+      "nodeIds": [
+        "file:backend/middleware/auth.js",
+        "file:frontend/src/middleware/auth.js"
+      ],
+      "display_order": 2,
+      "order_basis": "imports"
+    },
+    {
+      "id": "layer:data",
+      "name": "Data",
+      "description": "",
+      "nodeIds": [
+        "file:frontend/src/store/store.js"
+      ],
+      "display_order": 3,
+      "order_basis": "imports"
+    },
+    {
+      "id": "layer:application",
+      "name": "Application",
+      "description": "",
+      "nodeIds": [
+        "file:README.md",
+        "file:backend/captchaStore.js",
+        "file:backend/database/conn.js",
+        "file:backend/extractAudio.py",
+        "file:backend/extractAudio_login.py",
+        "file:backend/matchAudio.py",
+        "file:backend/matchFaces.py",
+        "file:backend/model/User.model.js",
+        "file:backend/package.json",
+        "file:backend/paper_reference/README.md",
+        "file:backend/paper_reference/extractFrames.py",
+        "file:backend/paper_reference/extractFrameslogin.py",
+        "file:backend/paper_reference/hamming.py",
+        "file:backend/paper_reference/matchFrames.py",
+        "file:backend/router/route.js",
+        "file:backend/secureStore.js",
+        "file:backend/server.js",
+        "file:backend/speechToTexty.py",
+        "file:frontend/README.md",
+        "file:frontend/package.json",
+        "file:frontend/postcss.config.js",
+        "file:frontend/public/manifest.json",
+        "file:frontend/src/App.js",
+        "file:frontend/src/helper/convert.js",
+        "file:frontend/src/helper/helper.js",
+        "file:frontend/src/helper/validate.js",
+        "file:frontend/src/hooks/fetch.hook.js",
+        "file:frontend/src/index.js",
+        "file:frontend/tailwind.config.js",
+        "file:report/SYSTEM_BEFORE_AFTER.md"
+      ],
+      "display_order": 4,
+      "order_basis": "imports"
+    },
+    {
+      "id": "layer:docs-tooling",
+      "name": "Docs & Tooling",
+      "description": "",
+      "nodeIds": [
+        "file:backend/scripts/encrypt_existing.mjs",
+        "file:backend/scripts/measure_performance.mjs",
+        "file:docs/DEPLOYMENT.md",
+        "file:docs/TESTING_WINDOWS.md"
+      ],
+      "display_order": 5,
+      "order_basis": "imports"
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "target_path": "README.md",
+      "page_type": "repo_overview",
+      "title": "README.md",
+      "depth": 0,
+      "kind": "overview",
+      "reason": "Start here for the end-to-end picture before diving into the code.",
+      "layer_id": "layer:application"
+    },
+    {
+      "order": 2,
+      "target_path": "frontend/src/App.js",
+      "page_type": "file_page",
+      "title": "App.js",
+      "depth": 0,
+      "kind": "code",
+      "reason": "An entry point \u2014 execution and imports fan out from here.",
+      "layer_id": "layer:application"
+    },
+    {
+      "order": 3,
+      "target_path": "backend/server.js",
+      "page_type": "file_page",
+      "title": "server.js",
+      "depth": 0,
+      "kind": "code",
+      "reason": "An entry point \u2014 execution and imports fan out from here.",
+      "layer_id": "layer:application"
+    },
+    {
+      "order": 4,
+      "target_path": "backend/secureStore.js",
+      "page_type": "file_page",
+      "title": "secureStore.js",
+      "depth": 1,
+      "kind": "code",
+      "reason": "Directly used by the entry points above; a core collaborator.",
+      "layer_id": "layer:application"
+    },
+    {
+      "order": 5,
+      "target_path": "backend/captchaStore.js",
+      "page_type": "file_page",
+      "title": "captchaStore.js",
+      "depth": 1,
+      "kind": "code",
+      "reason": "Directly used by the entry points above; a core collaborator.",
+      "layer_id": "layer:application"
+    },
+    {
+      "order": 6,
+      "target_path": "frontend/src/components/PageNotFound.js",
+      "page_type": "file_page",
+      "title": "PageNotFound.js",
+      "depth": 1,
+      "kind": "code",
+      "reason": "Directly used by the entry points above; a core collaborator.",
+      "layer_id": "layer:ui"
+    },
+    {
+      "order": 7,
+      "target_path": "frontend/src/components/Password.js",
+      "page_type": "file_page",
+      "title": "Password.js",
+      "depth": 1,
+      "kind": "code",
+      "reason": "Directly used by the entry points above; a core collaborator.",
+      "layer_id": "layer:ui"
+    },
+    {
+      "order": 8,
+      "target_path": "frontend/src/components/Profile.js",
+      "page_type": "file_page",
+      "title": "Profile.js",
+      "depth": 1,
+      "kind": "code",
+      "reason": "Directly used by the entry points above; a core collaborator.",
+      "layer_id": "layer:ui"
+    },
+    {
+      "order": 9,
+      "target_path": "backend/scripts/encrypt_existing.mjs",
+      "page_type": "file_page",
+      "title": "encrypt_existing.mjs",
+      "depth": 1,
+      "kind": "code",
+      "reason": "The Docs & Tooling layer's anchor \u2014 its most depended-on file.",
+      "layer_id": "layer:docs-tooling"
+    },
+    {
+      "order": 10,
+      "target_path": "frontend/src/store/store.js",
+      "page_type": "file_page",
+      "title": "store.js",
+      "depth": 1,
+      "kind": "code",
+      "reason": "The Data layer's anchor \u2014 its most depended-on file.",
+      "layer_id": "layer:data"
+    },
+    {
+      "order": 11,
+      "target_path": "frontend/src/middleware/auth.js",
+      "page_type": "file_page",
+      "title": "auth.js",
+      "depth": 1,
+      "kind": "code",
+      "reason": "Directly used by the entry points above; a core collaborator.",
+      "layer_id": "layer:middleware"
+    },
+    {
+      "order": 12,
+      "target_path": "backend/controllers/appController.js",
+      "page_type": "file_page",
+      "title": "appController.js",
+      "depth": 1,
+      "kind": "code",
+      "reason": "The API layer's anchor \u2014 its most depended-on file.",
+      "layer_id": "layer:api"
+    }
+  ],
+  "modules": [
+    {
+      "id": "module:frontend-src-components",
+      "name": "UI",
+      "path": "frontend/src/components",
+      "layerId": "layer:ui",
+      "nodeIds": [
+        "file:frontend/src/components/PageNotFound.js",
+        "file:frontend/src/components/Password.js",
+        "file:frontend/src/components/Profile.js",
+        "file:frontend/src/components/Register.js",
+        "file:frontend/src/components/Username.js",
+        "file:frontend/src/components/captcha.js"
+      ],
+      "wholeLayer": true,
+      "language": "javascript"
+    },
+    {
+      "id": "module:backend-controllers",
+      "name": "API",
+      "path": "backend/controllers",
+      "layerId": "layer:api",
+      "nodeIds": [
+        "file:backend/controllers/appController.js",
+        "file:backend/controllers/mailer.js",
+        "file:backend/controllers/test.js",
+        "file:backend/controllers/testo.js"
+      ],
+      "wholeLayer": true,
+      "language": "javascript"
+    },
+    {
+      "id": "module:application",
+      "name": "Application",
+      "path": "",
+      "layerId": "layer:application",
+      "nodeIds": [
+        "file:README.md",
+        "file:backend/captchaStore.js",
+        "file:backend/database/conn.js",
+        "file:backend/extractAudio.py",
+        "file:backend/extractAudio_login.py",
+        "file:backend/matchAudio.py",
+        "file:backend/matchFaces.py",
+        "file:backend/model/User.model.js",
+        "file:backend/package.json",
+        "file:backend/paper_reference/README.md",
+        "file:backend/paper_reference/extractFrames.py",
+        "file:backend/paper_reference/extractFrameslogin.py",
+        "file:backend/paper_reference/hamming.py",
+        "file:backend/paper_reference/matchFrames.py",
+        "file:backend/router/route.js",
+        "file:backend/secureStore.js",
+        "file:backend/server.js",
+        "file:backend/speechToTexty.py",
+        "file:frontend/README.md",
+        "file:frontend/package.json",
+        "file:frontend/postcss.config.js",
+        "file:frontend/public/manifest.json",
+        "file:frontend/src/App.js",
+        "file:frontend/src/helper/convert.js",
+        "file:frontend/src/helper/helper.js",
+        "file:frontend/src/helper/validate.js",
+        "file:frontend/src/hooks/fetch.hook.js",
+        "file:frontend/src/index.js",
+        "file:frontend/tailwind.config.js",
+        "file:report/SYSTEM_BEFORE_AFTER.md"
+      ],
+      "wholeLayer": true,
+      "language": "javascript"
+    },
+    {
+      "id": "module:docs-tooling",
+      "name": "Docs & Tooling",
+      "path": "",
+      "layerId": "layer:docs-tooling",
+      "nodeIds": [
+        "file:backend/scripts/encrypt_existing.mjs",
+        "file:backend/scripts/measure_performance.mjs",
+        "file:docs/DEPLOYMENT.md",
+        "file:docs/TESTING_WINDOWS.md"
+      ],
+      "wholeLayer": true,
+      "language": "javascript"
+    }
+  ]
+}

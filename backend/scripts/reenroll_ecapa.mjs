@@ -1,0 +1,60 @@
+// Privileged, server-side re-enrollment to the ECAPA voice template (v2).
+//
+// The voice template format changed from an MFCC matrix (v1) to a 192-d ECAPA
+// speaker embedding (v2). A v1 template cannot be upgraded in place — the audio
+// it came from was destroyed under template-only storage — so every pre-ECAPA
+// account must be re-enrolled from a fresh recording.
+//
+// Re-enrollment is deliberately NOT exposed over HTTP: /upload-video requires a
+// one-time enrollment token that /api/register only mints for a brand-new
+// account (the anti-overwrite fix, docs/enrollment-security.md). Re-enrolling an
+// EXISTING account is therefore a privileged operation that runs here, on the
+// server, with filesystem access — the same trust level as the migration script.
+//
+// Usage (from backend/):
+//   node --env-file=.env scripts/reenroll_ecapa.mjs <video.mp4> <username> [<username> ...]
+//
+// Each named account's templates/<username>.tmpl.enc is overwritten with a v2
+// template extracted from <video.mp4>. Back up the old templates first if needed.
+
+import fs from "fs";
+import { enrollFromBuffer, templatePath } from "../templateStore.js";
+
+const [videoPath, ...usernames] = process.argv.slice(2);
+
+if (!videoPath || usernames.length === 0) {
+  console.error("usage: reenroll_ecapa.mjs <video.mp4> <username> [<username> ...]");
+  process.exit(2);
+}
+if (!fs.existsSync(videoPath)) {
+  console.error(`source video not found: ${videoPath}`);
+  process.exit(2);
+}
+
+const buffer = fs.readFileSync(videoPath);
+let ok = 0;
+let bad = 0;
+
+for (const username of usernames) {
+  if (!/^[A-Za-z0-9_-]{1,64}$/.test(username)) {
+    console.error(`  ${username}: invalid username, skipped`);
+    bad++;
+    continue;
+  }
+  try {
+    const { ok: enrolled, reason } = await enrollFromBuffer(buffer, username);
+    if (enrolled) {
+      console.log(`  ${username}: re-enrolled -> ${templatePath(username)}`);
+      ok++;
+    } else {
+      console.error(`  ${username}: FAILED (${reason})`);
+      bad++;
+    }
+  } catch (e) {
+    console.error(`  ${username}: ERROR ${e.message}`);
+    bad++;
+  }
+}
+
+console.log(`\nre-enrolled ${ok}, failed ${bad}`);
+process.exit(bad === 0 ? 0 : 1);

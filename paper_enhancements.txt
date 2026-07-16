@@ -1,0 +1,70 @@
+
+   Enhancements needed: 
+
+    The proposed scheme appears to implement authentication in a sequential (in-line) manner rather than using parallel authentication.
+    What security mechanisms are used to protect the biometric information stored on the server? For example, how is a file such as username.mp4 protected against unauthorised access, tampering, or theft?
+    It would be beneficial to provide performance results that quantify the additional processing and communication delays introduced by the proposed scheme. 
+
+
+
+Few considerations for the 3 comments:
+ Addressing the three comments
+
+1. "Sequential, not parallel" authentication
+
+- Parallel acquisition: face, voice, and CAPTCHA are all captured in one video-recording action, so the user isn't asked to present biometrics one at a time. This part of "parallel" claim is legitimate.
+- Parallel matching/verification (not true): Algorithm 1 and Fig. 6 show audio extraction is only triggered after `FrameMatching_result` is true, and CAPTCHA validation only runs after `AudioMatching_result` is true. That's a cascaded, sequential pipeline, not parallel processing.
+
+Proposed Solutions:
+
+* To genuinely parallelize verification: once the single video is captured, immediately fork frame extraction and audio extraction concurrently (e.g., `Promise.all` in Node.js). Run frame matching and audio matching as independent concurrent tasks against their respective thresholds, and only combine results at the final step with AND logic — instead of gating each step on the previous one's success.
+
+* CAPTCHA-to-text conversion only needs the extracted audio (not the result of audio matching), so it can run concurrently with audio matching rather than after it.
+* We can update Algorithm 1's pseudocode to reflect this: spawn FramMatching_result and AudioMatching_result (and CAPTCHA validation) as concurrent tasks, await all three, then apply the AND.
+
+
+2. Security of stored biometric data (username.mp4)
+
+Suggested additions:
+
+- Encryption at rest: Encrypt video files with AES-256 before writing to disk/storage (e.g., encrypt with a server-held key via Node's `crypto` module, or use MongoDB Atlas's native encryption-at-rest + field-level/client-side encryption for any metadata pointing to the file).
+
+- Don't store raw video long-term if we can avoid it: Once frames/MFCC features are extracted at registration, consider storing only the derived feature templates (perceptual hashes, MFCC vectors) instead of the raw video, and discard or encrypt-and-archive the original. This also reduces storage/privacy exposure.
+
+- Template protection / cancelable biometrics: If we need to store templates, can apply a one-way transform (e.g., BioHashing, salting hashes with a per-user secret) so that even a server breach doesn't leak reversible biometric data.
+
+- Access control: File paths/links should not be guessable or directly web-accessible; serve via authenticated, time-limited signed URLs rather than a static folder path, and store file references (not paths) in MongoDB with proper RBAC on who/what can read them.
+- Transport security: Confirm video upload happens over TLS/HTTPS (we can mention this explicitly).
+
+- Integrity protection: Store a hash/HMAC of the video file at write-time so tampering can be detected before it's used for matching.
+
+3. Quantitative performance evaluation
+
+We can report:
+
+- Per-step processing time: video recording → frame extraction (OpenCV) → frame matching (pHash + Hamming) → audio extraction (FFmpeg) → audio matching (Librosa MFCC) → speech-to-text → CAPTCHA validation. Time each stage with `time.perf_counter()` or similar and report mean ± std over N trials (e.g., 50–100 login attempts).
+
+- End-to-end authentication latency: total time from "stop recording" to "Login Successful," under sequential vs. parallel implementation
+
+- Communication/network overhead: average video file size (e.g., for a 5–10 second clip at our recording resolution/bitrate) and upload time at a few representative bandwidths
+
+- Accuracy metrics: False Acceptance Rate (FAR) and False Rejection Rate (FRR) / Equal Error Rate (EER) for our frame-matching and audio-matching thresholds, ideally on a small dataset of multiple users with genuine and impostor attempts , present in one reference as well
+
+
+4. Two security defects found and fixed during the security audit (beyond the three reviewer comments)
+
+4a. Enrollment overwrite / account takeover (Critical)
+
+- Problem: the registration upload endpoint (/upload-video) took the enrolled identity from the uploaded FILE NAME (username.mp4) and required no authentication. Any unauthenticated client could POST a video named victim.mp4 and overwrite templates/victim.tmpl.enc with their own face and voice, then log in as the victim. A filename is client-controlled data, not a credential.
+- Fix: identity now comes from a short-lived (10 min) server-signed enrollment token (purpose="enroll") issued exactly once by /api/register, at the moment the account is created. Because /api/register rejects duplicate usernames, no token can ever be minted for an existing account, so no client can overwrite another user's enrollment. The upload reads the username from the verified token, never from the filename. A session/login JWT is deliberately not accepted (purpose claim is checked), so a stolen session token cannot re-enroll (re-key) an account. See docs/enrollment-security.md.
+- Verified: genuine registration + upload succeeds (200); upload with no token -> 401; upload with a session-purpose JWT -> 401; upload with an expired token -> 401; upload with another user's token writes ONLY that user's template (filename ignored) and leaves the victim template byte-identical (sha256 unchanged).
+
+4b. Voice factor accepts the wrong speaker (High)
+
+- Problem: the voice factor accepted a different speaker against an enrolled template; only the face factor was keeping impostors out, so the scheme was effectively two-factor. Root cause is the paper's matching ALGORITHM (Algorithm 2), not the threshold: mean pairwise Euclidean distance over 13-coefficient MFCC frames is not speaker-discriminative. Measured on the enrolled templates, impostor pairs (153.7-193.0) overlapped and even beat genuine pairs (172.8-178.8); no threshold can separate them. The statistic tracks loudness / recording spread, not voice identity.
+- Fix: replaced the MFCC-distance matcher with a 192-d ECAPA-TDNN speaker embedding (SpeechBrain, VoxCeleb) scored by cosine similarity — the same architecture the face factor uses with InsightFace, and the same kind of substitution as pHash -> InsightFace for faces. Threshold 0.25 is SpeechBrain's published operating point, NOT tuned to this repo's two speakers (that would overfit). This is a code defect fix, not a dataset workaround.
+- Migration: template schema bumped to version 2 (voice.embedding replaces voice.mfcc). Old v1 templates cannot be upgraded (the source audio was discarded under template-only storage) so the matcher fails closed on them (re-enrollment required) rather than falling back to the broken statistic.
+- Verified through the shipped matcher: genuine 0.75-1.00 (accept), synthetic-TTS impostors <=0.08 (reject), unrelated speech 0.20 (reject), legacy v1 template -> error/reject. For contrast the OLD statistic on the same clips rejected the genuine pair (221.9) and accepted a robot-voice pair (199.0). See docs/voice-verification.md.
+- Remaining limitation: evaluation set is small (two enrolled human voices + synthetic impostors); a formal EER needs many more speakers. The threshold was deliberately NOT tuned to compensate.
+
+ 
