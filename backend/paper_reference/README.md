@@ -9,9 +9,12 @@ of whole frames, and Hamming-distance comparison at threshold 25.
 - `matchFrames.py` — pHash + Hamming comparison over positionally aligned frames
 - `hamming.py` — Hamming distance helper
 
-They were removed from the active pipeline on 2026-07-11 and replaced by
-`backend/matchFaces.py` (InsightFace ArcFace embeddings + cosine similarity,
-threshold 0.35).
+They were removed from the active pipeline on 2026-07-11. The face factor is now
+`backend/matchFaceTemplate.py` (InsightFace ArcFace embedding + cosine similarity,
+threshold 0.35), which scores a stored template against the template extracted from
+the login recording. The intermediate `backend/matchFaces.py`, which embedded two
+videos on the fly, was superseded when the scheme moved to template-only storage and
+has been removed from the tree.
 
 ## Why the replacement (enhancement record)
 
@@ -35,3 +38,14 @@ threshold 0.35).
 
 These files are kept for research reproducibility and comparison. Do not wire them
 back into `appController.js`.
+
+## Provenance of the measurements above
+
+The Hamming and InsightFace figures were measured on registration/login recordings
+that no longer exist: template-only storage destroys the source video at enrolment,
+by design. They are reported here as the diagnostic that motivated replacing pHash,
+and they cannot be recomputed from current repository state. Re-deriving them
+requires re-collecting recordings. Any future accuracy study should keep a separately
+consented evaluation corpus outside the production template store — see
+`backend/scripts/run_evaluation.mjs`, which automates that study once such a corpus
+exists.

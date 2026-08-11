@@ -19,11 +19,12 @@ function key() {
   if (ENV.BIOMETRIC_KEY) {
     return crypto.createHash("sha256").update(ENV.BIOMETRIC_KEY).digest();
   }
-  // Deriving from JWT_SECRET keeps a fresh clone working, but a production
-  // deployment must set BIOMETRIC_KEY (and a real JWT_SECRET).
+  // Deriving from JWT_SECRET keeps a fresh clone working. DEVELOPMENT ONLY:
+  // under NODE_ENV=production, config.js refuses to start without BIOMETRIC_KEY,
+  // so this branch is unreachable there.
   console.warn(
     "[secureStore] BIOMETRIC_KEY not set — deriving file key from JWT_SECRET. " +
-      "Set BIOMETRIC_KEY in the environment for production."
+      "Development only; production refuses to start without it."
   );
   return crypto
     .createHash("sha256")

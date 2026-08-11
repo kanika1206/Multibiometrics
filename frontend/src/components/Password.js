@@ -28,6 +28,17 @@ function Password() {
 
 const [captchaText, setCaptchaText] = useState('');
 
+// Evaluation mode changes the privacy guarantee: the login recording is normally
+// deleted once the attempt resolves, but under EVAL_CAPTURE it can be retained
+// for a research corpus. Only with the participant's explicit, per-upload consent.
+const [evalCapture, setEvalCapture] = useState(false);
+const [evalConsent, setEvalConsent] = useState(false);
+useEffect(() => {
+  axios.get(`${process.env.REACT_APP_SERVER_DOMAIN}/eval-status`)
+    .then(r => setEvalCapture(!!r.data?.evalCapture))
+    .catch(() => setEvalCapture(false));
+}, []);
+
 // The server generates the CAPTCHA, stores its text against this username,
 // and returns only the SVG. The text never reaches the client.
 const fetchCaptcha = () => {
@@ -58,6 +69,9 @@ useEffect(fetchCaptcha, [username]);
             const blob = await fetch(mediaBlobUrl).then(r => r.blob());
             const formData = new FormData();
             formData.append('video', blob, username + "_l.mp4");
+            // Retention is opt-in and only meaningful in evaluation mode; the
+            // server ignores it otherwise.
+            formData.append('evalConsent', evalCapture && evalConsent ? 'true' : 'false');
 
             const res = await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/upload-video-login`, {
               method: 'POST',
@@ -149,6 +163,21 @@ useEffect(fetchCaptcha, [username]);
                 </div>
 
                 <br></br>
+
+                {evalCapture &&
+                    <div style={{border:'2px solid #b3261e', borderRadius:'8px', padding:'12px', margin:'0 20px 16px', background:'#fff5f5'}}>
+                        <p style={{color:'#b3261e', fontWeight:'bold', marginBottom:'6px'}}>Research evaluation mode is active</p>
+                        <p className='text-gray-600' style={{fontSize:'0.9em', marginBottom:'8px'}}>
+                            Normally your login recording is deleted as soon as the check finishes.
+                            In this mode, if you consent, a copy of your recording will be <b>retained</b> for research evaluation.
+                            You can log in without consenting — leave the box unchecked and your video will still be deleted as usual.
+                        </p>
+                        <label style={{color:'#333', fontSize:'0.9em', display:'flex', alignItems:'center', gap:'8px'}}>
+                            <input type='checkbox' checked={evalConsent} onChange={e => setEvalConsent(e.target.checked)} />
+                            I consent to my recording being retained for research evaluation.
+                        </label>
+                    </div>
+                }
 
                 <button onClick={formik.handleSubmit } style={{width:'646px'}} className={`${styles.btn}`} type='submit'>Log in</button>
               

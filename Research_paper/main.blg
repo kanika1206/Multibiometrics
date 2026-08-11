@@ -1,0 +1,17 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: IEEEtran.bst
+Database file #1: refs.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in IEEEtran63
+Too many commas in name 1 of "Emanuela Marasco,Massimiliano Albanese,Venkata Vamsi Ram Patibandla, Anudeep Vurity, Sumanth Sai Sriram" for entry IEEEtran38
+while executing---line 2403 of file IEEEtran.bst
+Too many commas in name 1 of "Emanuela Marasco,Massimiliano Albanese,Venkata Vamsi Ram Patibandla, Anudeep Vurity, Sumanth Sai Sriram" for entry IEEEtran38
+while executing---line 2403 of file IEEEtran.bst
+Warning--empty journal in r3
+
+Done.
+(There were 2 error messages)

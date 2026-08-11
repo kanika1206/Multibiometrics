@@ -10,10 +10,12 @@ import router from './router/route.js';
 import connect from './database/conn.js';
 // import {output} from './controllers/appController.js';
 import svgCaptcha from "svg-captcha"
-import { issueCaptcha } from "./captchaStore.js"
+import { issueCaptcha, hasLiveCaptcha } from "./captchaStore.js"
 import { encryptToFile } from "./secureStore.js"
-import { enrollFromBuffer } from "./templateStore.js"
+import { enrollFromBuffer, hasTemplate } from "./templateStore.js"
 import { enrollUsernameFrom } from "./enrollToken.js"
+import { captureIfEnabled } from "./evalCapture.js"
+import ENV from "./config.js"
 import multer from "multer"
 import fs from "fs"
 
@@ -41,6 +43,12 @@ app.get('/', (req,res) => {
 // api is a endpoint for all other routes
 app.use('/api', router)
 
+
+// Lets the client know whether evaluation capture is active, so it can show the
+// retention notice and consent control. Exposes only the boolean, nothing else.
+app.get('/eval-status', function (req, res) {
+  res.json({ evalCapture: ENV.EVAL_CAPTURE });
+});
 
 app.get('/captcha', function(req, res) {
     // The CAPTCHA text stays server-side (captchaStore) so the spoken
@@ -90,11 +98,50 @@ app.get('/captcha', function(req, res) {
     if (!REG_NAME.test(file.originalname)) {
       return res.status(400).send({ error: 'Invalid file name' });
     }
+    // The token outlives the account it names: a failed extraction rolls the
+    // account back (below), and the client still holds a signed, unexpired token
+    // for it. Enrolling on that token would write a template for an account that
+    // no longer exists — a template nothing can ever match against, and one that
+    // would silently pre-empt whoever registers that username next. The account
+    // must still be there.
+    const account = await Video.findOne({ username });
+    if (!account) {
+      return res.status(409).send({ error: 'No account to enroll; please register again' });
+    }
+    // An enrolled account is final. The token alone used to be the whole story,
+    // which was sound only because a token cannot be minted for an existing
+    // account — but registration now releases abandoned (template-less)
+    // accounts, so "the account exists" no longer implies "no token exists".
+    // Check the invariant that actually matters instead: a stored template is
+    // never replaced, whoever asks.
+    if (hasTemplate(username)) {
+      return res.status(409).send({ error: 'This account is already enrolled' });
+    }
+    // Evaluation capture (registration = session 1). No-op unless EVAL_CAPTURE
+    // is set AND the participant consented to retention on this page. Multer puts
+    // non-file form fields on req.body.
+    captureIfEnabled(file.buffer, username, req.body.evalConsent === 'true');
     try {
       const { ok, reason } = await enrollFromBuffer(file.buffer, username);
       if (!ok) {
-        // Fail closed: no template stored, so the account cannot log in until it
-        // re-registers with a usable recording.
+        // Fail closed: no template was stored. The account record, however, was
+        // already written by /api/register, so without this rollback the failure
+        // leaves an account that holds no biometrics, can never authenticate,
+        // and — once its 10-minute enrollment token expires — can never enroll
+        // either, while still occupying its username and email. Registration is
+        // meant to be all-or-nothing, so undo the half of it that succeeded.
+        //
+        // Guarded on hasTemplate: only an unenrolled account is ever deleted, so
+        // a later failed upload can never remove an account that is already
+        // enrolled (the check above rejects those before reaching here anyway).
+        if (!hasTemplate(username)) {
+          try {
+            await Video.deleteOne({ username });
+            console.log(`[enroll ${username}] extraction failed; account rolled back`);
+          } catch (e) {
+            console.error(`[enroll ${username}] rollback failed: ${e}`);
+          }
+        }
         return res.status(400).send({ error: reason });
       }
     } catch (e) {
@@ -116,6 +163,21 @@ app.get('/captcha', function(req, res) {
     if (!LOGIN_NAME.test(file.originalname)) {
       return res.status(400).send({ error: 'Invalid file name' });
     }
+    // This endpoint cannot require a session token — logging in is exactly what
+    // the caller has not done yet. It is instead bound to a live login attempt:
+    // the client must have fetched a CAPTCHA for this username (GET /captcha)
+    // and it must not have expired. Without this, any unauthenticated client
+    // could overwrite the recording a victim is about to submit. The challenge
+    // is only checked here, never consumed — /api/login spends it.
+    const username = file.originalname.slice(0, -'_l.mp4'.length);
+    if (!hasLiveCaptcha(username)) {
+      return res.status(401).send({ error: 'No active login challenge for this user' });
+    }
+    // Evaluation capture (each login = the next session for this user). No-op
+    // unless EVAL_CAPTURE is set AND the participant consented to retention. The
+    // login recording is otherwise deleted by login() once the attempt resolves,
+    // so this is the only point it survives.
+    captureIfEnabled(file.buffer, username, req.body.evalConsent === 'true');
     try {
       encryptToFile(file.buffer, 'uploadsl/login_videos/' + file.originalname + '.enc');
     } catch (e) {
@@ -129,6 +191,14 @@ app.get('/captcha', function(req, res) {
 // start server only when we have valid db connection
 //connect fn. will return a promise so we will use 'then' here
 //inside then we will call a callback function with try and catch
+if (ENV.EVAL_CAPTURE) {
+    console.warn(
+        `[eval-capture] ENABLED — plaintext recordings will be written to ` +
+        `${ENV.EVAL_CORPUS_DIR}. This suspends template-only storage and is for ` +
+        `consented evaluation ONLY. Do not run this way in production.`
+    );
+}
+
 connect().then( () => {
     try{
         app.listen(port, () => {

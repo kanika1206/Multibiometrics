@@ -7,8 +7,9 @@ import os from "os";
 import path from "path";
 import { takeCaptcha, normalizeCaptcha } from "../captchaStore.js";
 import { decryptToFile } from "../secureStore.js";
-import { decryptTemplate, runExtractTemplate } from "../templateStore.js";
+import { decryptTemplate, runExtractTemplate, hasTemplate } from "../templateStore.js";
 import { issueEnrollToken } from "../enrollToken.js";
+import { sealFields, openFields, emailIndex } from "../piiStore.js";
 
 const PYTHON = ENV.PYTHON;
 
@@ -51,33 +52,62 @@ export async function register(req, res) {
       return res.status(400).send({ error: "Invalid username" });
     }
 
-    // check the existing user
-    const existUsername = new Promise((resolve, reject) => {
-      UserModel.findOne({ username }, function (err, user) {
-        if (err) reject(new Error(err));
-        if (user) reject({ error: "Please use unique username" });
+    // Registration is two requests — the account is created here, the templates
+    // are enrolled by /upload-video — so it can stop half-way: the user closes
+    // the tab, the camera fails, the recording has no usable face. That leaves an
+    // account holding no template. Such an account is inert: login needs a
+    // template to match against, so it can never authenticate, and its
+    // enrollment token expires after ten minutes, so it can never enroll either.
+    // It nonetheless held its username and email forever, locking the legitimate
+    // owner out of their own identifier with no way back.
+    //
+    // An abandoned account is therefore released rather than treated as a
+    // conflict. This concedes nothing: an account with no template was never
+    // bound to anybody's biometrics, so taking it over is indistinguishable from
+    // registering a never-used name. What must not happen is releasing an
+    // ENROLLED account, which would be account takeover — hence hasTemplate()
+    // gates every deletion, and /upload-video independently refuses to overwrite
+    // an existing template even when presented with a valid enrollment token.
+    // Both conflicts are resolved before anything is deleted, so a request that
+    // is going to be rejected for one field does not destroy an account on
+    // account of the other.
+    const checkAvailable = async (query, conflict) => {
+      const found = await UserModel.findOne(query);
+      if (found && hasTemplate(found.username)) throw { error: conflict };
+      return found;
+    };
 
-        resolve();
-      });
+    // The address is matched through its keyed index, never by comparing stored
+    // addresses: the server does not need to read anyone's email to know that
+    // this one is taken.
+    const emailIdx = emailIndex(email);
+    if (!emailIdx) {
+      return res.status(400).send({ error: "Invalid email" });
+    }
+
+    const clearance = Promise.all([
+      checkAvailable({ username }, "Please use unique username"),
+      checkAvailable({ emailIdx }, "Please use unique Email"),
+    ]).then(async (holders) => {
+      const seen = new Set();
+      for (const held of holders) {
+        if (!held || seen.has(String(held._id))) continue;
+        seen.add(String(held._id));
+        await UserModel.deleteOne({ _id: held._id });
+        console.log(
+          `[register] released abandoned account ${held.username} (no template enrolled)`
+        );
+      }
     });
 
-    // check for existing email
-    const existEmail = new Promise((resolve, reject) => {
-      UserModel.findOne({ email }, function (err, email) {
-        if (err) reject(new Error(err));
-        if (email) reject({ error: "Please use unique Email" });
-
-        resolve();
-      });
-    });
-
-    //resolving both the promises
-    Promise.all([existUsername, existEmail])
+    clearance
       .then(() => {
+        // Only the username is written in the clear; the address is written
+        // sealed, alongside the index that makes it findable.
         const user = new UserModel({
           username,
-          profile: profile || "",
-          email,
+          emailIdx,
+          ...sealFields({ profile: profile || "", email }),
         });
 
         // return save result as a response
@@ -86,9 +116,10 @@ export async function register(req, res) {
           .then(() =>
             // The enrollment token authorizes exactly one identity — the account
             // just created — to store biometric templates. It is the only way to
-            // write templates/<username>.tmpl.enc, and it can never be minted for
-            // an account that already exists (the duplicate-username check above
-            // rejects those), so no client can overwrite another user's templates.
+            // write a template, and it can never be minted for an account that is
+            // already ENROLLED (the check above rejects those, and /upload-video
+            // refuses to overwrite a stored template in any case), so no client
+            // can overwrite another user's templates.
             res.status(201).send({
               msg: "User Register Successfully",
               enrollToken: issueEnrollToken(username),
@@ -229,12 +260,15 @@ export async function login(req, res) {
       `login ${user.username}: face=${faceOk} voice=${voiceOk} captcha=${captchaOk}` +
         (expectedCaptcha === null ? " (no captcha issued/expired)" : "")
     );
-    // Server-log only (never sent to the client): the normalized pair actually
-    // compared, so CAPTCHA mismatches are diagnosable from the log.
+    // Server-log only, and deliberately VALUE-FREE: the expected CAPTCHA and the
+    // spoken transcripts are not written to the log. A CAPTCHA is low-entropy
+    // (five digits) and short-lived, and logs outlive it and are read by more
+    // people than should see a live challenge/response; printing them was a
+    // needless disclosure. The count below keeps a mismatch diagnosable (was any
+    // speech transcribed at all?) without leaking the values.
     if (!captchaOk && expectedCaptcha !== null) {
       console.log(
-        `login ${user.username}: captcha expected="${normalizeCaptcha(expectedCaptcha)}" ` +
-          `candidates=[${transcripts.map((t) => `"${normalizeCaptcha(t)}"`).join(", ") || "<none>"}]`
+        `login ${user.username}: captcha mismatch (${transcripts.length} transcript alternative(s))`
       );
     }
 
@@ -282,9 +316,23 @@ export async function getUser(req, res) {
 
       /** remove password from user */
       // mongoose return unnecessary data with object so convert it into json
-      const { password, ...rest } = Object.assign({}, user.toJSON());
+      const { password, emailIdx, ...rest } = Object.assign({}, user.toJSON());
 
-      return res.status(201).send(rest);
+      // The stored fields are ciphertext; the profile page expects the values.
+      // emailIdx is dropped above: it is an internal lookup key, and shipping it
+      // to the client would hand out a stable, correlatable identifier for the
+      // address it stands in for.
+      let plain;
+      try {
+        plain = openFields(rest);
+      } catch (e) {
+        // A sealed field that fails its authentication tag means tampering or a
+        // wrong key. Fail closed rather than serving half a record.
+        console.error(`getUser ${username}: could not decrypt account data: ${e.message}`);
+        return res.status(500).send({ error: "Could not read user data" });
+      }
+
+      return res.status(201).send(plain);
     });
   } catch (error) {
     return res.status(404).send({ error: "Cannot Find User Data" });
@@ -308,7 +356,21 @@ export async function updateUser(req, res) {
     const { userId } = req.user;
 
     if (userId) {
-      const body = req.body;
+      // Seal whatever contact fields this update carries, so an edited profile
+      // does not write plaintext back over an encrypted record. Fields the
+      // request does not mention are left untouched.
+      const body = sealFields(req.body);
+      // An address change moves its index with it, or the account becomes
+      // unfindable by email and its old address stays reserved.
+      if ("email" in req.body) {
+        const idx = emailIndex(req.body.email);
+        if (!idx) return res.status(400).send({ error: "Invalid email" });
+        const taken = await UserModel.findOne({ emailIdx: idx });
+        if (taken && String(taken._id) !== String(userId)) {
+          return res.status(409).send({ error: "Please use unique Email" });
+        }
+        body.emailIdx = idx;
+      }
 
       // update the data
       UserModel.updateOne({ _id: userId }, body, function (err, data) {

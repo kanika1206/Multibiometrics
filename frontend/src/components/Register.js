@@ -37,6 +37,18 @@ function Register() {
     // instead of trying to create the account twice.
     const enrollTokenRef = useRef(null)
 
+    // Evaluation mode changes the privacy guarantee: normally the recording is
+    // reduced to a template and deleted, but when the server runs with
+    // EVAL_CAPTURE it can retain the raw recording for a research corpus. Only do
+    // so with the participant's explicit, per-upload consent.
+    const [evalCapture, setEvalCapture] = useState(false)
+    const [evalConsent, setEvalConsent] = useState(false)
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_SERVER_DOMAIN}/eval-status`)
+            .then(r => setEvalCapture(!!r.data?.evalCapture))
+            .catch(() => setEvalCapture(false))
+    }, [])
+
     // audio:true — the voice factor is carried by this same recording.
     const { status, startRecording, stopRecording, mediaBlobUrl, previewStream, error } =
         useReactMediaRecorder({ video: true, audio: true });
@@ -67,9 +79,11 @@ function Register() {
             // /upload-video whose templates these are. Under the old order (upload,
             // then register) the upload had no identity to prove, so any client
             // could overwrite any user's enrollment.
-            // The token is kept so a failed upload can be retried without creating a
-            // second account: the account exists but cannot log in until a
-            // recording is enrolled.
+            // The token is kept across a transport-level retry, but it is dropped
+            // whenever the server rejects the enrollment (below): a rejected
+            // extraction rolls the account back, so the retry has to create the
+            // account again rather than present a token for an account that is
+            // gone.
             if (!enrollTokenRef.current) {
                 let registered;
                 try {
@@ -87,6 +101,9 @@ function Register() {
             const blob = await fetch(mediaBlobUrl).then(r => r.blob());
             const formData = new FormData();
             formData.append('video', blob, values.username + ".mp4");
+            // Retention is opt-in and only meaningful in evaluation mode; the
+            // server ignores it otherwise.
+            formData.append('evalConsent', evalCapture && evalConsent ? 'true' : 'false');
 
             let res;
             try {
@@ -101,7 +118,18 @@ function Register() {
             }
 
             if (!res.ok) {
-              toast.error('Could not upload recording. Press Register again to retry.');
+              // The server refused the enrollment, so the account it created has
+              // been rolled back. Forget the token: the next attempt must go
+              // through registration again, and reusing this one would only be
+              // rejected as naming an account that no longer exists.
+              enrollTokenRef.current = null;
+              let detail = '';
+              try { detail = (await res.json())?.error || ''; } catch (e) { /* non-JSON body */ }
+              toast.error(
+                detail
+                  ? `${detail}. Press Register again to retry.`
+                  : 'Could not enroll your recording. Press Register again to retry.'
+              );
               return;
             }
 
@@ -187,6 +215,21 @@ function Register() {
                 </div>
 
                 <br></br>
+
+                {evalCapture &&
+                    <div style={{border:'2px solid #b3261e', borderRadius:'8px', padding:'12px', margin:'0 20px 16px', background:'#fff5f5'}}>
+                        <p style={{color:'#b3261e', fontWeight:'bold', marginBottom:'6px'}}>Research evaluation mode is active</p>
+                        <p className='text-gray-600' style={{fontSize:'0.9em', marginBottom:'8px'}}>
+                            Normally your recording is converted to an encrypted template and the video is deleted immediately.
+                            In this mode, if you consent, a copy of your recording will be <b>retained</b> for research evaluation.
+                            You can register without consenting — leave the box unchecked and your video will still be deleted as usual.
+                        </p>
+                        <label style={{color:'#333', fontSize:'0.9em', display:'flex', alignItems:'center', gap:'8px'}}>
+                            <input type='checkbox' checked={evalConsent} onChange={e => setEvalConsent(e.target.checked)} />
+                            I consent to my recording being retained for research evaluation.
+                        </label>
+                    </div>
+                }
 
                 <button onClick={formik.handleSubmit} style={{width:'646px'}} className={`${styles.btn}`} type='submit'>Register</button>
             

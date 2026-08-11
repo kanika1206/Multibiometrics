@@ -16,6 +16,23 @@ export function issueCaptcha(username, text) {
   store.set(username, { text, expires: Date.now() + TTL_MS });
 }
 
+/**
+ * True if this username currently has a live (issued, unexpired) challenge.
+ *
+ * Used to gate the login-video upload. Unlike takeCaptcha this does NOT consume
+ * the entry: the upload happens before /api/login, which is what actually spends
+ * the challenge. Consuming here would make every login fail.
+ */
+export function hasLiveCaptcha(username) {
+  const entry = store.get(username);
+  if (!entry) return false;
+  if (entry.expires < Date.now()) {
+    store.delete(username);
+    return false;
+  }
+  return true;
+}
+
 /** Returns the CAPTCHA text for this user and consumes it, or null if none/expired. */
 export function takeCaptcha(username) {
   const entry = store.get(username);

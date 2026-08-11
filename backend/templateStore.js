@@ -12,6 +12,7 @@
 // AES-256-GCM envelope the videos used (secureStore.js).
 
 import { spawn } from "child_process";
+import crypto from "crypto";
 import fs from "fs";
 import os from "os";
 import path from "path";
@@ -20,8 +21,49 @@ import { encryptToFile, decryptToFile } from "./secureStore.js";
 
 export const TEMPLATE_DIR = "./templates/";
 
+// The on-disk template name used to BE the username (kanika1206.tmpl.enc), so a
+// filesystem-only leak of this directory — no database, no key — disclosed the
+// entire enrolled membership by name and handed the attacker one labelled
+// biometric template per person. That violates the unlinkability property of
+// ISO/IEC 24745. The name is now a keyed hash of the username instead.
+//
+// Keyed, not a plain hash: usernames are short and guessable, so an unkeyed
+// hash would fall to a dictionary. HMAC under the same secret that protects the
+// templates means a filesystem-only attacker (who lacks the key) cannot map a
+// file back to a user, while an attacker who HAS the key could already decrypt
+// everything, so linkage is moot. It is deterministic, so login re-derives the
+// same name with no database lookup and no schema change — the identity mapping
+// lives nowhere new.
+function templateSecret() {
+  // Mirror secureStore's key source so filename derivation shares the template
+  // key's lifecycle: if it rotates, names change in lockstep with decryptability.
+  return ENV.BIOMETRIC_KEY || "biometric-at-rest:" + ENV.JWT_SECRET;
+}
+
+/** Deterministic, non-reversible on-disk id for a username. */
+export function templateId(username) {
+  return crypto
+    .createHmac("sha256", templateSecret())
+    .update("template-name:" + username)
+    .digest("hex");
+}
+
 export function templatePath(username) {
-  return TEMPLATE_DIR + username + ".tmpl.enc";
+  return TEMPLATE_DIR + templateId(username) + ".tmpl.enc";
+}
+
+/**
+ * True if this username already holds an enrollment.
+ *
+ * Two callers depend on it, and both are security-relevant. /upload-video uses
+ * it to refuse a second enrollment outright, so a stored template can never be
+ * replaced even by a holder of a valid enrollment token. Registration uses it to
+ * distinguish an enrolled account from an abandoned one: an account with no
+ * template was never bound to any biometrics and can never authenticate, so its
+ * identifier may be released, whereas an enrolled account is untouchable.
+ */
+export function hasTemplate(username) {
+  return fs.existsSync(templatePath(username));
 }
 
 /** Runs extractTemplate.py on a video, resolving { code, stderr }. */

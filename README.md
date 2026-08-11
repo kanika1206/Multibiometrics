@@ -77,6 +77,14 @@ combined with strict AND logic. A JWT is issued only when all three pass.
    for identity and required no authentication, allowing account takeover by
    overwriting another user's templates. Enrollment is now bound to a one-time
    server-signed token. Attack path and verification: `docs/enrollment-security.md`.
+6. **Encrypted account PII**: templates were encrypted and pseudonymously named,
+   but the account collection still held email, name, mobile and address in the
+   clear, so a database dump leaked the contact details of every enrolled person.
+   Those fields are now AES-256-GCM sealed under `PII_KEY` — deliberately
+   separate from `BIOMETRIC_KEY` — with a keyed-hash email index so duplicate
+   registrations are still rejected without reading any stored address. The
+   username stays readable because every login queries it. Details and the
+   migration: `docs/account-pii.md`.
 
 ## Running locally
 
@@ -93,7 +101,14 @@ python3 -m venv .venv
 # then:
 cd backend && npm install
 ATLAS_URI=mongodb://localhost:27017/multibio PORT=8099 \
-  BIOMETRIC_KEY=<random-secret> JWT_SECRET=<random-secret> node server.js
+  BIOMETRIC_KEY=<random-secret> PII_KEY=<different-random-secret> \
+  JWT_SECRET=<random-secret> node server.js
+
+# In production (NODE_ENV=production) all three secrets are mandatory: the server
+# exits at startup if any is missing or under 32 chars, if JWT_SECRET is left at
+# its published development placeholder, or if BIOMETRIC_KEY and PII_KEY are
+# identical to each other or to JWT_SECRET. Rotation is NOT automated — see
+# docs/DEPLOYMENT.md §1.3.
 
 # frontend/.env: REACT_APP_SERVER_DOMAIN=http://localhost:8099
 cd frontend && npm install && npm start

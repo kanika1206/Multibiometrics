@@ -1,0 +1,863 @@
+@misc{WinNT,
+  title = {Number of internet users worldwide 2022},
+  howpublished = {\url{https://www.statista.com/statistics/273018/number-of-internet-users-worldwide/}},
+  note = {Accessed: 2023-02-03}
+}
+@online{s1,
+  title = {FFmpeg},
+  url = {\url{https://www.ffmpeg.org/}},
+  note = {Accessed: 2023-06-07}
+}
+@online{s2,
+  title = {SpeechRecognition 3.10.0},
+  url = {\url{https://pypi.org/project/SpeechRecognition/}},
+  note = {Accessed: 2023-06-07}
+}
+@online{s3,
+  title = {librosa},
+  url = {\url{https://librosa.org/doc/latest/index.html}},
+  note = {Accessed: 2023-06-07}
+}
+@online{s4,
+  title = {svg-captcha},
+  url = {\url{https://www.npmjs.com/package/svg-captcha}},
+  note = {Accessed: 2023-06-07}
+}
+@online{s5,
+  title = {ICMR data leak},
+  url = {\url{https://economictimes.indiatimes.com/tech/technology/opposition-security-experts-seek-answers-on-icmr-data-leak/articleshow/104865920.cms}},
+  note = {Accessed: 2023-11-16}
+}
+
+@online{anarticle1,
+  title = {The cyber risks of non-compliance},
+  url = {\url{https://sdccoe.org/breach/the-cyber-risks-of-non-compliance/}},
+  note = {Accessed: 2023-06-07}
+}
+@online{anarticle2,
+  title = {Alliance Overview},
+  url = {\url{https://fidoalliance.org/overview/}},
+  note = {Accessed: 2023-05-10}
+}
+@online{anarticle3,
+  title = {The future of authentication:Predictions and trends for 2023 and beyond},
+  url= {\url{https://www.linkedin.com/pulse/future-authentication-predictions-trends-2023-beyond-brian-ross}},
+  note = {Accessed: 2023-05-10}
+}
+@online{anarticle4,
+  title = {2022 State of Passwordless Security},
+  url = {\url{https://get.hypr.com/2022-state-of-passwordless-security}},
+  note = {Accessed: 2023-05-10}
+}
+@online{anarticle5,
+author={Yubico},
+  title = {Yubico FIDO U2F},
+  url = {\url{https://www.yubico.com/solutions/fido-u2f/}},
+  note = {Accessed: 2023-06-13}
+}
+@online{anarticle6,
+author={Beal V},
+  title = {RSA Secure ID},
+  url = {\url{http://www.webopedia.com/TERM/R/rsa\_secure\_id.html}},
+  note = {Accessed: 2023-06-13}
+}
+@online{anarticle13,
+ author={ DUO},
+  title = {Security tokens},
+  url = {\url{https://duo.com/product/trusted-users/two-factor-authentication/authentication-methods/security-tokens}},
+  note = {Accessed: 2023-06-13}
+}
+@online{anarticle7,
+ author={ J,Cox},
+  title = {Hackers Show Proofs of Concept to Beat Hardware-Based
+2FA},
+  url={\url{https://motherboard.vice.com/en\_us/article/8xazek/hackers-show-proof-of-concepts-to-beat-hardware-based-2fa}},
+  note = {Accessed: 2023-06-13}
+}
+@online{anarticle8,
+ author={ Team , Y},
+  title = {Infineon RSA key generation issue},
+  url={\url{https://www.yubico.com/2017/10/infineon-rsa-key-generation-issue/}},
+  note = {Accessed: 2023-06-13}
+}
+
+@online{anarticle9,
+ author={ NetIQ},
+  title = {Hard Tokens vs. Soft Tokens: Why Soft Tokens Are the Better Option.},
+  url={\url{https://content.microfocus.com/multi-factor\_authenitcation\_toolkit/flash\_point\_tokens}},
+  note = {Accessed: 2023-06-13}
+}
+@online{anarticle10,
+ author={ Ian Barker},
+  title = {SAASPASS makes two-factor authentication available to the masses},
+  url={\url{https://betanews.com/2015/01/15/saaspass-makes-two-factor-authentication-available-to-the-masses/}},
+  note = {Accessed: 2023-06-13}
+}
+@online{anarticle11,
+ author={ Juliana De Groot},
+  title = {What is PCI Compliance? 12 Requirements & More},
+  url={\url{https://www.digitalguardian.com/blog/what-pci-compliance}},
+  note = {Accessed: 2023-06-13}
+}
+@online{anarticle12,
+ author={Okta},
+  title = {What is Federated Identity?},
+  url={\url{https://www.okta.com/identity-101/what-is-federated-identity/}},
+  note = {Accessed: 2023-05-27}
+}
+@online{anarticle14,
+ author={Wikipedia},
+  title = {Digital Identity},
+  url={\url{https://en.wikipedia.org/wiki/Digital\_identity/}},
+  note = {Accessed: 2023-05-27}
+}
+@online{anarticle15,
+ author={Zaisan},
+  title = {7 BENEFITS OF USING DIGITAL IDENTITIES},
+  url={\url{https://zaisan.io/benefits-digital-identities/}},
+  note = {Accessed: 2023-05-27}
+}
+@online{anarticle16,
+  title = {What Is Access Control?},
+  url={\url{https://www.fortinet.com/resources/cyberglossary/access-control}},
+  note = {Accessed: 2023-05-27}
+}
+@online{anarticle17,
+ author={Ben Lutkevich},
+  title = {access control},
+  url={\url{https://www.techtarget.com/searchsecurity/definition/access-control}},
+  note = {Accessed: 2023-05-27}
+}
+@online{anarticle18,
+ author={Patrick McBride},
+  title = {The Future of Authentication Technologies},
+  url={\url{https://www.beyondidentity.com/blog/future-authentication-technologies}},
+  note = {Accessed: 2023-05-27}
+}
+@online{anarticle19,
+ author={Brian Ross},
+  title = {The future of authentication: Predictions and trends for 2023 and beyond},
+  url={\url{https://www.linkedin.com/pulse/future-authentication-predictions-trends-2023-beyond-brian-ross}},
+  note = {Accessed: 2023-05-27}
+}
+ @misc{WinNT2,
+  title = {Number of internet users worldwide 2022},
+  howpublished = {\url{https://www.statista.com/statistics/273018/number-of-internet-users-worldwide/}},
+  note = {Accessed: 2023-02-03}
+}
+@misc{WinNT1,
+  title = {Social Engineering},
+  howpublished = {\url{https://www.cmu.edu/iso/aware/dont-take-the-bait/social-engineering.html#:~:text=Social%20engineering%20is%20the%20tactic,or%20giving%20away%20sensitive%20information.}},
+  note = {Accessed: 2023-05-08}
+}
+@article{IEEEtr,
+    author={Mengyuan Li, 
+    Yan Meng, 
+    Junyi Liu,
+    Haojin Zhu,
+    Xiaohui Liang, 
+    Yao Liu, 
+    Na Ruan },
+    title        = {When CSI meets public WiFi: inferring your mobile phone password via WiFi signals},
+    pages={1068-1079},
+    journal={ Proceedings of the 2016 ACM SIGSAC conference on computer and communications security. },
+    year= 2016,
+}
+@article{IEEEtran46,
+    author={David Silver, Suman Jana, and Dan Boneh, Eric Chen and
+Collin Jackson},
+    title     = {Password Managers: Attacks and Defenses},
+    pages={449-464},
+    journal={23rd {USENIX} Security Symposium ({USENIX} Security 14)},
+    year= 2014,
+}
+@article{IEEEtran47,
+    author={Changsok Yoo , Byung-Tak Kang ,Huy Kang Kim},
+    title     = {Case study of the vulnerability of OTP implemented in internet banking systems of South Korea.},
+    pages={3289-3303},
+    journal={ Multimedia Tools and Applications 74 },
+    year= 2015,
+}
+@article{IEEEtran48,
+    author={Anil K. Jain , Debayan Deb , and Joshua J. Engelsma},
+    title     = {Biometrics: Trust, but verify},
+    pages={303-323},
+    journal={ IEEE Transactions on Biometrics, Behavior, and Identity Science 4.3 },
+    year= 2021,
+}
+@article{IEEEtran49,
+    author={Rajesh Kumar, Vir V. Phoha, Anshumali Jain},
+    title     = {Treadmill Attack on Gait-based Authentication Systems},
+    pages={1-7},
+    journal={ 2015 IEEE 7th international conference on biometrics theory, applications and systems (BTAS).},
+    year= 2015,
+}
+@article{IEEEtran,
+    author={Ignacio Velasquez, Angelica Caro, Alfonso Rodriguez},
+    title        = {Authentication schemes and methods: A systematic literature review},
+    volume={94},
+    pages={30-37},
+    journal={ Information and Software Technology},
+    year= 2018,
+}
+@article{IEEEtran1,
+    author={Leslie Lamport},
+    title     = {Password authentication with insecure communication},
+    volume={24},
+    pages={770-772},
+    journal={Communications of the ACM},
+    year= 1981,
+}
+@article{IEEEtran2,
+    author={Akihiro Shimizu},
+    title     = {A dynamic password authentication method using a one-way function},
+    volume={22},
+    pages={32-40},
+    journal={Systems and computers in Japan},
+    year= 1991,
+}
+@article{IEEEtran3,
+    author={Lein Harn},
+    title     = {A public-key based dynamic password scheme},
+    pages={430-431},
+    journal={Symposium on Applied Computing},
+    year= 1991,
+}
+@article{IEEEtran4,
+    author={Steven M. Bellovin, Michael Merritt},
+    title     = {Encrypted key exchange: Password-based protocols secure against dictionary attacks},
+    pages={72-84},
+    journal={Proceedings of the IEEE Symposium on Research in Security and Privacy},
+    year= 1992,
+}
+@article{IEEEtran5,
+    author={N. Haller},
+    title     = {The S/KEY One-Time Password System},
+    journal={RFC1760},
+    year= 1995,
+}
+@article{IEEEtran7,
+    author={C.H. Lin, C.C. Chang, T.C. Wu, R.C.T. Lee},
+    title     = {Password authentication using Newton's interpolating polynomials},
+    volume={16},
+    pages={97-102},
+    journal={Information Systems},
+    year= 1991,
+}
+@article{IEEEtran6,
+    author={Gwoboa Horng},
+    title     = {Password authentication without using a password table},
+    volume={55},
+    pages={247-250},
+    journal={Information Processing Letters},
+    year= 1995,
+}
+@article{IEEEtran8,
+    author={Manjula Sandirigama,Akihiro Shimizu,Matu-Tarow Noda},
+    title     = {Simple and secure password authentication protocol (SAS)},
+    volume={83},
+    number={6},
+    pages={1363-1365},
+    journal={IEICE Transactions on Communications},
+    year= 2000,
+}
+@article{IEEEtran9,
+    author={Chun-Li Lin,Hung-Min Sun,Tzonelih Hwang},
+    title     = {Attacks and Solutions on Strong-Password Authentication},
+    volume={E84-B},
+    number={9},
+    pages={2622-2627},
+    journal={IEICE Transactions on Communications},
+    year= 2001,
+}
+@article{IEEEtran10,
+    author={Chien-Ming Chen,Wei-Chi Ku },
+    title     = {Stolen-Verifier Attack on Two New Strong-Password Authentication Protocols},
+    volume={E85-B},
+    number={11},
+    pages={2519-2521},
+    journal={IEICE Transactions on Communications},
+    year= 2002,
+}
+@article{IEEEtran11,
+    author={Mohammad Peyravian,Nevenko Zunic},
+    title     = {Methods for protecting password transmission},
+    volume={19},
+    number={5},
+    pages={466-469},
+    journal={Computers \& Security},
+    year= 2000,
+}
+@article{IEEEtran12,
+    author={Jing-Jang Hwang,Tzu-Chang Yeh},
+    title     = {Improvement on Peyravian-Zunic's Password Authentication Schemes},
+    volume={E85-B},
+    number={4},
+    pages={823-825},
+    journal={IEICE Transactions on Communications},
+    year= 2002,
+}
+@article{IEEEtran13,
+    author={Chun-Li Lin,Tzonelih Hwang},
+    title     = {A password authentication scheme with secure password updating},
+    volume={22},
+    number={1},
+    pages={68-72},
+    journal={Computers \& Security},
+    year= 2003,
+}
+@article{IEEEtran14,
+    author={Li-Hua Li, Iuon-Chang Lin, and Min-Shiang Hwang},
+    title     = {A Remote Password Authentication Scheme for Multiserver Architecture Using
+Neural Networks},
+    volume={12},
+    number={6},
+    pages={},
+    journal={IEEE Transactions on Neural Networks},
+    year= 2001,
+}
+@article{IEEEtran15,
+    author={C.-C. Chang,T.-C. WU},
+    title     = {Remote password authentication with smart cards },
+    volume={138},
+    number={3},
+    pages={165-168},
+    journal={IEE Proceedings E(Computers and Digital Techniques)},
+    year= 1991,
+}
+@article{IEEEtran16,
+    author={Fadi Aloul, Syed Zahidi ,Wassim El-Hajj },
+    title     = {Two Factor Authentication Using Mobile Phones },
+    pages={641-644},
+    journal={ IEEE/ACS International Conference on Computer Systems and Applications},
+    year= 2009,
+}
+@article{IEEEtran17,
+    author={Qingxuan Wang , Ding Wang , Chi Cheng, and Debiao He},
+    title     = {Quantum2FA: Efficient Quantum-Resistant
+Two-Factor Authentication Scheme
+for Mobile Devices },
+    
+    journal={ IEEE Transactions on Dependable and Secure Computing },
+    year= 2021,
+}
+@article{IEEEtran18,
+    author={Erdem Alkim, Léo Ducas, Thomas Pöppelmann, and Peter Schwabe},
+    title     = {NewHope without reconciliation },
+    
+    journal={  Cryptology ePrint Archive},
+    year= 2016,
+}
+@article{IEEEtran21,
+    author={Kyung-kug kim, Myung-Hwan kim},
+    title     = {Retracted: An Enhanced Anonymous Authentication and Key Exchange Scheme Using Smartcard},
+    pages={487-494},
+    journal={  Information Security and Cryptology },
+    year= 2012,
+}
+@article{IEEEtran20,
+    author={Ding Wang , Nan Wang , Ping Wang , Sihan Qing},
+    title     = {Preserving privacy for free: Efficient and provably secure
+two-factor authentication scheme with user anonymity},
+    volume={321},
+    pages={162-178},
+    journal={ Information Sciences },
+    year= 2015,
+}
+@article{IEEEtran19,
+    author={Ding Wang , Ping Wang},
+    title     = {Two Birds with One Stone: Two-Factor
+Authentication with Security Beyond
+Conventional Bound},
+    volume={15},
+    number={4},
+    journal={ IEEE Transactions on Dependable and Secure Computing },
+    year= 2018,
+}
+@article{IEEEtran22,
+    author={N. Harini, Dr. T.R Padmanabhan},
+    title     = {2CAuth: A New Two Factor Authentication
+Scheme Using QR-Code},
+    volume={5},
+    number={2},
+    pages={1087-1094},
+    journal={International Journal of Engineering and Technology },
+    year= 2013,
+}
+@article{IEEEtran23,
+    author={Christoforos Ntantogian, Stefanos Malliaros, Christos Xenakis},
+    title     = {Gaithashing: A two-factor authentication
+scheme based on gait features},
+    volume={52},
+    pages={17-32},
+    journal={Computers \& Security },
+    year= 2015,
+}
+@article{IEEEtran24,
+    author={Gaurav Verma, Meihua Liao, Dajiang Lu, Wenqi He
+, Xiang Peng},
+    title     = {A novel optical two-factor face authentication scheme},
+    volume={123},
+    pages={28-36},
+    journal={ Optics and Lasers in Engineering},
+    year= 2019,
+}
+@article{IEEEtran25,
+    author={Khaja Mizbahuddin Quadry, A Govardhan, Mohammed Misbahuddin},
+    title     = {Design, Analysis, and Implementation of a Two-factor Authentication Scheme using Graphical Password},
+    volume={13},
+    number={3},
+    pages={39-51},
+    journal={International Journal of Computer Network \& Information Security},
+    year= 2021,
+}
+@article{IEEEtran26,
+    author={Mengjun Xie, Yanyan Li, Kenji Yoshigoe, Remzi Seker†, Jiang Bian},
+    title     = {CamAuth: Securing Web Authentication with Camera},
+    journal={IEEE 16th International Symposium on High Assurance Systems Engineering},
+    year= 2015,
+}
+@article{IEEEtran27,
+    author={Nikolaos Karapanos, Claudio Marforio, Claudio Soriente, and Srdjan Čapkun, ETH Zürich},
+    title     = {Sound-Proof: Usable Two-Factor Authentication Based on Ambient Sound},
+    pages={483-498},
+    journal={24th {USENIX} Security Symposium ({USENIX} Security 15),},
+    year= 2015,
+}
+@article{IEEEtran28,
+    author={Mohamed Hamdy Eldefrawy, Khaled Alghathbar, Muhammad Khurram Khan},
+    title     = {OTP-based two-factor authentication using mobile phones},
+    pages={327-331},
+    journal={2011 eighth international conference on information technology: new generations },
+    year= 2011,
+}
+@article{IEEEtran29,
+    author={Vassilis Papaspirou, Leandros Maglaras, Mohamed Amine Ferrag, Ioanna Kantzavelou, Helge Janicke, Christos Douligeris},
+    title     = {A novel Two-Factor HoneyToken Authentication Mechanism},
+    pages={293-296},
+    journal={2013 International Conference on Electronics, Computer and Computation (ICECCO)},
+    year= 2013,
+}
+@article{IEEEtran30,
+    author={Usman Alhaji Abdurrahman, Mustafa Kaiiali , Jawad Muhammad},
+    title     = {A NEW MOBILE-BASED MULTI-FACTOR AUTHENTICATION SCHEME USING PRESHARED NUMBER, GPS LOCATION AND TIME STAMP},
+    pages={1-7},
+    journal={2021 International Conference on Computer Communications and Networks (ICCCN) },
+    year= 2021,
+}
+@article{IEEEtran31,
+    author={Nystrom M},
+    title     = {No. rfc2808},
+    journal={ The SecurID (r) SASL mechanism },
+    year= 2000,
+}
+@article{IEEEtran32,
+    author={Chun-Ta Li, Min-Shiang Hwang},
+    title     = {An efficient biometrics-based remote user authentication scheme using
+smart cards
+},
+    volume={33},
+    number={1},
+    pages={1-5},
+    journal={ Journal of Network and computer applications },
+    year= 2010,
+}
+@article{IEEEtran33,
+    author={Ashok Kumar Das},
+    title     = {Analysis and improvement on an efficient
+biometric-based remote user authentication
+scheme using smart cards},
+    volume={5},
+    number={3},
+    pages={145-151},
+    journal={ IET Information Security},
+    year= 2011,
+}
+@article{IEEEtran34,
+    author={Younghwa An},
+    title     = {Security analysis and enhancements of an effective biometric-based remote user authentication scheme using smart cards},
+    journal={ Journal of Biomedicine and Biotechnology 2012 },
+    year= 2012,
+}
+@article{IEEEtran35,
+    author={Liling Cao,Wancheng Ge},
+    title     = {Analysis and improvement of a multi‐factor biometric authentication scheme},
+    volume={8},
+    number={4},
+    pages={617-625},
+    journal={ Security and Communication Networks},
+    year= 2015,
+}
+@article{IEEEtran36,
+    author={Younsung Choi, Youngsook Lee, Jongho Moon, Dongho Won},
+    title     = {Security enhanced multi-factor biometric authentication scheme using bio-hash function},
+    volume={12},
+    number={5},
+    journal={ PloS one},
+    year= 2017,
+}
+@article{IEEEtran37,
+    author={Emanuela Marasco, Massimiliano Albanese},
+    title     = {FingerPIN: An Authentication Mechanism
+Integrating Fingerprints and Personal
+Identification Numbers},
+    pages={500-511},
+    journal={Computer Vision and Image Processing: 5th International Conference, CVIP 2020, Prayagraj, India,Revised Selected Papers, Part I 5 },
+    year= 2021,
+}
+@article{IEEEtran38,
+    author={Emanuela Marasco,Massimiliano Albanese,Venkata Vamsi Ram Patibandla, Anudeep Vurity, Sumanth Sai Sriram},
+    title     = {Biometric multi-factor authentication: On the usability ofthe FingerPIN scheme},
+    volume={6},
+    number={1},
+    journal={Security and Privacy},
+    year= 2023,
+}
+@article{IEEEtran39,
+    author={Chun-I Fan and Yi-Hui Lin},
+    title     = {Provably Secure Remote Truly Three-Factor Authentication Scheme With Privacy
+Protection on Biometrics},
+    volume={4},
+    number={4},
+    journal={IEEE Transactions on Information Forensics and Security },
+    year= 2009,
+}
+@article{IEEEtran40,
+    author={J.K. Lee, S.R. Ryu, K.Y. Yoo },
+    title     = {Fingerprint-based remote user authentication scheme using smart cards},
+    volume={38},
+    number={12},
+    journal={Electronics Letters },
+    year= 2002,
+}
+@article{IEEEtran41,
+    author={Chu-Hsing Lin, Yi-Yi Lai},
+    title     = {A flexible biometrics remote user authentication scheme},
+    volume={27},
+    number={1},
+    pages={19-23},
+    journal={Computer Standards \& Interfaces },
+    year= 2004,
+}
+@article{IEEEtran42,
+    author={Chris J. Mitchell , Qiang Tang},
+    title     = {Security of the Lin-Lai smart card
+based user authentication scheme},
+    journal={Technical Report },
+    year= 2005,
+}
+@article{IEEEtran43,
+    author={Eun-Jun Yoon , Kee-Young Yoo },
+    title     = {A New Efficient Fingerprint-Based Remote User Authentication Scheme for Multimedia Systems},
+    volume={Part 3},
+    number={9},
+    pages={332-338},
+    journal={Knowledge-Based Intelligent Information and Engineering Systems: 9th International Conference, KES 2005, Melbourne, Australia },
+    year= 2004,
+}
+@article{IEEEtran44,
+    author={Amit K. Awasthi , Keerti Srivastava },
+    title     = {A Biometric Authentication Scheme for Telecare Medicine Information Systems with Nonce},
+    volume={37},
+    journal={Journal of Medical systems },
+    year= 2013,
+}
+@article{IEEEtran45,
+    author={Zuowen Tan},
+    title     = {A User Anonymity Preserving Three-Factor Authentication
+Scheme for Telecare Medicine Information Systems},
+    volume={38},
+    pages={1-9},
+    journal={Journal of medical systems},
+    year= 2014,
+}
+@article{IEEEtran50,
+    author={C. Lakshmi Devasena},
+    title     = {Three-Factor Authentication for Fortified Login to Ensure Privacy Preservation
+and Improved Security},
+    volume={13},
+    number={10},
+    pages={7576-7579},
+    journal={International Journal of Applied Engineering Research},
+    year= 2018,
+}
+@article{IEEEtran51,
+    author={Binitha Ann Scaria, Dr. Rajesh Kannan Megalingam },
+    title     = {Enhanced E-commerce application security using
+Three-factor Authentication},
+    pages={1588-1591},
+    journal={Proceedings of the Second International Conference on Intelligent Computing and Control Systems (ICICCS 2018)},
+    year= 2018,
+}
+@article{IEEEtran52,
+   title={Implementing Biometric or Graphical Password Authentication in a Universal Three-Factor Authentication System},
+  author={Hossain, Mohammad Naveed and Zaman, Sheikh Fahim Uz and Khan, Tazria Zerin and Katha, Sumiaya Azad and Anwar, Md Tawhid and Hossain, Muhammad Iqbal},
+  booktitle={2022 4th International Conference on Computer Communication and the Internet (ICCCI)},
+  pages={72--77},
+  year={2022},
+  organization={IEEE},
+}
+@article{IEEEtran53,
+    author={Omid Mir, Michael Roland, and René Mayrhofer},
+    title     = {DAMFA: Decentralized Anonymous Multi-Factor Authentication},
+    pages={10-19},
+    journal={Proceedings of the 2nd ACM International Symposium on Blockchain and Secure Critical Infrastructure},
+    year= 2020,
+}
+@article{IEEEtran54,
+    author={Shilpa Shaju, Panchami V},
+    title     = {BISC Authentication Algorithm: An Efficient New Authentication Algorithm Using Three Factor Authentication for Mobile Banking},
+    pages={1-5},
+    journal={2016 Online International Conference on Green Engineering and Technologies (IC-GET)},
+    year= 2016,
+}
+@article{IEEEtran55,
+    author={Shilpa Shaju, Panchami V},
+    title     = {BISC Authentication Algorithm: An Efficient New Authentication Algorithm Using Three Factor Authentication for Mobile Banking},
+    pages={1-5},
+    journal={2016 Online International Conference on Green Engineering and Technologies (IC-GET)},
+    year= 2016,
+}
+@article{IEEEtran56,
+    author={Cheng-Chi Lee, Che-Wei Hsu},
+    title     = {A secure biometric-based remote user authentication
+with key agreement scheme using extended chaotic maps},
+    volume={71},
+    pages={201-211},
+    journal={Nonlinear Dynamics},
+    year= 2013,
+}
+@article{IEEEtran57,
+    author={Min Zhang, Jiashu Zhang and Ying Zhang},
+    title     = {Remote three-factor authentication scheme based on
+Fuzzy extractors},
+    volume={8},
+    number={4},
+    pages={682-693},
+    journal={Security and Communication Networks},
+    year= 2015,
+}
+@article{IEEEtran58,
+    author={D. Jagadiswary
+, D. Saraswady},
+    title     = {Biometric Authentication using Fused Multimodal Biometric},
+    volume={85},
+    pages={109-116},
+    journal={International Conference on Computational Modeling and Security (CMS 2016)},
+    year= 2016,
+}
+@article{IEEEtran59,
+    author={S.Asha, Dr.C.Chellappan},
+    title     = {Authentication of E-Learners Using Multimodal Biometric Technology },
+    pages={1-6},
+    journal={2008 International Symposium on Biometrics and Security Technologies},
+    year= 2008,
+}
+@article{IEEEtran60,
+    author = {Khoo, Yik-Herng and Goi, Bok-Min and Chai, Tong-Yuen and Lai, Yen-Lung and Jin, Zhe},
+    title = {Multimodal Biometrics System Using Feature-Level Fusion of Iris and Fingerprint},
+    pages = {6–10},
+    journal = {Proceedings of the 2nd International Conference on Advances in Image Processing},
+    year = {2018},
+}
+@article{IEEEtran61,
+    title={An accurate finger vein based verification system},
+  author={Gupta, Puneet and Gupta, Phalguni},
+  journal={Digital Signal Processing},
+  volume={38},
+  pages={43--52},
+  year={2017},
+  publisher={Elsevier},
+}
+@article{IEEEtran62,
+    title={Convolutional neural network for finger-vein-based biometric identification},
+  author={Das, Rig and Piciucco, Emanuela and Maiorana, Emanuele and Campisi, Patrizio},
+  journal={IEEE Transactions on Information Forensics and Security},
+  volume={14},
+  number={2},
+  pages={360--373},
+  year={2018},
+  publisher={IEEE},
+}
+@article{IEEEtran63,
+   author={Sivakumar, P. and Rathnam, B. Ruthu and Divakar, S. and Teja, M. Anil and Prasad, R. Rajendra},
+  booktitle={2021 IEEE International Conference on Intelligent Systems, Smart and Green Technologies (ICISSGT)}, 
+  title={A Secure and Compact Multimodal Biometric Authentication Scheme using Deep Hashing}, 
+  year={2021},
+  volume={},
+  number={},
+  pages={27-31},
+}
+@article{IEEEtran64,
+  title={The quest to replace passwords: A framework for comparative evaluation of web authentication schemes},
+  author={Bonneau, Joseph and Herley, Cormac and Van Oorschot, Paul C and Stajano, Frank},
+  journal={2012 IEEE symposium on security and privacy},
+  pages={553--567},
+  year={2012},
+  organization={IEEE}
+}
+@article{IEEEtran65,
+  title={Secure authentication scheme to thwart RT MITM, CR MITM and malicious browser extension based phishing attacks},
+  author={Varshney, Gaurav and Misra, Manoj and Atrey, Pradeep},
+  journal={Journal of Information Security and Applications},
+  volume={42},
+  pages={1--17},
+  year={2018},
+  publisher={Elsevier}
+}
+@article{r1,
+  title={Multimodal biometric authentication systems using convolution neural network based on different level fusion of ECG and fingerprint},
+  author={Hammad, Mohamed and Liu, Yashu and Wang, Kuanquan},
+  journal={IEEE Access},
+  volume={7},
+  pages={26527--26542},
+  year={2018},
+  publisher={IEEE}
+}
+@article{r2,
+  title={An intelligent multimodal biometric authentication model for personalised healthcare services},
+  author={Ahamed, Farhad and Farid, Farnaz and Suleiman, Basem and Jan, Zohaib and Wahsheh, Luay A and Shahrestani, Seyed},
+  journal={Future Internet},
+  volume={14},
+  number={8},
+  pages={222},
+  year={2022},
+  publisher={MDPI}
+}
+@article{r3,
+  author={Bagwan, Shagufta Md. R. and Kumar, Sanjay and B.Thigale, Somnath},
+  booktitle={2023 2nd International Conference for Innovation in Technology (INOCON)}, 
+  title={Face, Iris, and Fingerprint based Robust Biometric Authentication System}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={1-8},
+  doi={10.1109/INOCON57975.2023.10101122}}
+@article{r4,
+  title={Multimodal biometric authentication using teeth image and voice in mobile environment},
+  author={Kim, Dong-Su and Hong, Kwang-Seok},
+  journal={IEEE Transactions on Consumer Electronics},
+  volume={54},
+  number={4},
+  pages={1790--1797},
+  year={2008},
+  publisher={IEEE}
+}
+@article{r5,
+  title={A robust device-to-device continuous authentication protocol for the internet of things},
+  author={Badhib, Arwa and Alshehri, Suhair and Cherif, Asma},
+  journal={IEEE Access},
+  volume={9},
+  pages={124768--124792},
+  year={2021},
+  publisher={IEEE}
+}
+@inproceedings{arcface,
+  title={ArcFace: Additive Angular Margin Loss for Deep Face Recognition},
+  author={Deng, Jiankang and Guo, Jia and Xue, Niannan and Zafeiriou, Stefanos},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages={4690--4699},
+  year={2019}
+}
+
+@inproceedings{ecapa,
+  title={{ECAPA-TDNN}: Emphasized Channel Attention, Propagation and Aggregation in {TDNN} Based Speaker Verification},
+  author={Desplanques, Brecht and Thienpondt, Jenthe and Demuynck, Kris},
+  booktitle={Proc. Interspeech 2020},
+  pages={3830--3834},
+  year={2020}
+}
+
+@article{alharbi2023facevoice,
+  title={Face-voice based multimodal biometric authentication system via {FaceNet} and {GMM}},
+  author={Alharbi, Bayan and Alshanbari, Hanan S.},
+  journal={PeerJ Computer Science},
+  volume={9},
+  pages={e1468},
+  year={2023},
+  doi={10.7717/peerj-cs.1468},
+  url={https://doi.org/10.7717/peerj-cs.1468}
+}
+
+@article{mandalapu2021avpad,
+  title={Audio-Visual Biometric Recognition and Presentation Attack Detection: A Comprehensive Survey},
+  author={Mandalapu, Hareesh and Reddy, P. N. Aravinda and Ramachandra, Raghavendra and Rao, K. Sreenivasa and Mitra, Pabitra and Prasanna, S. R. Mahadeva and Busch, Christoph},
+  journal={IEEE Access},
+  volume={9},
+  pages={37431--37455},
+  year={2021},
+  doi={10.1109/ACCESS.2021.3063031},
+  url={https://doi.org/10.1109/ACCESS.2021.3063031}
+}
+
+@inproceedings{jiang2024foice,
+  title={Can {I} Hear Your Face? {P}ervasive Attack on Voice Authentication Systems with a Single Face Image},
+  author={Jiang, Nan and Sun, Bangjie and Sim, Terence and Han, Jun},
+  booktitle={33rd USENIX Security Symposium (USENIX Security 24)},
+  pages={1045--1062},
+  year={2024},
+  publisher={USENIX Association},
+  url={https://www.usenix.org/conference/usenixsecurity24/presentation/jiang-nan}
+}
+
+@article{jha2024featurefusion,
+  title={Feature-level fusion of face and speech based multimodal biometric attendance system with liveness detection},
+  author={Jha, Khushboo and Jain, Aruna and Srivastava, Sumit},
+  journal={AIP Advances},
+  volume={14},
+  number={11},
+  pages={115007},
+  year={2024},
+  doi={10.1063/5.0234430},
+  url={https://doi.org/10.1063/5.0234430}
+}
+
+@article{aanjankumar2025smartcity,
+  title={Secure facial biometric authentication in smart cities using multimodal methodology},
+  author={Sureshkumar, Aanjankumar and Sathyamoorthy, Malathy and Dhanaraj, Rajesh Kumar and Aanjanadevi, S. and Palanisamy, V.},
+  journal={Scientific Reports},
+  volume={15},
+  pages={44839},
+  year={2025},
+  doi={10.1038/s41598-025-29048-5},
+  url={https://doi.org/10.1038/s41598-025-29048-5}
+}
+
+@article{jha2025ensemble,
+  title={Multimodal biometric authentication system leveraging optimally trained ensemble classifier using feature-level fusion},
+  author={Jha, Khushboo and Jain, Aruna and Srivastava, Sumit},
+  journal={Technology and Health Care},
+  year={2025},
+  doi={10.1177/09287329251363424},
+  url={https://doi.org/10.1177/09287329251363424}
+}
+
+@misc{chen2026twostep,
+  title={Two-step Authentication: Multi-biometric System Using Voice and Facial Recognition},
+  author={Chen, Kuan Wei and others},
+  year={2026},
+  eprint={2601.06218},
+  archivePrefix={arXiv},
+  note={Also in IET Conference Proceedings, doi:10.1049/icp.2024.4141},
+  url={https://arxiv.org/abs/2601.06218}
+}
+
+@misc{rathgeb2023btp,
+  title={Deep Learning in the Field of Biometric Template Protection: An Overview},
+  author={Rathgeb, Christian and Kolberg, Jascha and Uhl, Andreas and Busch, Christoph},
+  year={2023},
+  eprint={2303.02715},
+  archivePrefix={arXiv},
+  url={https://arxiv.org/abs/2303.02715}
+}
+
+@article{zhao2023deephash,
+  title={Deep Hashing Based Cancelable Multi-Biometric Template Protection},
+  author={Zhao, Guichuan and Jiang, Qi and Wang, Ding and Ma, Xindi and Li, Xinghua},
+  journal={IEEE Transactions on Dependable and Secure Computing},
+  volume={21},
+  number={4},
+  pages={3751--3767},
+  year={2023},
+  url={https://ieeexplore.ieee.org/document/10330618/}
+}

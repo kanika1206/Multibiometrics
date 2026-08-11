@@ -38,3 +38,9 @@ backend/uploadsl/login_videos/*.enc
 backend/templates/*.enc
 backend/uploads/videos/*.mp3
 backend/uploadsl/login_videos/*.mp3
+
+# Evaluation capture (EVAL_CAPTURE): plaintext recordings, never commit
+evaluation_corpus/
+evaluation_out/
+backend/templates_removed_duplicates/
+.removed_artifacts/

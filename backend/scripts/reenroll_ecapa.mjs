@@ -20,10 +20,32 @@
 import fs from "fs";
 import { enrollFromBuffer, templatePath } from "../templateStore.js";
 
-const [videoPath, ...usernames] = process.argv.slice(2);
+const args = process.argv.slice(2);
+// --allow-shared-recording enrolls ONE recording into SEVERAL accounts. That is
+// almost never what you want: the accounts then hold identical templates and can
+// authenticate as one another, which is an impersonation path, not a test
+// fixture. It happened once already (four accounts, one video) and silently
+// invalidated the evaluation corpus. Multi-username runs now require the
+// operator to say so explicitly.
+const allowShared = args.includes("--allow-shared-recording");
+const [videoPath, ...usernames] = args.filter((a) => a !== "--allow-shared-recording");
 
 if (!videoPath || usernames.length === 0) {
-  console.error("usage: reenroll_ecapa.mjs <video.mp4> <username> [<username> ...]");
+  console.error(
+    "usage: reenroll_ecapa.mjs <video.mp4> <username> [<username> ...] [--allow-shared-recording]"
+  );
+  process.exit(2);
+}
+
+if (usernames.length > 1 && !allowShared) {
+  console.error(
+    `refusing to enroll one recording into ${usernames.length} accounts ` +
+      `(${usernames.join(", ")}).\n` +
+      "Each account must be enrolled from its OWN recording, or those accounts will\n" +
+      "hold identical biometric templates and will authenticate as one another.\n" +
+      "Re-run once per account with its own video, or pass --allow-shared-recording\n" +
+      "if you genuinely intend to create duplicate enrollments."
+  );
   process.exit(2);
 }
 if (!fs.existsSync(videoPath)) {

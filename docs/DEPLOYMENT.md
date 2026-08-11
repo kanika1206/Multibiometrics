@@ -40,8 +40,10 @@ To pre-warm, run once manually:
 
 | Variable | Required | Purpose |
 |---|---|---|
-| `JWT_SECRET` | **yes (production)** | JWT signing key. Falls back to an insecure dev default. |
-| `BIOMETRIC_KEY` | **yes (production)** | AES-256-GCM key for stored videos. Falls back to JWT_SECRET-derived key with a warning. **Changing it makes previously stored videos undecryptable — every user must re-register.** |
+| `JWT_SECRET` | **enforced in production** | Signs session and enrolment tokens — and nothing else; it is not an encryption key for any store. Development falls back to a placeholder constant that is published in the source; **under `NODE_ENV=production` the server refuses to start if it is missing, still set to that placeholder, or shorter than 32 characters.** |
+| `NODE_ENV` | **yes (production)** | Set to `production`. It is what turns on the mandatory-secret check below; without it the server starts with development fallbacks. |
+| `BIOMETRIC_KEY` | **enforced in production** | AES-256-GCM key for stored videos/templates. Development falls back to a JWT_SECRET-derived key with a warning; **under `NODE_ENV=production` the server refuses to start without it.** **Changing it makes previously stored templates undecryptable — every user must re-register.** |
+| `PII_KEY` | **enforced in production** | AES-256-GCM key for account PII — email, name, mobile, address, avatar (`piiStore.js`). **Set it to a different value from `BIOMETRIC_KEY`**: the separation is the point, so that a leaked template key does not also expose contact details. Development falls back to a JWT_SECRET-derived key with a warning; **under `NODE_ENV=production` the server refuses to start without it.** **Changing it makes existing accounts unreadable** (`GET /api/user/:username` returns 500) — re-key by reading the records under the old key before switching. New deployments must run `node scripts/migrate_pii.mjs --apply` once over any pre-existing accounts. |
 | `ATLAS_URI` | **yes (production)** | MongoDB connection string. Unset = throwaway in-memory Mongo (users vanish on restart). |
 | `PYTHON` | **yes on Windows / non-repo layouts** | Path to the venv Python interpreter. Default is `../.venv/bin/python` (Linux repo layout). Windows: `<repo>\.venv\Scripts\python.exe`. |
 | `PORT` | no | Backend port, default 8080 (dev box uses 8099). |
@@ -52,6 +54,42 @@ Generate strong secrets:
 ```bash
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
+
+#### Mandatory secrets in production
+
+With `NODE_ENV=production`, `backend/config.js` validates the at-rest keys before
+anything else loads and **exits (status 1) rather than serving traffic** if any of
+these hold:
+
+| Rejected | Why |
+|---|---|
+| `JWT_SECRET` unset, or left at the development placeholder, or under 32 chars | The placeholder is a constant in the published source: anyone could forge a session token (bypassing authentication) or an enrolment token (re-keying an account). |
+| `BIOMETRIC_KEY` or `PII_KEY` unset | The key would silently be derived from `JWT_SECRET`, making the at-rest encryption only as strong as the token-signing secret — and deriving *both* from one root, which collapses the separation the two keys exist to provide. |
+| Either key shorter than 32 characters | A short key is a guessable passphrase, not a key. |
+| `BIOMETRIC_KEY == PII_KEY` | Same as having one key while believing there are two: a leaked template key would also open the account PII. |
+| Either key equal to `JWT_SECRET` | Re-creates by hand the coupling the mandatory keys remove. |
+
+The failure prints one line per problem and points here. The same check runs for
+`scripts/*.mjs`, so a migration cannot be executed against production with the
+wrong keys either. Development (no `NODE_ENV=production`) is unaffected and keeps
+the warned fallbacks.
+
+Development (no `NODE_ENV=production`) keeps the warned fallbacks unchanged.
+
+#### Key rotation is not automated
+
+There is **no rotation tooling**. Changing a key in place breaks the data it
+protects, and the recovery differs per key:
+
+| Key changed | Consequence |
+|---|---|
+| `BIOMETRIC_KEY` | Every template fails its GCM tag **and** its HMAC file name no longer resolves. Recovery: decrypt under the old key and rewrite under the new name/key, or — if the old key is gone — re-enroll every user, since the source recordings were destroyed by design. |
+| `PII_KEY` | Contact fields fail to decrypt (`getUser` → 500) and `emailIdx` no longer matches, so duplicate-registration checking silently stops detecting existing accounts. Recovery: re-encrypt and recompute the index under the old key first. |
+| `JWT_SECRET` | Outstanding sessions and enrolment tokens become invalid; holders re-authenticate. No stored data is affected. |
+
+Every case fails **closed** (rejected logins, not admitted ones), but it is an
+outage. Plan a re-key window, and keep the retiring key until the migration
+completes.
 
 ### 1.4 Working directory (critical)
 
@@ -77,7 +115,9 @@ mkdir -p uploads/videos uploadsl/login_videos
 
 ```bash
 cd backend
-PORT=8099 JWT_SECRET=... BIOMETRIC_KEY=... ATLAS_URI=... PYTHON=/full/path/.venv/bin/python \
+NODE_ENV=production PORT=8099 JWT_SECRET=... \
+  BIOMETRIC_KEY=... PII_KEY=<different value> \
+  ATLAS_URI=... PYTHON=/full/path/.venv/bin/python \
   pm2 start server.js --name biometric-backend
 ```
 

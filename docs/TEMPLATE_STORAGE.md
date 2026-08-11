@@ -10,7 +10,7 @@ The strongest answer to "how is `username.mp4` protected" is **not to have it.**
 
 | | Before | After |
 | --- | --- | --- |
-| Stored at registration | `uploads/videos/<user>.mp4.enc` — the whole video, AES-256-GCM | `templates/<user>.tmpl.enc` — face embedding + ECAPA voice embedding, AES-256-GCM |
+| Stored at registration | `uploads/videos/<user>.mp4.enc` — the whole video, AES-256-GCM | `templates/<hmac-hex>.tmpl.enc` — face embedding + ECAPA voice embedding, AES-256-GCM, filename keyed-hashed (not the username) |
 | Stored per user | 1.49–1.91 MB of replayable video | ~147 KB of feature vectors |
 | Login recording | kept encrypted on disk indefinitely | deleted as soon as the attempt resolves |
 | Breach yields | a playable recording of the user's face and voice | vectors that do not reconstruct the recording |
@@ -21,8 +21,17 @@ watch, replay to a human, or feed to another system that accepts video.
 
 ## What a template contains
 
-`extractTemplate.py` reduces one recording to `templates/<user>.tmpl.enc`, an
+`extractTemplate.py` reduces one recording to a template file in `templates/`, an
 AES-256-GCM envelope (`MBENC1` magic + 12-byte IV + 16-byte auth tag) around:
+
+The on-disk filename is **not** the username. It is `templates/<hmac-hex>.tmpl.enc`,
+where the name is `HMAC-SHA256(key, "template-name:" + username)` (`templateId` in
+`templateStore.js`). This gives unlinkability at rest (ISO/IEC 24745): a leak of
+the templates directory alone — without the key — does not disclose which user
+each template belongs to, nor the enrolled membership. Login re-derives the same
+name deterministically, so there is no lookup table and no schema change. Run
+`scripts/migrate_template_names.mjs` once to rename any pre-existing
+username-named templates.
 
 ```json
 {
