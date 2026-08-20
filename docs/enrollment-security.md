@@ -108,8 +108,10 @@ attempts.
 
 - The enrollment token, like the session token, is a bearer JWT signed with
   `JWT_SECRET`; if that secret leaks an attacker could forge either. Set a strong
-  `JWT_SECRET` (and `BIOMETRIC_KEY`) in production — the dev fallback logs a
-  warning.
+  `JWT_SECRET` in production, along with the other mandatory secrets
+  (`BIOMETRIC_KEY`, `PII_KEY`, `BIOMETRIC_MASTER_KEY`, `BIOMETRIC_INDEX_KEY`) —
+  all five must differ, and production refuses to start otherwise. The dev
+  fallback logs a warning. See [DEPLOYMENT.md](DEPLOYMENT.md) §1.3.
 - There is no rate limit on `/api/register`, so an attacker can still create their
   *own* accounts freely. That is account creation, not takeover, and is out of
   scope for this fix.

@@ -42,7 +42,10 @@ To pre-warm, run once manually:
 |---|---|---|
 | `JWT_SECRET` | **enforced in production** | Signs session and enrolment tokens — and nothing else; it is not an encryption key for any store. Development falls back to a placeholder constant that is published in the source; **under `NODE_ENV=production` the server refuses to start if it is missing, still set to that placeholder, or shorter than 32 characters.** |
 | `NODE_ENV` | **yes (production)** | Set to `production`. It is what turns on the mandatory-secret check below; without it the server starts with development fallbacks. |
-| `BIOMETRIC_KEY` | **enforced in production** | AES-256-GCM key for stored videos/templates. Development falls back to a JWT_SECRET-derived key with a warning; **under `NODE_ENV=production` the server refuses to start without it.** **Changing it makes previously stored templates undecryptable — every user must re-register.** |
+| `BIOMETRIC_KEY` | **enforced in production** | AES-256-GCM key for the transient login-video blobs, and the secret behind the HMAC that derives pseudonymous template **file names**. It decrypts **no** biometric template — templates use their owner's per-user key from the vault (see `BIOMETRIC_MASTER_KEY`). **Changing it breaks template file-name resolution.** |
+| `BIOMETRIC_VAULT_URI` | **yes (production)** | MongoDB connection string for the **separate biometric key-vault database** (`keyVault.js`). Must point to a *different database* from `ATLAS_URI` — production refuses identical values. Unset = throwaway in-memory vault (enrolments vanish on restart). |
+| `BIOMETRIC_MASTER_KEY` | **enforced in production** | Wraps (AES-256-GCM) every **per-user** 256-bit template key before it is stored in the vault; the plaintext per-user keys exist only in memory. Development falls back to a JWT_SECRET-derived key with a warning; **under `NODE_ENV=production` the server refuses to start without it.** **Changing it makes every wrapped per-user key unrecoverable — unwrap under the old value first.** |
+| `BIOMETRIC_INDEX_KEY` | **enforced in production** | Secret for the pseudonymous vault lookup index, `userIndex = HMAC-SHA-256(BIOMETRIC_INDEX_KEY, username)`, so the vault stores no usernames. **Changing it orphans every vault row** (lookups derive different indices). Must differ from every other secret. |
 | `PII_KEY` | **enforced in production** | AES-256-GCM key for account PII — email, name, mobile, address, avatar (`piiStore.js`). **Set it to a different value from `BIOMETRIC_KEY`**: the separation is the point, so that a leaked template key does not also expose contact details. Development falls back to a JWT_SECRET-derived key with a warning; **under `NODE_ENV=production` the server refuses to start without it.** **Changing it makes existing accounts unreadable** (`GET /api/user/:username` returns 500) — re-key by reading the records under the old key before switching. New deployments must run `node scripts/migrate_pii.mjs --apply` once over any pre-existing accounts. |
 | `ATLAS_URI` | **yes (production)** | MongoDB connection string. Unset = throwaway in-memory Mongo (users vanish on restart). |
 | `PYTHON` | **yes on Windows / non-repo layouts** | Path to the venv Python interpreter. Default is `../.venv/bin/python` (Linux repo layout). Windows: `<repo>\.venv\Scripts\python.exe`. |
@@ -64,10 +67,11 @@ these hold:
 | Rejected | Why |
 |---|---|
 | `JWT_SECRET` unset, or left at the development placeholder, or under 32 chars | The placeholder is a constant in the published source: anyone could forge a session token (bypassing authentication) or an enrolment token (re-keying an account). |
-| `BIOMETRIC_KEY` or `PII_KEY` unset | The key would silently be derived from `JWT_SECRET`, making the at-rest encryption only as strong as the token-signing secret — and deriving *both* from one root, which collapses the separation the two keys exist to provide. |
-| Either key shorter than 32 characters | A short key is a guessable passphrase, not a key. |
-| `BIOMETRIC_KEY == PII_KEY` | Same as having one key while believing there are two: a leaked template key would also open the account PII. |
-| Either key equal to `JWT_SECRET` | Re-creates by hand the coupling the mandatory keys remove. |
+| `BIOMETRIC_KEY`, `PII_KEY`, `BIOMETRIC_MASTER_KEY`, or `BIOMETRIC_INDEX_KEY` unset | The key would silently be derived from `JWT_SECRET`, making the at-rest encryption only as strong as the token-signing secret — and deriving *all* from one root, which collapses the separation the keys exist to provide. |
+| Any key shorter than 32 characters | A short key is a guessable passphrase, not a key. |
+| Any two of the four at-rest keys identical | Same as having one key while believing there are several: a leak of one store's key would also open the others. Checked pairwise. |
+| Any key equal to `JWT_SECRET` | Re-creates by hand the coupling the mandatory keys remove. |
+| `BIOMETRIC_VAULT_URI == ATLAS_URI` | Collapses the two-database design: the vault must be a separate database from the application data, so no single dump discloses both wrapped keys and account records. |
 
 The failure prints one line per problem and points here. The same check runs for
 `scripts/*.mjs`, so a migration cannot be executed against production with the
@@ -83,7 +87,9 @@ protects, and the recovery differs per key:
 
 | Key changed | Consequence |
 |---|---|
-| `BIOMETRIC_KEY` | Every template fails its GCM tag **and** its HMAC file name no longer resolves. Recovery: decrypt under the old key and rewrite under the new name/key, or — if the old key is gone — re-enroll every user, since the source recordings were destroyed by design. |
+| `BIOMETRIC_KEY` | Template HMAC file names no longer resolve, so every stored template becomes unfindable (their *contents* are unaffected — those are under per-user vault keys). Login videos in flight also fail their GCM tag. Recovery: rename the template files under the old key first, or — if the old key is gone — re-enroll, since the source recordings were destroyed by design. |
+| `BIOMETRIC_MASTER_KEY` | Every wrapped per-user key in the vault fails its GCM tag, so no template decrypts. Recovery: unwrap all per-user keys under the old master key and re-wrap under the new one (the per-user keys themselves need not change — the schema's `keyVersion` field exists to support exactly this kind of rotation). |
+| `BIOMETRIC_INDEX_KEY` | Every vault lookup derives a different `userIndex`, so all rows are orphaned and **every login fails closed** (there is no fallback key for templates). Recovery: recompute indices under the old key first. |
 | `PII_KEY` | Contact fields fail to decrypt (`getUser` → 500) and `emailIdx` no longer matches, so duplicate-registration checking silently stops detecting existing accounts. Recovery: re-encrypt and recompute the index under the old key first. |
 | `JWT_SECRET` | Outstanding sessions and enrolment tokens become invalid; holders re-authenticate. No stored data is affected. |
 
@@ -116,9 +122,13 @@ mkdir -p uploads/videos uploadsl/login_videos
 ```bash
 cd backend
 NODE_ENV=production PORT=8099 JWT_SECRET=... \
-  BIOMETRIC_KEY=... PII_KEY=<different value> \
-  ATLAS_URI=... PYTHON=/full/path/.venv/bin/python \
+  BIOMETRIC_KEY=... PII_KEY=... \
+  BIOMETRIC_MASTER_KEY=... BIOMETRIC_INDEX_KEY=... \
+  ATLAS_URI=mongodb://.../app BIOMETRIC_VAULT_URI=mongodb://.../keyvault \
+  PYTHON=/full/path/.venv/bin/python \
   pm2 start server.js --name biometric-backend
+# every secret above must be a DIFFERENT value; the two URIs must be
+# DIFFERENT databases — production refuses to start otherwise.
 ```
 
 (nodemon in `npm start` is a dev tool; use `node server.js` in production.)

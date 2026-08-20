@@ -101,14 +101,18 @@ python3 -m venv .venv
 # then:
 cd backend && npm install
 ATLAS_URI=mongodb://localhost:27017/multibio PORT=8099 \
+  BIOMETRIC_VAULT_URI=mongodb://localhost:27017/biometric_key_vault \
   BIOMETRIC_KEY=<random-secret> PII_KEY=<different-random-secret> \
+  BIOMETRIC_MASTER_KEY=<different-random-secret> \
+  BIOMETRIC_INDEX_KEY=<different-random-secret> \
   JWT_SECRET=<random-secret> node server.js
 
-# In production (NODE_ENV=production) all three secrets are mandatory: the server
+# In production (NODE_ENV=production) all five secrets are mandatory: the server
 # exits at startup if any is missing or under 32 chars, if JWT_SECRET is left at
-# its published development placeholder, or if BIOMETRIC_KEY and PII_KEY are
-# identical to each other or to JWT_SECRET. Rotation is NOT automated — see
-# docs/DEPLOYMENT.md §1.3.
+# its published development placeholder, if any two secrets are identical, or if
+# BIOMETRIC_VAULT_URI equals ATLAS_URI (the biometric key vault must be a
+# separate database). Rotation is NOT automated — see docs/DEPLOYMENT.md §1.3.
+# Per-user template keys: docs/TEMPLATE_STORAGE.md.
 
 # frontend/.env: REACT_APP_SERVER_DOMAIN=http://localhost:8099
 cd frontend && npm install && npm start

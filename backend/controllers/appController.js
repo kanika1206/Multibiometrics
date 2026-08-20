@@ -206,7 +206,10 @@ export async function login(req, res) {
     const loginVideo = path.join(workDir, user.username + "_l.mp4");
     const loginAudio = path.join(workDir, user.username + "_l.mp3");
     try {
-      decryptTemplate(user.username, regTemplate);
+      // Vault lookup by userIndex → unwrap under the master key → decrypt only
+      // this user's template. Any failure (no key, tampered blob, tampered
+      // template) throws into the catch below and fails closed.
+      await decryptTemplate(user.username, regTemplate);
       decryptToFile(LOGIN_UPLOAD_DIR + user.username + "_l.mp4.enc", loginVideo);
     } catch (e) {
       console.error(`login ${user.username}: decrypt failed: ${e.message}`);

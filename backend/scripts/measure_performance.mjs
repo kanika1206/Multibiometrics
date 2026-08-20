@@ -37,6 +37,8 @@ await connect();
 const { issueCaptcha } = await import("../captchaStore.js");
 const { encryptToFile } = await import("../secureStore.js");
 const { decryptTemplate } = await import("../templateStore.js");
+const { connectVault } = await import("../keyVault.js");
+await connectVault();
 const { login } = await import("../controllers/appController.js");
 
 const LOGIN_DIR = "uploadsl/login_videos/";
@@ -56,11 +58,13 @@ const stat = (ts) => {
 const stages = [];
 const record = (label, times) => stages.push({ label, ...stat(times) });
 
-function repeat(fn) {
+// Async-aware: decryptTemplate now resolves its key from the vault, so a
+// stage may return a promise; awaiting a sync stage costs nothing.
+async function repeat(fn) {
   const times = [];
   for (let i = 0; i < N; i++) {
     const t0 = performance.now();
-    fn();
+    await fn();
     times.push(performance.now() - t0);
   }
   return times;
@@ -82,19 +86,19 @@ const loginVideo = path.join(work, "login.mp4");
 const loginAudio = path.join(work, "login.mp3");
 fs.copyFileSync(LOGIN_VIDEO, loginVideo);
 
-record("decrypt stored template (secureStore)", repeat(() => decryptTemplate(USER, regTemplate)));
-record("extract login template (extractTemplate.py)", repeat(() => py(["./extractTemplate.py", loginVideo, loginTemplate])));
-record("face match (matchFaceTemplate.py)", repeat(() => py(["./matchFaceTemplate.py", regTemplate, loginTemplate])));
-record("voice match (matchVoiceTemplate.py)", repeat(() => py(["./matchVoiceTemplate.py", regTemplate, loginTemplate])));
-record("audio extraction (extractAudio_login.py)", repeat(() => py(["./extractAudio_login.py", loginVideo])));
-record("speech-to-text (speechToTexty.py)", repeat(() => py(["./speechToTexty.py", loginAudio])));
+record("decrypt stored template (secureStore)", await repeat(() => decryptTemplate(USER, regTemplate)));
+record("extract login template (extractTemplate.py)", await repeat(() => py(["./extractTemplate.py", loginVideo, loginTemplate])));
+record("face match (matchFaceTemplate.py)", await repeat(() => py(["./matchFaceTemplate.py", regTemplate, loginTemplate])));
+record("voice match (matchVoiceTemplate.py)", await repeat(() => py(["./matchVoiceTemplate.py", regTemplate, loginTemplate])));
+record("audio extraction (extractAudio_login.py)", await repeat(() => py(["./extractAudio_login.py", loginVideo])));
+record("speech-to-text (speechToTexty.py)", await repeat(() => py(["./speechToTexty.py", loginAudio])));
 
 // --- sequential cascade (the paper's Algorithm 1) ----------------------------
 // Face gates the voice factor, which gates the CAPTCHA factor.
 record(
   "SEQUENTIAL cascade (paper Algorithm 1)",
-  repeat(() => {
-    decryptTemplate(USER, regTemplate);
+  await repeat(async () => {
+    await decryptTemplate(USER, regTemplate);
     py(["./extractTemplate.py", loginVideo, loginTemplate]);
     py(["./matchFaceTemplate.py", regTemplate, loginTemplate]);
     py(["./matchVoiceTemplate.py", regTemplate, loginTemplate]);

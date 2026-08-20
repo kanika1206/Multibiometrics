@@ -19,6 +19,9 @@
 
 import fs from "fs";
 import { enrollFromBuffer, templatePath } from "../templateStore.js";
+import { connectVault } from "../keyVault.js";
+// enrollFromBuffer stores each template under a per-user vault key now.
+await connectVault();
 
 const args = process.argv.slice(2);
 // --allow-shared-recording enrolls ONE recording into SEVERAL accounts. That is

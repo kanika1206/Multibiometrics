@@ -8,8 +8,12 @@
 // protection — hence AES-256-GCM — but
 // it is not a playable recording of the user.
 //
-// Templates live in backend/templates/<username>.tmpl.enc, inside the same
-// AES-256-GCM envelope the videos used (secureStore.js).
+// Templates live in backend/templates/<hmac>.tmpl.enc, inside the same
+// AES-256-GCM envelope the videos used (secureStore.js) — but under a key that
+// belongs to one user alone. Each enrollment mints a random 256-bit key held
+// (wrapped) in the separate key vault (keyVault.js); the global BIOMETRIC_KEY
+// no longer decrypts any template, only the transient login recordings and the
+// HMAC that derives the file names below.
 
 import { spawn } from "child_process";
 import crypto from "crypto";
@@ -18,6 +22,7 @@ import os from "os";
 import path from "path";
 import ENV from "./config.js";
 import { encryptToFile, decryptToFile } from "./secureStore.js";
+import { createUserKey, getUserKey, deleteUserKey } from "./keyVault.js";
 
 export const TEMPLATE_DIR = "./templates/";
 
@@ -108,7 +113,30 @@ export async function enrollFromBuffer(buffer, username) {
       return { ok: false, reason: "Could not extract biometrics from the video" };
     }
     fs.mkdirSync(TEMPLATE_DIR, { recursive: true });
-    encryptToFile(fs.readFileSync(json), templatePath(username));
+    // Per-user key isolation: a fresh random 256-bit key is generated for THIS
+    // user (keyVault stores only its master-key-wrapped form, in a separate
+    // database) and the template is encrypted under it. No two users share a
+    // template key, and the global BIOMETRIC_KEY no longer protects templates.
+    let perUserKey;
+    try {
+      perUserKey = await createUserKey(username);
+      encryptToFile(fs.readFileSync(json), templatePath(username), perUserKey);
+    } catch (e) {
+      // All-or-nothing: a key whose template was never stored (or a vault write
+      // that half-failed) must not linger — an orphaned vault row would shadow
+      // this user's next enrollment attempt with stale key material.
+      console.error(`[enroll ${username}] key/template storage failed: ${e.message}`);
+      try {
+        await deleteUserKey(username);
+      } catch (delErr) {
+        console.error(`[enroll ${username}] vault rollback failed: ${delErr.message}`);
+      }
+      fs.rmSync(templatePath(username), { force: true });
+      return { ok: false, reason: "Could not store biometrics" };
+    } finally {
+      // The plaintext per-user key lives only for the duration of this write.
+      if (perUserKey) perUserKey.fill(0);
+    }
     // A single usable face frame still enrolls, but it is a thin template — the
     // frame count is logged so a weak enrollment is visible now, not at login.
     console.log(`[enroll ${username}] ${stderr.trim()} -> ${templatePath(username)} (raw video discarded)`);
@@ -119,7 +147,31 @@ export async function enrollFromBuffer(buffer, username) {
   }
 }
 
-/** Decrypts a stored template to destPath. Throws if missing or tampered. */
-export function decryptTemplate(username, destPath) {
-  decryptToFile(templatePath(username), destPath);
+/**
+ * Decrypts a stored template to destPath. Throws if missing or tampered.
+ *
+ * The only key that opens a template is this user's own, fetched from the key
+ * vault and unwrapped under BIOMETRIC_MASTER_KEY:
+ *
+ *   username -> userIndex -> vault lookup -> wrapped key -> unwrap -> decrypt
+ *
+ * Every step fails CLOSED. A missing vault record, a wrapped key that fails
+ * its authentication tag, and a tampered template all throw, and login turns
+ * that into a generic 401. There is deliberately no fallback to the global
+ * BIOMETRIC_KEY: a template that has lost its per-user key is unreadable by
+ * design, not readable under a key shared with every other user. (Restoring
+ * a pre-per-user-key backup therefore requires re-running
+ * scripts/migrate_to_per_user_keys.mjs over it, which still reads legacy
+ * files under the old key on purpose.)
+ */
+export async function decryptTemplate(username, destPath) {
+  const perUserKey = await getUserKey(username);
+  if (!perUserKey) {
+    throw new Error(`no per-user key in the vault for ${username}`);
+  }
+  try {
+    decryptToFile(templatePath(username), destPath, perUserKey);
+  } finally {
+    perUserKey.fill(0);
+  }
 }

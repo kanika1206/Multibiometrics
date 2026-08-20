@@ -17,6 +17,9 @@ import os from "os";
 import path from "path";
 import { decryptToFile } from "../secureStore.js";
 import { enrollFromBuffer, templatePath } from "../templateStore.js";
+import { connectVault } from "../keyVault.js";
+// enrollFromBuffer stores each template under a per-user vault key now.
+await connectVault();
 
 const DELETE = process.argv.includes("--delete");
 const VIDEO_DIR = "uploads/videos/";

@@ -13,6 +13,7 @@ import svgCaptcha from "svg-captcha"
 import { issueCaptcha, hasLiveCaptcha } from "./captchaStore.js"
 import { encryptToFile } from "./secureStore.js"
 import { enrollFromBuffer, hasTemplate } from "./templateStore.js"
+import { connectVault, deleteUserKey } from "./keyVault.js"
 import { enrollUsernameFrom } from "./enrollToken.js"
 import { captureIfEnabled } from "./evalCapture.js"
 import ENV from "./config.js"
@@ -141,6 +142,15 @@ app.get('/captcha', function(req, res) {
           } catch (e) {
             console.error(`[enroll ${username}] rollback failed: ${e}`);
           }
+          // The vault must not keep a key for an enrollment that never
+          // happened. enrollFromBuffer already removes the record on its own
+          // failure paths; this covers any remaining case so a failed
+          // registration leaves no orphaned BiometricKeys row.
+          try {
+            await deleteUserKey(username);
+          } catch (e) {
+            console.error(`[enroll ${username}] vault rollback failed: ${e}`);
+          }
         }
         return res.status(400).send({ error: reason });
       }
@@ -199,7 +209,11 @@ if (ENV.EVAL_CAPTURE) {
     );
 }
 
-connect().then( () => {
+// Both databases must be up before requests are accepted: the application DB
+// (accounts) and the SEPARATE biometric key vault (wrapped per-user keys).
+// Failing either fails startup — a server that cannot reach the vault could
+// accept enrollments whose keys it cannot store.
+Promise.all([connect(), connectVault()]).then( () => {
     try{
         app.listen(port, () => {
             console.log(`Server connected to http://localhost:${port}`)
@@ -208,7 +222,7 @@ connect().then( () => {
         console.log('Cannot connect to the Server')
     }
 }).catch(error => {
-    console.log("Invalid database Connection !!!")
+    console.log("Invalid database Connection !!!", error.message)
 })
 
 
