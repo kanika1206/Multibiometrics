@@ -30,6 +30,25 @@ export const UserSchema = new mongoose.Schema({
         sparse: true,
     },
 
+    // Enrollment state. Registration is TWO requests — /api/register creates this
+    // record, /upload-video enrolls the biometric templates — so between them an
+    // account exists that cannot authenticate. That intermediate state used to be
+    // invisible: if the enrollment request never arrived (the user closed the tab,
+    // reloaded during the ~30s extraction, the connection dropped mid-upload), the
+    // account simply stayed, un-enrolled, forever, and every later login failed
+    // with NO_ENROLLMENT while the user believed they had registered.
+    //
+    // The account is therefore created PENDING and is only confirmed when the
+    // template is stored. A pending account that is never confirmed is swept
+    // (enrollmentJanitor.js) once its enrollment token has expired.
+    //
+    // Authentication never consults these fields: the authority on "is this user
+    // enrolled" remains the encrypted template on disk (templateStore.hasTemplate),
+    // because that is the thing login actually needs. They exist so the server can
+    // tell an abandoned registration from a complete one, and clean up after it.
+    enrollmentPending: { type: Boolean },
+    enrolledAt: { type: Date },
+
     firstName: { type: String},
     lastName: { type: String},
     // String, not Number: the stored value is ciphertext. Legacy numeric values

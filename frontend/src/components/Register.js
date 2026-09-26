@@ -14,6 +14,31 @@ import styles from '../styles/Username.module.css'
 import extend from '../styles/Profile.module.css'
 import axios from "axios"
 
+// Capture constraints for the enrolment recording.
+//
+// The recorder used to ask for `{ video: true, audio: true }` — no constraints
+// at all — so resolution, frame rate and channel count were whatever the device
+// happened to default to. The pipeline is largely device-tolerant by
+// construction (the detector aligns and crops every face to a fixed recogniser
+// input, frames are sampled by index rather than timestamp, the login score is
+// a median over frames, and ffmpeg resamples audio to 16 kHz mono), but none of
+// that helps if the capture itself carries too little detail: a low-resolution
+// front camera yields faces below the detector's usable size, and the failure
+// mode is "no face detected", not a low score.
+//
+// These are `ideal` constraints, so a device that cannot meet them still
+// negotiates its closest match rather than failing — asking for 720p30 mono
+// audio raises the floor without ever making capture impossible. FALLBACK is
+// the unconstrained request, used if the constrained one errors anyway.
+//
+// Defined at module scope: the objects are passed to useReactMediaRecorder on
+// every render, and a fresh object each time would re-initialise the recorder.
+const PREFERRED_CONSTRAINTS = {
+    video: { width: { ideal: 1280 }, height: { ideal: 720 }, frameRate: { ideal: 30 } },
+    audio: { channelCount: 1, sampleRate: 48000, echoCancellation: true },
+};
+const FALLBACK_CONSTRAINTS = { video: true, audio: true };
+
 // Live camera preview. A <video> can only show a live MediaStream through
 // srcObject — `src` is for finished media, which is why the old preview stayed black.
 function LivePreview({ stream }) {
@@ -49,14 +74,64 @@ function Register() {
             .catch(() => setEvalCapture(false))
     }, [])
 
-    // audio:true — the voice factor is carried by this same recording.
+    // The voice factor is carried by this same recording, hence the audio
+    // constraints alongside the video ones.
+    const [constraints, setConstraints] = useState(PREFERRED_CONSTRAINTS)
     const { status, startRecording, stopRecording, mediaBlobUrl, previewStream, error } =
-        useReactMediaRecorder({ video: true, audio: true });
+        useReactMediaRecorder(constraints);
 
-    // Surface capture failures instead of sitting silently in `idle` forever.
+    // What the browser ACTUALLY negotiated, which is not necessarily what was
+    // asked for: `ideal` constraints are honoured only as far as the hardware
+    // allows. Read from the live track and reported with the benchmark record so
+    // the log can be broken down per device and across devices
+    // (backend/benchmarkStore.js). Analysis context only — the server trusts it
+    // for nothing.
+    const deviceRef = useRef(null)
     useEffect(() => {
-        if (error) toast.error(`Camera/mic unavailable: ${error}`);
-    }, [error]);
+        const track = previewStream?.getVideoTracks?.()[0];
+        if (!track) return;
+        const s = track.getSettings ? track.getSettings() : {};
+        deviceRef.current = {
+            width: s.width ?? null,
+            height: s.height ?? null,
+            frameRate: s.frameRate ?? null,
+            // Short platform string, not the full user-agent: the benchmark
+            // record names no user and must not carry a fingerprint either.
+            platform: navigator.platform || null,
+        };
+    }, [previewStream])
+
+    // Registration is only complete once the biometric templates are stored, and
+    // that takes roughly half a minute of server-side extraction. The page used
+    // to give no sign of this at all: the button stayed live, nothing said the
+    // upload was running, and users reloaded or navigated away mid-enrollment.
+    // The request was then aborted, the templates were never written, and the
+    // account created a moment earlier survived with no biometrics — every later
+    // login failing with "no biometric enrollment". The button is therefore
+    // hard-disabled for the duration and says what is happening.
+    const [isEnrolling, setIsEnrolling] = useState(false)
+
+    // A browser-level guard for the same window: closing or reloading the tab now
+    // asks first, because doing so is exactly what breaks the enrollment.
+    useEffect(() => {
+        if (!isEnrolling) return;
+        const warn = e => { e.preventDefault(); e.returnValue = ''; };
+        window.addEventListener('beforeunload', warn);
+        return () => window.removeEventListener('beforeunload', warn);
+    }, [isEnrolling])
+
+    // Surface capture failures instead of sitting silently in `idle` forever —
+    // but try once, silently, without the constraints first: a device that
+    // cannot satisfy them should still be able to enrol.
+    useEffect(() => {
+        if (!error) return;
+        if (constraints !== FALLBACK_CONSTRAINTS) {
+            console.warn(`[capture] ${error} — retrying without capture constraints`);
+            setConstraints(FALLBACK_CONSTRAINTS);
+            return;
+        }
+        toast.error(`Camera/mic unavailable: ${error}`);
+    }, [error, constraints]);
 
     const formik = useFormik({
         initialValues: {
@@ -67,10 +142,30 @@ function Register() {
         validateOnBlur: false,
         validateOnChange: false,
         onSubmit: async values => {
+            // A second submission while the first enrollment is in flight would
+            // race the same enrollment token against itself.
+            if(isEnrolling) return;
+            if(status === 'recording'){
+                toast.error('Stop the recording first.');
+                return;
+            }
             if(!mediaBlobUrl){
                 toast.error('Record your video first !!!');
                 return;
             }
+
+            // Start of the registration benchmark's browser half: everything from
+            // here to the moment the recording is handed to /upload-video —
+            // input validation, account creation (/api/register, which seals the
+            // PII and mints the enrolment token), the notification mail, and
+            // preparing the recording blob. The server times the enrolment half
+            // (template extraction, encryption, storage) and writes one
+            // end-to-end record per attempt (backend/benchmarkStore.js).
+            // Deliberately excluded: the time the user spent recording, which is
+            // human pace rather than system latency.
+            const t0 = performance.now();
+            setIsEnrolling(true);
+            try {
 
             values = await Object.assign(values, {profile : file || ''})
 
@@ -98,12 +193,30 @@ function Register() {
                 enrollTokenRef.current = registered.enrollToken;
             }
 
-            const blob = await fetch(mediaBlobUrl).then(r => r.blob());
+            let blob;
+            try {
+                blob = await fetch(mediaBlobUrl).then(r => r.blob());
+            } catch (e) {
+                // The recording could not be read back. Say so — this used to
+                // throw out of the handler silently, leaving the account created
+                // a moment ago with no enrollment and no explanation.
+                toast.error('Could not read your recording. Record it again and press Register.');
+                return;
+            }
             const formData = new FormData();
             formData.append('video', blob, values.username + ".mp4");
             // Retention is opt-in and only meaningful in evaluation mode; the
             // server ignores it otherwise.
             formData.append('evalConsent', evalCapture && evalConsent ? 'true' : 'false');
+            // Browser half of the registration timing, closed off immediately
+            // before the upload request so the upload itself is measured by the
+            // server rather than counted twice.
+            formData.append('clientPreMs', String(performance.now() - t0));
+            // Capture settings behind this recording (resolution, frame rate,
+            // platform), for the cross-device breakdown of the benchmark log.
+            if (deviceRef.current) {
+                formData.append('device', JSON.stringify(deviceRef.current));
+            }
 
             let res;
             try {
@@ -133,8 +246,14 @@ function Register() {
               return;
             }
 
-            toast.success('Registered successfully !!!');
+            // Reached only when the server confirmed the templates are stored, so
+            // this is the first point at which the user is genuinely registered.
+            enrollTokenRef.current = null;
+            toast.success('Registered successfully — biometric enrollment complete !!!');
             navigate('/');
+            } finally {
+                setIsEnrolling(false);
+            }
         }
     })
 
@@ -159,7 +278,12 @@ function Register() {
                     </span>
                 </div>
 
-                <form className='py-1' >
+                                {/* Enter submits through the same handler as the Register button, whose
+                    guards (recording present, not already enrolling) therefore apply to
+                    it too. Without this a stray Enter reached the browser's native
+                    submission and would reload the page — the exact event that aborts an
+                    in-flight enrolment. */}
+                <form className='py-1' onSubmit={formik.handleSubmit}>
 
                     <div className='profile flex justify-center py-4'>
                         <label htmlFor='profile'>
@@ -209,8 +333,8 @@ function Register() {
                     </span>
                     <br></br>
 
-                    <button type='button' className={styles.btn} style={{width:'180px', marginRight:'10px'}} onClick={startRecording}>Start Recording</button>
-                    <button type='button' className={styles.btn} style={{width:'180px', marginLeft:'40px', marginRight:'40px'}} onClick={stopRecording}>Stop Recording</button>
+                    <button type='button' className={styles.btn} style={{width:'180px', marginRight:'10px'}} onClick={startRecording} disabled={isEnrolling}>Start Recording</button>
+                    <button type='button' className={styles.btn} style={{width:'180px', marginLeft:'40px', marginRight:'40px'}} onClick={stopRecording} disabled={isEnrolling}>Stop Recording</button>
 
                 </div>
 
@@ -231,7 +355,25 @@ function Register() {
                     </div>
                 }
 
-                <button onClick={formik.handleSubmit} style={{width:'646px'}} className={`${styles.btn}`} type='submit'>Register</button>
+                <button
+                    onClick={formik.handleSubmit}
+                    disabled={isEnrolling || status === 'recording' || !mediaBlobUrl}
+                    style={{
+                        width:'646px',
+                        opacity: (isEnrolling || status === 'recording' || !mediaBlobUrl) ? 0.5 : 1,
+                        cursor: (isEnrolling || status === 'recording' || !mediaBlobUrl) ? 'not-allowed' : 'pointer'
+                    }}
+                    className={`${styles.btn}`}
+                    type='submit'>
+                    {isEnrolling ? 'Enrolling your biometrics…' : 'Register'}
+                </button>
+
+                {isEnrolling &&
+                    <p className='text-center' style={{marginTop:'8px', color:'#b3261e', fontWeight:'bold'}}>
+                        Do not close or reload this page. Your face and voice are being extracted and
+                        encrypted — this takes about 30 seconds. Registration is not complete until it finishes.
+                    </p>
+                }
             
 
 

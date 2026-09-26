@@ -1,21 +1,73 @@
 # Recognition-accuracy evaluation
 
-This is the procedure for producing FAR, FRR, EER, ROC and DET for the scheme.
-It is not run by default and reports nothing until real recordings exist — the
-paper reports no accuracy metric for exactly this reason.
+This is the procedure for producing FAR, FRR, EER, AUC, ROC and DET for the
+scheme. It reports nothing until a corpus exists, and refuses to emit metrics
+from a corpus too small to support them.
 
-## Two ways to collect the corpus
+Related: [ATTACKS.md](ATTACKS.md) for attack success rates, and
+[THREAT_MODEL.md](THREAT_MODEL.md) for the adversaries those attacks instantiate.
 
-The evaluation harness (`backend/scripts/run_evaluation.mjs`) reads a flat
-directory of raw recordings named:
+## The full pipeline
+
+```bash
+cd backend
+
+# 1. build a corpus from a public audio-visual dataset (see "Corpus" below)
+node scripts/ingest_public_corpus.mjs --profile ravdess \
+     --src ../datasets/RAVDESS --out ../evaluation_corpus --sessions 3
+
+# 2. measure the challenge factor's own false rejection rate
+node scripts/evaluate_challenge.mjs --trials ../challenge_corpus \
+     --out ../evaluation_out
+
+# 3. score the corpus and produce every figure and table
+node scripts/run_evaluation.mjs ../evaluation_corpus ../evaluation_out
+```
+
+Step 2 is optional but changes what step 3 can report: with a measured challenge
+FRR present, the independence comparison against the paper's Eq. (6)–(7) runs on
+all three factors rather than the two biometric ones.
+
+Then copy the generated `results.tex` and the three figures next to the paper
+source. The paper `\input`s that file, so **no number is ever retyped by hand** —
+re-running the harness updates the paper.
+
+## Corpus
+
+The harness reads a flat directory of recordings named:
 
 ```
 <subject>_s<session>.mp4     e.g. p01_s1.mp4, p01_s2.mp4, p02_s1.mp4
 ```
 
 Genuine pairs are formed between **different sessions of the same subject**;
-impostor pairs between **different subjects**. There are two ways to fill that
-directory.
+impostor pairs between **different subjects**. A recording is never compared
+with itself — a self-comparison scores 1.0 and would flatter the FRR.
+
+### Option 0 — a public dataset (no human-subject collection)
+
+`scripts/ingest_public_corpus.mjs` maps a downloaded public audio-visual dataset
+onto that layout and records provenance in `corpus_meta.json`: the dataset, its
+consent basis, the device condition of each recording, the subject and session
+counts, and the expected genuine and impostor pair counts. Those are exactly the
+fields the paper's evaluation section has to state. Profiles: `voxceleb2`,
+`voxceleb1`, `ravdess`, `cremad`, `mobio`, and `generic` with a `--pattern`.
+
+**Pick a dataset the speaker model has not been trained on.** The deployed voice
+factor is `spkrec-ecapa-voxceleb`, which is trained on the VoxCeleb1+2
+*development* sets; measuring its EER on VoxCeleb2-dev scores the model on its
+own training data. RAVDESS, CREMA-D and MOBIO are outside it; VoxCeleb1 is safe
+only if restricted to the held-out test identities (id10270–id10309). Every
+`corpus_meta.json` carries a `speaker_model_overlap` verdict, and the ingest tool
+warns loudly when the corpus overlaps.
+
+Trade-off to state in the paper: RAVDESS and CREMA-D are single-sitting studio
+captures, so they support genuine/impostor pairing but **not** a cross-device or
+cross-day claim. MOBIO is the only listed option with real device variation
+(mobile vs laptop across twelve sessions), and is the right choice if the
+cross-device table matters.
+
+### Two ways to collect your own corpus instead
 
 ### Option A — instrumented normal use (`EVAL_CAPTURE`)
 
@@ -95,14 +147,42 @@ The harness will:
 4. Score every genuine and impostor pair with the deployed matchers
    (median-per-frame face cosine at 0.35, ECAPA voice cosine at 0.30), plus the
    conjunctive fused decision.
-5. Write `scores.csv`, `metrics.json` (FAR/FRR sweep, EER, AUC, deployed
-   operating point), and `fig_det.png` / `fig_score_dist.png`.
+5. Write the outputs below.
 
-## What is still needed
+### Outputs
 
-Recordings that do not presently exist. **Minimum: 5 participants, 2 sessions
-each.** For rates comparable to the schemes surveyed in the paper, aim for
-**20–50 participants with 2–3 sessions each**, sessions separated in time so
-that within-person variation is represented. Each recording must contain a
-visible face and at least one second of speech (the participant reading the
-digit challenge aloud satisfies both).
+| File | Contents |
+|---|---|
+| `scores.csv` | one row per pair: reference, probe, genuine/impostor, same-device, both cosines |
+| `metrics.json` | FAR/FRR sweep, EER, **threshold at the EER**, AUC, deployed operating point, fused AND rule, independence comparison, cross-device split, corpus provenance |
+| `results.tex` | `\newcommand` macros and table bodies for `\input` into the paper |
+| `fig_roc.png` | ROC curves per modality, labelled with AUC |
+| `fig_det.png` | DET curves per modality, labelled with EER |
+| `fig_score_dist.png` | genuine/impostor histograms, with the deployed **and** EER thresholds drawn |
+
+Three things in `metrics.json` are worth reading directly rather than only via
+the paper:
+
+- **`<modality>.eer_threshold`** — where the EER actually sits. The console also
+  prints a note when a deployed threshold is ≥0.02 away from it, which is the
+  prompt to either re-justify the operating point or move it.
+- **`independence_check`** — the measured fused FAR/FRR beside what Eq. (6)–(7)
+  predict. A measured value *above* the prediction means the factors fail
+  together rather than independently, which is plausible here since all three
+  come from one recording. Either outcome is a reportable finding.
+- **`cross_device.available`** — `false`, with a reason, when the corpus cannot
+  support a cross-device claim. The harness does not approximate one.
+
+## Corpus size
+
+**Minimum enforced: 5 subjects, 2 sessions each** — below that the harness
+refuses to emit metrics. For rates comparable to the schemes surveyed in the
+paper, aim for **20–50 subjects with 2–3 sessions each**, sessions separated in
+time so within-person variation is represented. Each recording must contain a
+visible face and at least one second of speech.
+
+Note the asymmetry when planning: genuine pairs grow linearly in subjects
+(`subjects × C(sessions,2)`) while impostor pairs grow quadratically
+(`C(subjects,2) × sessions²`). Genuine pairs are therefore the scarce side and
+the binding constraint on the FRR's precision, so prefer more subjects over more
+sessions per subject once you have at least two.

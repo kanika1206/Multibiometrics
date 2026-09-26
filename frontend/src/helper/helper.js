@@ -60,15 +60,39 @@ export async function registerUser(credentials){
     }
 }
 
-/** login function — passwordless, the biometrics in the uploaded video are the credential */
-export async function verifyPassword({ username }){
+/** login function — passwordless, the biometrics in the uploaded video are the credential
+ *
+ * clientPreMs is the browser-measured half of the login benchmark (blob
+ * preparation + recording upload). The server adds its own half and writes one
+ * end-to-end record per attempt; see backend/benchmarkStore.js.
+ *
+ * On failure the SERVER's explanation is propagated verbatim rather than being
+ * flattened into one generic sentence. The old code replaced every cause with
+ * "Biometric check failed...!", which is why an expired CAPTCHA and an impostor
+ * looked identical to the user.
+ */
+export async function verifyPassword({ username, clientPreMs, device }){
     try {
         if(username){
-            const { data } = await axios.post('/api/login', { username })
+            // `device` carries the capture settings this recording was made with
+            // (resolution, frame rate, platform) for the benchmark log's
+            // cross-device breakdown. Context only; the server decides nothing
+            // on it.
+            const { data } = await axios.post('/api/login', { username, clientPreMs, device })
             return Promise.resolve({ data });
         }
+        return Promise.reject({ reason : "USER_NOT_FOUND", error : "No username to log in with." })
     } catch (error) {
-        return Promise.reject({ error : "Biometric check failed...!"})
+        const body = error?.response?.data;
+        return Promise.reject({
+            reason : body?.reason || "SERVER_ERROR",
+            // A network failure has no server body, so it keeps its own message.
+            error : body?.error || "Could not reach the server. Please try again.",
+            failedFactors : body?.failedFactors || [],
+            // "REGISTER_AGAIN" when the account has no biometric enrollment: the
+            // fix is re-registration, not another recording.
+            recovery : body?.recovery || null,
+        })
     }
 }
 

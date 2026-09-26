@@ -1,0 +1,6 @@
+{
+  "enabledMcpjsonServers": [
+    "repowise"
+  ],
+  "enableAllProjectMcpServers": true
+}

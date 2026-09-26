@@ -22,7 +22,13 @@ import os from "os";
 import path from "path";
 import ENV from "./config.js";
 import { encryptToFile, decryptToFile } from "./secureStore.js";
-import { createUserKey, getUserKey, deleteUserKey } from "./keyVault.js";
+import {
+  createUserKey,
+  generateUserKey,
+  putUserKey,
+  getUserKey,
+  deleteUserKey,
+} from "./keyVault.js";
 
 export const TEMPLATE_DIR = "./templates/";
 
@@ -71,10 +77,41 @@ export function hasTemplate(username) {
   return fs.existsSync(templatePath(username));
 }
 
-/** Runs extractTemplate.py on a video, resolving { code, stderr }. */
-export function runExtractTemplate(videoPath, outJsonPath, timeoutMs = 120000) {
+// A quality-gate rejection (exit 3) names its cause on stderr as
+// QUALITY:<CODE>. The codes are mapped to sentences the user can act on —
+// "move closer", "improve the lighting" — instead of the opaque "could not
+// extract biometrics" every extraction failure used to produce.
+const QUALITY_MESSAGES = {
+  FACE_TOO_SMALL:
+    "Your face is too small in the frame. Move closer to the camera, or use a " +
+    "higher-resolution camera, and record again.",
+  TOO_FEW_USABLE_FRAMES:
+    "Your face was clearly visible in too few frames. Improve the lighting, keep " +
+    "your face centred and still, and record again.",
+};
+
+/** Maps a quality-gate exit to its user-facing sentence, or null. */
+export function qualityReason(stderr) {
+  const m = /QUALITY:([A-Z_]+)/.exec(stderr || "");
+  if (!m) return null;
+  return QUALITY_MESSAGES[m[1]] || "Your recording was not of usable quality. Please record again.";
+}
+
+/**
+ * Runs extractTemplate.py on a video, resolving { code, stderr }.
+ *
+ * `enrollment: true` turns on the acquisition quality gate (minimum face size,
+ * minimum count of usable frames). It is applied at ENROLMENT ONLY: the stored
+ * template is permanent under template-only storage, so a poor enrolment is
+ * unrecoverable, whereas tightening the same gate at login would simply raise
+ * the false rejection rate for users who are already enrolled.
+ */
+export function runExtractTemplate(videoPath, outJsonPath, opts = {}) {
+  const { enrollment = false, timeoutMs = 120000 } = opts;
   return new Promise((resolve) => {
-    const child = spawn(ENV.PYTHON, ["./extractTemplate.py", videoPath, outJsonPath]);
+    const args = ["./extractTemplate.py", videoPath, outJsonPath];
+    if (enrollment) args.push("--enrollment");
+    const child = spawn(ENV.PYTHON, args);
     let stderr = "";
     let settled = false;
     const timer = setTimeout(() => child.kill("SIGKILL"), timeoutMs);
@@ -106,11 +143,15 @@ export async function enrollFromBuffer(buffer, username) {
   const json = path.join(work, "reg.json");
   try {
     fs.writeFileSync(video, buffer);
-    const { code, stderr } = await runExtractTemplate(video, json);
+    const { code, stderr } = await runExtractTemplate(video, json, { enrollment: true });
     if (code !== 0) {
-      // Most common cause: no face detected anywhere in the recording.
+      // Most common cause: no face detected anywhere in the recording. Exit 3 is
+      // the quality gate, which says exactly what was wrong with the capture.
       console.error(`[enroll ${username}] extraction failed (exit ${code}): ${stderr.trim()}`);
-      return { ok: false, reason: "Could not extract biometrics from the video" };
+      return {
+        ok: false,
+        reason: qualityReason(stderr) || "Could not extract biometrics from the video",
+      };
     }
     fs.mkdirSync(TEMPLATE_DIR, { recursive: true });
     // Per-user key isolation: a fresh random 256-bit key is generated for THIS
@@ -174,4 +215,102 @@ export async function decryptTemplate(username, destPath) {
   } finally {
     perUserKey.fill(0);
   }
+}
+
+/**
+ * Re-enrolls an account that ALREADY holds a template: extracts the new
+ * template, rotates this user's vault key, and replaces the stored ciphertext.
+ *
+ * Enrolment is otherwise final — /upload-video refuses to overwrite a stored
+ * template, whoever asks — because overwriting one is exactly what account
+ * takeover looks like. Re-enrolment is the one authorised exception, and its
+ * authority is a `reenroll` grant that can only be minted by a SUCCESSFUL
+ * three-factor login (appController.reenrollRequest). The replacement is
+ * therefore written the only way that is safe against a half-failure:
+ *
+ *   1. extract to a temp file — a bad recording never reaches the stored copy;
+ *   2. generate a NEW key, and encrypt the new template under it beside the
+ *      old one (the old ciphertext and the old key are both still intact, so
+ *      the account can still log in);
+ *   3. commit the new key to the vault, then rename the new ciphertext over
+ *      the old one. rename(2) within a directory is atomic, so no reader ever
+ *      sees a partial template;
+ *   4. if the rename fails after the key was committed, put the OLD key back
+ *      and leave the old ciphertext in place — the account is exactly as it
+ *      was before the attempt.
+ *
+ * Resolves { ok: true } or { ok: false, reason } — the caller fails closed and
+ * the existing enrolment stays untouched.
+ */
+export async function reenrollFromBuffer(buffer, username) {
+  const work = fs.mkdtempSync(path.join(os.tmpdir(), "reenroll-"));
+  const video = path.join(work, "reg.mp4");
+  const json = path.join(work, "reg.json");
+  const dest = templatePath(username);
+  const staged = dest + ".new";
+  let newKey;
+  let oldKey;
+  try {
+    fs.writeFileSync(video, buffer);
+    const { code, stderr } = await runExtractTemplate(video, json, { enrollment: true });
+    if (code !== 0) {
+      console.error(`[reenroll ${username}] extraction failed (exit ${code}): ${stderr.trim()}`);
+      return {
+        ok: false,
+        reason: qualityReason(stderr) || "Could not extract biometrics from the video",
+      };
+    }
+    // Kept so the rotation can be undone. A user with no vault record (a legacy
+    // enrolment) simply has nothing to restore.
+    try {
+      oldKey = await getUserKey(username);
+    } catch (e) {
+      console.error(`[reenroll ${username}] previous key unreadable: ${e.message}`);
+      oldKey = null;
+    }
+    newKey = generateUserKey();
+    try {
+      fs.mkdirSync(TEMPLATE_DIR, { recursive: true });
+      encryptToFile(fs.readFileSync(json), staged, newKey);
+    } catch (e) {
+      console.error(`[reenroll ${username}] could not stage the new template: ${e.message}`);
+      fs.rmSync(staged, { force: true });
+      return { ok: false, reason: "Could not store biometrics" };
+    }
+    await putUserKey(username, newKey);
+    try {
+      fs.renameSync(staged, dest);
+    } catch (e) {
+      console.error(`[reenroll ${username}] swap failed: ${e.message}`);
+      fs.rmSync(staged, { force: true });
+      if (oldKey) {
+        try {
+          await putUserKey(username, oldKey);
+        } catch (restoreErr) {
+          // The stored template is now unreadable. Loud, because the remedy is
+          // operator re-enrolment, not a retry.
+          console.error(
+            `[reenroll ${username}] CRITICAL: key rotated but template not swapped ` +
+              `and the previous key could not be restored: ${restoreErr.message}`
+          );
+        }
+      }
+      return { ok: false, reason: "Could not store biometrics" };
+    }
+    console.log(`[reenroll ${username}] ${stderr.trim()} -> ${dest} (key rotated, raw video discarded)`);
+    return { ok: true };
+  } finally {
+    if (newKey) newKey.fill(0);
+    if (oldKey) oldKey.fill(0);
+    fs.rmSync(work, { recursive: true, force: true });
+  }
+}
+
+/**
+ * Erases this user's stored template. Used by account deletion, which must
+ * leave no biometric data behind — the encrypted template on disk is the data,
+ * the account row is only the name attached to it.
+ */
+export function deleteTemplate(username) {
+  fs.rmSync(templatePath(username), { force: true });
 }

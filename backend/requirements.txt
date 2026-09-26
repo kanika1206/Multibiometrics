@@ -16,3 +16,7 @@ SpeechRecognition==3.17.0
 torch==2.13.0
 torchaudio==2.11.0
 speechbrain==1.1.0
+# Challenge factor: on-premises speech-to-text (speechToTextLocal.py). This is
+# the default engine, so the login audio never leaves the deployment.
+# SpeechRecognition above is retained only for the STT_ENGINE=google fallback.
+faster-whisper==1.2.1

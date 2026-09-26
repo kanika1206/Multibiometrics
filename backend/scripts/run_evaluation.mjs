@@ -69,6 +69,28 @@ if (recordings.length === 0) {
   process.exit(2);
 }
 
+// Provenance and per-recording device labels, when the corpus was built by
+// scripts/ingest_public_corpus.mjs. The device label is what lets the metrics
+// stage split genuine pairs into within-device and cross-device, which is the
+// only honest basis for a cross-device robustness claim. A hand-assembled
+// corpus has no sidecar; the run proceeds and the split is simply not reported.
+const metaPath = path.join(corpusDir, "corpus_meta.json");
+const corpusMeta = fs.existsSync(metaPath) ? JSON.parse(fs.readFileSync(metaPath, "utf8")) : null;
+const deviceOf = Object.fromEntries(
+  (corpusMeta?.recordings_index ?? []).map((r) => [r.recording, r.device])
+);
+if (corpusMeta) {
+  console.log(`corpus provenance: ${corpusMeta.dataset} (${corpusMeta.profile})`);
+  if (corpusMeta.speaker_model_overlap?.startsWith("TRAINING-SET OVERLAP")) {
+    console.warn(`!! ${corpusMeta.speaker_model_overlap}`);
+  }
+} else {
+  console.log(
+    "no corpus_meta.json: provenance and device labels unknown. " +
+      "Build the corpus with scripts/ingest_public_corpus.mjs to record them."
+  );
+}
+
 const subjects = [...new Set(recordings.map((r) => r.subject))].sort();
 const sessionsPerSubject = Object.fromEntries(
   subjects.map((s) => [
@@ -167,11 +189,18 @@ fs.writeFileSync(
       session,
       template,
       nFrames,
+      device: deviceOf[`${subject}_s${session}`] ?? null,
     })),
     null,
     2
   )
 );
+
+// Hand the provenance to the metrics stage so metrics.json is self-describing:
+// a results file that cannot say which corpus produced it is not citable.
+if (corpusMeta) {
+  fs.writeFileSync(path.join(outDir, "corpus_meta.json"), JSON.stringify(corpusMeta, null, 2));
+}
 
 console.log("\nscoring pairs and computing metrics ...");
 const py = spawn(ENV.PYTHON, ["./scripts/evaluate_corpus.py", manifest, outDir], {

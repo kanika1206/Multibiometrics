@@ -184,22 +184,44 @@ function unwrapKey(record) {
 // ---------------------------------------------------------------------------
 
 /**
- * Generates a fresh, independent 256-bit key for this user, stores only the
- * wrapped form, and returns the plaintext key Buffer for immediate use by the
- * template encryptor. Upsert: a leftover row from a rolled-back enrollment is
- * replaced by a brand-new key rather than reused — an enrollment never
- * inherits key material from a failed attempt. (An ENROLLED user never reaches
- * here: /upload-video refuses to re-enroll an account that holds a template.)
+ * A fresh, independent 256-bit template key. Generated but NOT stored: the
+ * caller decides when (and whether) the vault row is written. Re-enrolment
+ * needs that separation — the new key must encrypt the new template before the
+ * old key is replaced, or a failure half-way would leave the stored template
+ * unreadable (templateStore.reenrollFromBuffer).
  */
-export async function createUserKey(username) {
+export function generateUserKey() {
+  return crypto.randomBytes(32); // CSPRNG, unique per user
+}
+
+/**
+ * Stores (only) the wrapped form of an already-generated key. Upsert, so a
+ * rotation replaces the user's row in place and is re-stamped with the current
+ * wrapping version. Also the rollback path: re-writing the previous key
+ * restores the vault exactly as it was.
+ */
+export async function putUserKey(username, perUserKey) {
   const idx = userIndex(username);
-  const perUserKey = crypto.randomBytes(32); // CSPRNG, unique per user
   const wrapped = wrapKey(perUserKey, idx, CURRENT_KEY_VERSION);
   await model().findOneAndUpdate(
     { userIndex: idx },
     { $set: { ...wrapped, keyVersion: CURRENT_KEY_VERSION } },
     { upsert: true, new: true }
   );
+}
+
+/**
+ * Generates a fresh, independent 256-bit key for this user, stores only the
+ * wrapped form, and returns the plaintext key Buffer for immediate use by the
+ * template encryptor. Upsert: a leftover row from a rolled-back enrollment is
+ * replaced by a brand-new key rather than reused — an enrollment never
+ * inherits key material from a failed attempt. (A FIRST enrollment only: an
+ * account that already holds a template is re-keyed through the rotate-and-swap
+ * path in templateStore.reenrollFromBuffer, never here.)
+ */
+export async function createUserKey(username) {
+  const perUserKey = generateUserKey();
+  await putUserKey(username, perUserKey);
   return perUserKey;
 }
 

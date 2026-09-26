@@ -17,7 +17,14 @@ export default function useFetch(query){
 
                 const { username } = !query ? await getUsername() : '';
                 
-                const { data, status } = !query ? await axios.get(`/api/user/${username}`) : await axios.get(`/api/${query}`);
+                // Callers pass their path with a leading slash (`/user/kanika`), and
+                // this template adds one of its own, which produced `/api//user/...`.
+                // Express happened to route it anyway, but the malformed URL was
+                // real: it reached the network, appeared in logs, and would miss
+                // any exact-path proxy rule or cache key. Normalise it here so
+                // every caller is fixed at once and no server tolerance is relied on.
+                const path = String(query).replace(/^\/+/, '');
+                const { data, status } = !query ? await axios.get(`/api/user/${username}`) : await axios.get(`/api/${path}`);
 
                 if(status === 201){
                     setData(prev => ({ ...prev, isLoading: false}));

@@ -44,7 +44,12 @@ export function Username() {
                     </span>
                 </div>
 
-                <form className='py-1'>
+                                {/* Enter must run the same handler as the button. Without an onSubmit the
+                    browser performed its own native submission — this page has a single
+                    text input, so Firefox implicitly submits it — which reloaded the SPA
+                    with `?username=…` in the URL and lost all client state. formik's
+                    handleSubmit calls preventDefault, so the reload is gone. */}
+                <form className='py-1' onSubmit={formik.handleSubmit}>
                     <div className='profile flex justify-center py-4'>
                         <img src={avatar} alt="avatar" className={styles.profile_img}/>
                     </div>

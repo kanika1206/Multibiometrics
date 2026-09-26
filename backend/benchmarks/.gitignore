@@ -1,0 +1,5 @@
+# The benchmark log is measurement data from a running deployment, not source.
+# It is kept out of version control so per-deployment attempt records (and their
+# subject pseudonyms) are not committed; the directory itself is tracked so the
+# server has somewhere to write on a fresh clone.
+*.jsonl
