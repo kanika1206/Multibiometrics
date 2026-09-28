@@ -45,3 +45,7 @@ evaluation_out/
 backend/templates_removed_duplicates/
 .removed_artifacts/
 
+
+# Consented raw evaluation clips (EVAL_CAPTURE default dir): plaintext, never commit
+eval_data/
+datasets/

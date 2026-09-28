@@ -50,14 +50,20 @@ if (!fs.existsSync(corpusDir)) {
 
 // Subject may itself contain '_' (usernames allow it), so match the LAST
 // _s<digits> as the session separator rather than a restrictive subject class.
-// This is the naming evalCapture.js writes: <username>_s<session>.mp4.
-const NAME = /^(.+)_s(\d+)\.mp4$/;
+// An optional __<code> suffix names one clip within a session: evalCapture.js
+// writes <subject>_s<session>__<challenge>.mp4 so several logins per session
+// coexist and each clip's spoken challenge is known. Clips sharing a session
+// are never paired with each other (genuine pairs are between sessions only).
+const NAME = /^(.+?)_s(\d+)(?:__([A-Za-z0-9-]+))?\.mp4$/;
+const recId = (r) => `${r.subject}_s${r.session}` + (r.clip ? `__${r.clip}` : "");
 
 const recordings = fs
   .readdirSync(corpusDir)
   .map((f) => {
     const m = NAME.exec(f);
-    return m ? { file: path.join(corpusDir, f), subject: m[1], session: Number(m[2]) } : null;
+    return m
+      ? { file: path.join(corpusDir, f), subject: m[1], session: Number(m[2]), clip: m[3] ?? null }
+      : null;
   })
   .filter(Boolean);
 
@@ -124,7 +130,7 @@ fs.mkdirSync(templatesDir, { recursive: true });
 
 const extracted = [];
 for (const r of recordings) {
-  const out = path.join(templatesDir, `${r.subject}_s${r.session}.json`);
+  const out = path.join(templatesDir, `${recId(r)}.json`);
   process.stdout.write(`extracting ${path.basename(r.file)} ... `);
   const { code, stderr } = await runExtractTemplate(r.file, out);
   if (code !== 0) {
@@ -152,7 +158,7 @@ if (extracted.length === 0) {
 // turns impostor trials into genuine ones. This is exactly what happened to the
 // original corpus, so it is checked every run and treated as fatal.
 const bySha = {};
-for (const e of extracted) (bySha[e.sha] ??= []).push(`${e.subject}_s${e.session}`);
+for (const e of extracted) (bySha[e.sha] ??= []).push(recId(e));
 const dupes = Object.values(bySha).filter((g) => g.length > 1);
 
 console.log(`\nduplicate-template check: ${dupes.length === 0 ? "PASS" : "FAIL"}`);
@@ -165,7 +171,7 @@ const thin = extracted.filter((e) => e.nFrames < 4);
 if (thin.length) {
   console.log(
     "\nwarning: thin enrolment(s) with <4 usable face frames: " +
-      thin.map((e) => `${e.subject}_s${e.session}(${e.nFrames})`).join(", ")
+      thin.map((e) => `${recId(e)}(${e.nFrames})`).join(", ")
   );
 }
 
@@ -184,12 +190,14 @@ const manifest = path.join(outDir, "manifest.json");
 fs.writeFileSync(
   manifest,
   JSON.stringify(
-    extracted.map(({ subject, session, template, nFrames }) => ({
-      subject,
-      session,
-      template,
-      nFrames,
-      device: deviceOf[`${subject}_s${session}`] ?? null,
+    extracted.map((e) => ({
+      recording: recId(e),
+      subject: e.subject,
+      session: e.session,
+      clip: e.clip,
+      template: e.template,
+      nFrames: e.nFrames,
+      device: deviceOf[recId(e)] ?? null,
     })),
     null,
     2

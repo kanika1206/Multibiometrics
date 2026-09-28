@@ -10,7 +10,7 @@ import router from './router/route.js';
 import connect from './database/conn.js';
 // import {output} from './controllers/appController.js';
 import svgCaptcha from "svg-captcha"
-import { issueCaptcha, hasLiveCaptcha } from "./captchaStore.js"
+import { issueCaptcha, hasLiveCaptcha, peekCaptcha } from "./captchaStore.js"
 import { encryptToFile } from "./secureStore.js"
 import { enrollFromBuffer, reenrollFromBuffer, hasTemplate } from "./templateStore.js"
 import { connectVault, deleteUserKey } from "./keyVault.js"
@@ -176,8 +176,9 @@ app.get('/captcha', function(req, res) {
     }
     // Evaluation capture (registration = session 1). No-op unless EVAL_CAPTURE
     // is set AND the participant consented to retention on this page. Multer puts
-    // non-file form fields on req.body.
-    captureIfEnabled(file.buffer, username, req.body.evalConsent === 'true');
+    // non-file form fields on req.body. Registration has no spoken challenge,
+    // so the clip is labelled "enroll".
+    captureIfEnabled(file.buffer, username, req.body.evalConsent === 'true', 'enroll');
     try {
       // The replacement path extracts to a temp file, rotates the per-user vault
       // key and swaps the ciphertext atomically, so a failed re-enrolment leaves
@@ -275,8 +276,9 @@ app.get('/captcha', function(req, res) {
     // Evaluation capture (each login = the next session for this user). No-op
     // unless EVAL_CAPTURE is set AND the participant consented to retention. The
     // login recording is otherwise deleted by login() once the attempt resolves,
-    // so this is the only point it survives.
-    captureIfEnabled(file.buffer, username, req.body.evalConsent === 'true');
+    // so this is the only point it survives. The clip is labelled with the live
+    // challenge (peeked, not consumed — /api/login still spends it).
+    captureIfEnabled(file.buffer, username, req.body.evalConsent === 'true', peekCaptcha(username));
     try {
       encryptToFile(file.buffer, 'uploadsl/login_videos/' + file.originalname + '.enc');
     } catch (e) {
@@ -293,7 +295,7 @@ app.get('/captcha', function(req, res) {
 if (ENV.EVAL_CAPTURE) {
     console.warn(
         `[eval-capture] ENABLED — plaintext recordings will be written to ` +
-        `${ENV.EVAL_CORPUS_DIR}. This suspends template-only storage and is for ` +
+        `${ENV.EVAL_CORPUS_DIR} (session ${ENV.EVAL_SESSION ?? "auto"}). This suspends template-only storage and is for ` +
         `consented evaluation ONLY. Do not run this way in production.`
     );
 }

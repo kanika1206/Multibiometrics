@@ -155,8 +155,8 @@ def build_rows(entries):
         if same and a["session"] == b["session"]:
             continue
         rows.append({
-            "reference": f'{a["subject"]}_s{a["session"]}',
-            "probe": f'{b["subject"]}_s{b["session"]}',
+            "reference": a.get("recording") or f'{a["subject"]}_s{a["session"]}',
+            "probe": b.get("recording") or f'{b["subject"]}_s{b["session"]}',
             "type": "genuine" if same else "impostor",
             # None when the corpus carried no device labels: reported as unknown
             # rather than silently counted as within-device.

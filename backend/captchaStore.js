@@ -33,6 +33,17 @@ export function hasLiveCaptcha(username) {
   return true;
 }
 
+/**
+ * Returns the live CAPTCHA text for this user WITHOUT consuming it, or null.
+ *
+ * Used only by evaluation capture (evalCapture.js) to label a retained research
+ * clip with the challenge the participant was asked to speak. Never sent to the
+ * client; /api/login still spends the challenge through takeCaptcha.
+ */
+export function peekCaptcha(username) {
+  return hasLiveCaptcha(username) ? store.get(username).text : null;
+}
+
 /** Returns the CAPTCHA text for this user and consumes it, or null if none/expired. */
 export function takeCaptcha(username) {
   const entry = store.get(username);

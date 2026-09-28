@@ -37,7 +37,8 @@ re-running the harness updates the paper.
 The harness reads a flat directory of recordings named:
 
 ```
-<subject>_s<session>.mp4     e.g. p01_s1.mp4, p01_s2.mp4, p02_s1.mp4
+<subject>_s<session>.mp4            e.g. p01_s1.mp4, p01_s2.mp4, p02_s1.mp4
+<subject>_s<session>__<code>.mp4    e.g. p01_s1__48213.mp4 (several clips per session)
 ```
 
 Genuine pairs are formed between **different sessions of the same subject**;
@@ -76,10 +77,19 @@ uploaded recording into the corpus automatically.
 
 ```bash
 cd backend
-EVAL_CAPTURE=1 EVAL_CORPUS_DIR=../evaluation_corpus node --env-file=.env server.js
+EVAL_CAPTURE=1 EVAL_SESSION=1 node server.js     # corpus dir defaults to ../eval_data
 ```
 
-- **Registration** writes session 1; **each login** writes the next session.
+Step-by-step recording-day procedure (two sessions, several logins per
+session, two devices): **[RUNBOOK.md](RUNBOOK.md)**.
+
+- Clips are named `<subject>_s<session>__<code>.mp4`, where `<code>` is the
+  five-digit challenge the participant was shown (`enroll` for the registration
+  clip), so every clip's spoken content is known and the same directory serves
+  both `run_evaluation.mjs` and `attack_suite.mjs`.
+- With `EVAL_SESSION=N` set, every clip of that server run is session N, so a
+  participant records several logins per session. Without it, **registration**
+  writes session 1 and **each login** the next session (legacy numbering).
 - The subject in the filename is a **keyed hash** of the username (the same
   `templateId` the template store uses), not the plaintext name — so a listing of
   the corpus discloses no usernames. Sessions of one participant still share a
@@ -88,8 +98,9 @@ EVAL_CAPTURE=1 EVAL_CORPUS_DIR=../evaluation_corpus node --env-file=.env server.
   you need the participant↔subject mapping, compute `templateId(username)` with
   the server key, or keep a separate consented mapping.
 
-So each participant **registers once and logs in at least once**, which yields
-the two different-session recordings a genuine pair needs. Different usernames
+Under legacy numbering each participant **registers once and logs in at least
+once**, which yields the two different-session recordings a genuine pair needs;
+under `EVAL_SESSION` they need clips in two different sessions. Different usernames
 are different subjects.
 
 `EVAL_CAPTURE` is off unless set to a truthy, non-`0` value. When off, behaviour
@@ -111,7 +122,7 @@ boolean.
 otherwise never does.** It is for a consented data-collection session only, must
 never be enabled in production, and the collected corpus must be stored and
 disposed of under whatever consent the participants gave. The capture directory
-should be excluded from version control.
+is excluded from version control (`eval_data/` is in `.gitignore`).
 
 Notes and edge cases:
 - A login recording is captured on the login *upload*, before the pipeline runs,
