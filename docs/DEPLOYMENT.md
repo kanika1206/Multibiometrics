@@ -184,8 +184,14 @@ Get certificates with Let's Encrypt (`certbot --nginx`).
 Reverse-proxy upload limit: video uploads can be tens of MB. For nginx set
 `client_max_body_size 120m;` (backend multer limit is 100 MB).
 
-If frontend and backend are on **different** domains, CORS is already open
-(`app.use(cors())`), but both must be HTTPS or the browser blocks mixed content.
+If frontend and backend are on **different** origins, list the frontend origin
+in `backend/.env`, e.g. `CORS_ORIGINS=https://app.example.com` (comma-separate
+several; exact `scheme://host[:port]`, no path, no wildcard). Any browser request
+from an unlisted origin gets 403 (`backend/corsPolicy.js`). Unset, development
+allows only `http://localhost:3000`/`3999`, and production allows no
+cross-origin browser access. A new tunnel URL for the frontend therefore needs a
+`CORS_ORIGINS` update and a backend restart. Both sides must be HTTPS or the
+browser blocks mixed content.
 
 ### Camera and microphone permissions
 

@@ -49,3 +49,5 @@ backend/templates_removed_duplicates/
 # Consented raw evaluation clips (EVAL_CAPTURE default dir): plaintext, never commit
 eval_data/
 datasets/
+backend/models/whisper/
+backend/models/whisper/

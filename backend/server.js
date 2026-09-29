@@ -2,7 +2,7 @@
 // order, so this must stay the first import).
 import 'dotenv/config';
 import express from 'express';
-import cors from 'cors';
+import { corsPolicy, allowedOrigins } from './corsPolicy.js';
 // for all the http request
 import Video from "./model/User.model.js";
 import morgan from 'morgan';
@@ -29,7 +29,17 @@ const app = express();
 // profile image on update) — videos go through multer, not JSON. 10mb is ample.
 app.use(express.json({limit:'10mb'}));
 
-app.use(cors());
+// Only the configured frontend origins may call the API from a browser; see
+// corsPolicy.js (was app.use(cors()), which allowed every origin).
+// config.js is git-ignored (per-machine), so an older copy may lack CORS_ORIGINS:
+// fall back to reading the environment here rather than crashing or opening up.
+const CORS_ORIGINS = ENV.CORS_ORIGINS ?? allowedOrigins(process.env, ENV.IS_PRODUCTION);
+app.use(corsPolicy(CORS_ORIGINS));
+if (CORS_ORIGINS.length === 0) {
+  console.warn('[cors] CORS_ORIGINS is unset in production: no cross-origin browser access is allowed');
+} else {
+  console.log(`[cors] allowed origins: ${CORS_ORIGINS.join(', ')}`);
+}
 app.use(morgan('tiny'));
 app.disable('x-powered-by');
 
