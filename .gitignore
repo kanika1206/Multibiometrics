@@ -53,3 +53,4 @@ eval_data/
 datasets/
 backend/models/whisper/
 backend/models/whisper/
+.claude/
