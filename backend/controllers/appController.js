@@ -181,7 +181,13 @@ export async function register(req, res) {
           );
       })
       .catch((error) => {
-        return failRegistration("ACCOUNT_CREATION_FAILED", 500, { error });
+        // A username/email held by an ENROLLED account is a conflict the user
+        // can fix (pick another), not a server fault: answer 409 with the
+        // sentence itself so the page can show it instead of a bare failure.
+        if (typeof error?.error === "string") {
+          return failRegistration("IDENTIFIER_TAKEN", 409, { error: error.error });
+        }
+        return failRegistration("ACCOUNT_CREATION_FAILED", 500, { error: "Could not create the account" });
       });
   } catch (error) {
     return failRegistration("ACCOUNT_CREATION_FAILED", 500, error);

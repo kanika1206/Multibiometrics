@@ -185,7 +185,7 @@ function Register() {
                     registered = await toast.promise(registerUser(values), {
                         loading: 'Creating..',
                         success: <b>Account created — uploading your recording…</b>,
-                        error: <b>Could not Register.</b>
+                        error: (err) => <b>{err?.error?.response?.data?.error || 'Could not Register.'}</b>
                     });
                 } catch (e) {
                     return;
