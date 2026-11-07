@@ -1,0 +1,32 @@
+test_pinned_matchers (test_compatibility.Compatibility.test_pinned_matchers) ... ok
+test_consent (test_continuation.Continuation.test_consent) ... ok
+test_content (test_continuation.Continuation.test_content) ... ok
+test_enrollment_content_lifecycle (test_continuation.Continuation.test_enrollment_content_lifecycle) ... ok
+test_segment_limit (test_continuation.Continuation.test_segment_limit) ... ok
+test_segments (test_continuation.Continuation.test_segments) ... ok
+test_specific_error (test_continuation.Continuation.test_specific_error) ... ok
+test_timeout (test_continuation.Continuation.test_timeout) ... ok
+test_aggregate (test_core.Core.test_aggregate) ... ok
+test_asr (test_core.Core.test_asr) ... ok
+test_concurrency (test_core.Core.test_concurrency) ... ok
+test_expiry_and_backwards (test_core.Core.test_expiry_and_backwards) ... ok
+test_finish_expiry_and_suspend (test_core.Core.test_finish_expiry_and_suspend) ... ok
+test_missing_model (test_core.Core.test_missing_model) ... ok
+test_replay_and_storage (test_core.Core.test_replay_and_storage) ... ok
+test_restart (test_core.Core.test_restart) ... ok
+test_scores_and_invalid (test_core.Core.test_scores_and_invalid) ... ok
+test_service (test_core.Core.test_service) ... ok
+test_thresholds (test_core.Core.test_thresholds) ... ok
+test_truth_table (test_core.Core.test_truth_table) ... ok
+test_vault_atomic_replace (test_core.Core.test_vault_atomic_replace) ... ok
+test_vault_key_loss (test_core.Core.test_vault_key_loss) ... ok
+test_vault_tamper (test_core.Core.test_vault_tamper) ... ok
+test_invalid (test_ipc.IPC.test_invalid) ... ok
+test_network_hook (test_ipc.IPC.test_network_hook) ... ok
+test_roundtrip (test_ipc.IPC.test_roundtrip) ... ok
+test_worker_missing_assets (test_ipc.IPC.test_worker_missing_assets) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 1.666s
+
+OK

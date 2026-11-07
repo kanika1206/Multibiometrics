@@ -1,0 +1,112 @@
+[
+  {
+    "name": "genderage.onnx",
+    "version": "buffalo_l; exact version = file SHA-256",
+    "source": "https://github.com/deepinsight/insightface",
+    "local_provenance": "/home/kanika/.insightface/models/buffalo_l/genderage.onnx",
+    "path": "assets/face/genderage.onnx",
+    "sha256": "4fde69b1c810857b88c64a335084f1c3fe8f01246c9a191b48c7bb756d6652fb",
+    "bytes": 1322532,
+    "status": "COPIED_PRETRAINED_ASSET_NOT_QUALIFIED",
+    "license": "upstream model terms must be reviewed before redistribution"
+  },
+  {
+    "name": "2d106det.onnx",
+    "version": "buffalo_l; exact version = file SHA-256",
+    "source": "https://github.com/deepinsight/insightface",
+    "local_provenance": "/home/kanika/.insightface/models/buffalo_l/2d106det.onnx",
+    "path": "assets/face/2d106det.onnx",
+    "sha256": "f001b856447c413801ef5c42091ed0cd516fcd21f2d6b79635b1e733a7109dbf",
+    "bytes": 5030888,
+    "status": "COPIED_PRETRAINED_ASSET_NOT_QUALIFIED",
+    "license": "upstream model terms must be reviewed before redistribution"
+  },
+  {
+    "name": "1k3d68.onnx",
+    "version": "buffalo_l; exact version = file SHA-256",
+    "source": "https://github.com/deepinsight/insightface",
+    "local_provenance": "/home/kanika/.insightface/models/buffalo_l/1k3d68.onnx",
+    "path": "assets/face/1k3d68.onnx",
+    "sha256": "df5c06b8a0c12e422b2ed8947b8869faa4105387f199c477af038aa01f9a45cc",
+    "bytes": 143607619,
+    "status": "COPIED_PRETRAINED_ASSET_NOT_QUALIFIED",
+    "license": "upstream model terms must be reviewed before redistribution"
+  },
+  {
+    "name": "det_10g.onnx",
+    "version": "buffalo_l; exact version = file SHA-256",
+    "source": "https://github.com/deepinsight/insightface",
+    "local_provenance": "/home/kanika/.insightface/models/buffalo_l/det_10g.onnx",
+    "path": "assets/face/det_10g.onnx",
+    "sha256": "5838f7fe053675b1c7a08b633df49e7af5495cee0493c7dcf6697200b85b5b91",
+    "bytes": 16923827,
+    "status": "COPIED_PRETRAINED_ASSET_NOT_QUALIFIED",
+    "license": "upstream model terms must be reviewed before redistribution"
+  },
+  {
+    "name": "w600k_r50.onnx",
+    "version": "buffalo_l; exact version = file SHA-256",
+    "source": "https://github.com/deepinsight/insightface",
+    "local_provenance": "/home/kanika/.insightface/models/buffalo_l/w600k_r50.onnx",
+    "path": "assets/face/w600k_r50.onnx",
+    "sha256": "4c06341c33c2ca1f86781dab0e829f88ad5b64be9fba56e56bc9ebdefc619e43",
+    "bytes": 174383860,
+    "status": "COPIED_PRETRAINED_ASSET_NOT_QUALIFIED",
+    "license": "upstream model terms must be reviewed before redistribution"
+  },
+  {
+    "name": "embedding_model.ckpt",
+    "version": "spkrec-ecapa-voxceleb; exact version = file SHA-256",
+    "source": "https://huggingface.co/speechbrain/spkrec-ecapa-voxceleb",
+    "local_provenance": "backend/models/ecapa/embedding_model.ckpt",
+    "path": "assets/ecapa-source/embedding_model.ckpt",
+    "sha256": "0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2",
+    "bytes": 83316686,
+    "status": "COPIED_PRETRAINED_ASSET_NOT_QUALIFIED",
+    "license": "upstream model terms must be reviewed before redistribution"
+  },
+  {
+    "name": "mean_var_norm_emb.ckpt",
+    "version": "spkrec-ecapa-voxceleb; exact version = file SHA-256",
+    "source": "https://huggingface.co/speechbrain/spkrec-ecapa-voxceleb",
+    "local_provenance": "backend/models/ecapa/mean_var_norm_emb.ckpt",
+    "path": "assets/ecapa-source/mean_var_norm_emb.ckpt",
+    "sha256": "cd70225b05b37be64fc5a95e24395d804231d43f74b2e1e5a513db7b69b34c33",
+    "bytes": 1921,
+    "status": "COPIED_PRETRAINED_ASSET_NOT_QUALIFIED",
+    "license": "upstream model terms must be reviewed before redistribution"
+  },
+  {
+    "name": "label_encoder.ckpt",
+    "version": "spkrec-ecapa-voxceleb; exact version = file SHA-256",
+    "source": "https://huggingface.co/speechbrain/spkrec-ecapa-voxceleb",
+    "local_provenance": "backend/models/ecapa/label_encoder.ckpt",
+    "path": "assets/ecapa-source/label_encoder.ckpt",
+    "sha256": "e13c3a167bb4112685670ee896d20e2b565af16b3a4ceeaa8689fa4d22adb8b9",
+    "bytes": 128619,
+    "status": "COPIED_PRETRAINED_ASSET_NOT_QUALIFIED",
+    "license": "upstream model terms must be reviewed before redistribution"
+  },
+  {
+    "name": "hyperparams.yaml",
+    "version": "spkrec-ecapa-voxceleb; exact version = file SHA-256",
+    "source": "https://huggingface.co/speechbrain/spkrec-ecapa-voxceleb",
+    "local_provenance": "backend/models/ecapa/hyperparams.yaml",
+    "path": "assets/ecapa-source/hyperparams.yaml",
+    "sha256": "6f78854fa04ba59e761437b76a2575d3aba5e5016de3e9b69f0c9a5077fb1a41",
+    "bytes": 1919,
+    "status": "COPIED_PRETRAINED_ASSET_NOT_QUALIFIED",
+    "license": "upstream model terms must be reviewed before redistribution"
+  },
+  {
+    "name": "classifier.ckpt",
+    "version": "spkrec-ecapa-voxceleb; exact version = file SHA-256",
+    "source": "https://huggingface.co/speechbrain/spkrec-ecapa-voxceleb",
+    "local_provenance": "backend/models/ecapa/classifier.ckpt",
+    "path": "assets/ecapa-source/classifier.ckpt",
+    "sha256": "fd9e3634fe68bd0a427c95e354c0c677374f62b3f434e45b78599950d860d535",
+    "bytes": 5534328,
+    "status": "COPIED_PRETRAINED_ASSET_NOT_QUALIFIED",
+    "license": "upstream model terms must be reviewed before redistribution"
+  }
+]

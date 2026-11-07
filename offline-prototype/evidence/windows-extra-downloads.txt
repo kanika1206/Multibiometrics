@@ -1,0 +1,10 @@
+Collecting colorama==0.4.6
+  Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+Collecting pyreadline3==3.5.4
+  Downloading pyreadline3-3.5.4-py3-none-any.whl.metadata (4.7 kB)
+Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Downloading pyreadline3-3.5.4-py3-none-any.whl (83 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 83.2/83.2 kB 562.3 kB/s eta 0:00:00
+Saved ./offline-prototype/provisioning/windows/wheels/colorama-0.4.6-py2.py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/pyreadline3-3.5.4-py3-none-any.whl
+Successfully downloaded colorama pyreadline3

@@ -1,0 +1,14 @@
+{
+  "status": "REAL_MODELS_SYNTHETIC_SMOKE_ONLY",
+  "blank_face_count": 0,
+  "silence_challenge": "FAIL",
+  "speaker_shape": [
+    1,
+    192
+  ],
+  "speaker_finite": true,
+  "generated_media_result": "FACTOR_MISSING",
+  "generated_media_removed": true,
+  "python_socket_audit_events": [],
+  "limits": "No Windows, real-speaker accuracy, native network audit or release qualification."
+}

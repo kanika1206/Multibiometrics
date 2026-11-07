@@ -1,0 +1,5 @@
+Looking in links: offline-prototype/provisioning/windows/wheels
+Processing ./offline-prototype/provisioning/windows/wheels/colorama-0.4.6-py2.py3-none-any.whl
+Processing ./offline-prototype/provisioning/windows/wheels/pyreadline3-3.5.4-py3-none-any.whl
+Installing collected packages: pyreadline3, colorama
+Successfully installed colorama-0.4.6 pyreadline3-3.5.4

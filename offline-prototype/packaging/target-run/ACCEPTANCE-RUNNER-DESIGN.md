@@ -1,0 +1,14 @@
+# Approved acceptance-only runner — 2026-11-02
+
+Recorded before implementation. User explicitly approved D12 resolution with all four conditions below.
+
+1. The runner executes the identical frozen production-candidate payload: the same application/core code, model bytes, dependency runtime and asset manifest. Only the entry point and state location differ. Candidate inventory hashes bind the entire payload; no synthetic inference, model replacement, threshold adjustment or alternate matcher is allowed. Shared UI/worker/runtime construction is factored into reusable code so the entry points cannot drift into duplicate algorithms.
+2. Evaluation state is created only under OS-resolved LocalAppData/MultimodalOffline/acceptance-evidence/runs/<unique-run-id>/state. Never use or migrate production vault state. Run cleanup either destroys the disposable state or explicitly archives it under that run's evidence area; retained plaintext consented recordings are disclosed. Crash/timeout leftovers remain isolated and are marked incomplete for explicit archive/delete recovery.
+3. The separate acceptance entry point has no production switch, environment override or CLI option. It always uses evaluation state and conspicuous acceptance-only labeling. The production entry point has no acceptance mode. Entry-point classes select policy internally; IPC messages cannot select assets, state root or qualification policy.
+4. The existing production gate is unchanged: a qualified release manifest plus hashed matching target-acceptance evidence, with every required condition passed. Acceptance loading validates the same manifest's file hashes and contracts without pretending target evidence exists. The manifest remains CANDIDATE until qualification; no production grant can be obtained by invoking the acceptance entry point because all its sessions/content are confined to disposable evaluation state.
+
+Acceptance results bind the entire candidate inventory SHA-256 as well as asset file-list SHA-256. During qualification, only qualification metadata/evidence may be added; every measured code/model/runtime file must match the evaluated inventory. Candidate execution is not a production qualification result. Windows behavior remains UNVERIFIED-ON-TARGET until executed there.
+
+No command or script automatically marks acceptance PASSED or generates a qualified production manifest. A target-run operator explicitly finishes each run by archiving or destroying evaluation state after terminating all worker descendants. The runner records a run descriptor and blocks reuse of a completed run.
+
+Restart support: a separate fixed `resume_acceptance.py <run-id>` entry point resumes only an ACTIVE evaluation run bound to this exact payload. It accepts no path or production policy. This supports full application-process restart tests before the run is archived/destroyed. The normal new-run entry point still takes no options.

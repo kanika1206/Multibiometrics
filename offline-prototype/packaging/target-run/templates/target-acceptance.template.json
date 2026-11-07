@@ -1,0 +1,20 @@
+{
+  "status": "NOT_RUN",
+  "payload_sha256": null,
+  "fresh_install": false,
+  "dpapi": false,
+  "capture": false,
+  "lifecycle": false,
+  "egress_blocked": false,
+  "interfaces_disabled": false,
+  "zero_socket_attempts": false,
+  "evidence_files": [],
+  "target": {
+    "windows_build": null,
+    "cpu": null,
+    "ram_bytes": null
+  },
+  "note": "Template only. Never load as passed acceptance.",
+  "candidate_inventory_sha256": null,
+  "evidence_review": "NOT_REVIEWED"
+}

@@ -54,3 +54,37 @@ datasets/
 backend/models/whisper/
 backend/models/whisper/
 .claude/
+
+# ---- offline-prototype: commit source + docs + small evidence only ----
+# Rebuildable environments, caches, downloaded runtimes and build outputs
+# (multi-GB; several files exceed GitHub's 100 MB limit).
+offline-prototype/.venv/
+offline-prototype/export-env/
+offline-prototype/export-work/
+offline-prototype/wheelhouse/
+offline-prototype/tmp/
+offline-prototype/provisioning/
+offline-prototype/provisioning-manifest.json
+offline-prototype/packaging/target-run/payload/
+offline-prototype/packaging/target-run/pack-inventory.json
+offline-prototype/packaging/*.zip
+offline-prototype/packaging/**/*.zip
+# Model weights and binary tools (re-fetch per assets/source-assets.json)
+offline-prototype/assets/face/
+offline-prototype/assets/ecapa-source/
+offline-prototype/assets/linux-tools/
+offline-prototype/assets/vosk-model-small-en-us-0.15/
+offline-prototype/assets/*.zip
+offline-prototype/assets/*.onnx
+offline-prototype/evidence/export-dependencies.json
+# Generic heavy/binary types anywhere in the prototype
+offline-prototype/**/*.whl
+offline-prototype/**/*.onnx
+offline-prototype/**/*.ckpt
+offline-prototype/**/*.exe
+offline-prototype/**/*.dll
+offline-prototype/**/*.pyd
+offline-prototype/**/*.so
+offline-prototype/**/*.tar.gz
+offline-prototype/**/__pycache__/
+offline-prototype/**/.pytest_cache/

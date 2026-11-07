@@ -1,0 +1,162 @@
+Collecting certifi==2026.10.23 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 1))
+  Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+Collecting cffi==2.1.1 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 2))
+  Downloading cffi-2.1.1-cp312-cp312-win_amd64.whl.metadata (2.6 kB)
+Collecting charset-normalizer==3.5.2 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 3))
+  Downloading charset_normalizer-3.5.2-cp312-cp312-win_amd64.whl.metadata (47 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 47.3/47.3 kB 847.0 kB/s eta 0:00:00
+Collecting coloredlogs==15.0.1 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 4))
+  Downloading coloredlogs-15.0.1-py2.py3-none-any.whl.metadata (12 kB)
+Collecting cryptography==46.0.3 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 5))
+  Downloading cryptography-46.0.3-cp311-abi3-win_amd64.whl.metadata (5.7 kB)
+Collecting flatbuffers==25.12.19 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 6))
+  Downloading flatbuffers-25.12.19-py2.py3-none-any.whl.metadata (1.0 kB)
+Collecting humanfriendly==10.0 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 7))
+  Downloading humanfriendly-10.0-py2.py3-none-any.whl.metadata (9.2 kB)
+Collecting idna==3.20 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 8))
+  Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting ImageIO==2.37.3 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 9))
+  Downloading imageio-2.37.3-py3-none-any.whl.metadata (9.7 kB)
+Collecting insightface==1.0.1 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 10))
+  Downloading insightface-1.0.1-py3-none-any.whl.metadata (11 kB)
+Collecting lazy-loader==0.5 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 11))
+  Downloading lazy_loader-0.5-py3-none-any.whl.metadata (5.9 kB)
+Collecting ml_dtypes==0.5.4 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 12))
+  Downloading ml_dtypes-0.5.4-cp312-cp312-win_amd64.whl.metadata (9.2 kB)
+Collecting mpmath==1.3.0 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 13))
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting networkx==3.6.1 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 14))
+  Downloading networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
+Collecting numpy==2.4.6 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 15))
+  Downloading numpy-2.4.6-cp312-cp312-win_amd64.whl.metadata (6.6 kB)
+Collecting onnx==1.22.0 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 16))
+  Downloading onnx-1.22.0-cp312-abi3-win_amd64.whl.metadata (8.5 kB)
+Collecting onnxruntime==1.23.2 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 17))
+  Downloading onnxruntime-1.23.2-cp312-cp312-win_amd64.whl.metadata (5.3 kB)
+Collecting opencv-python==4.11.0.86 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 18))
+  Downloading opencv_python-4.11.0.86-cp37-abi3-win_amd64.whl.metadata (20 kB)
+Collecting packaging==26.3 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 19))
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pillow==12.3.0 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 20))
+  Downloading pillow-12.3.0-cp312-cp312-win_amd64.whl.metadata (9.3 kB)
+Collecting protobuf==7.36.2 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 21))
+  Downloading protobuf-7.36.2-cp310-abi3-win_amd64.whl.metadata (595 bytes)
+Collecting pycparser==3.12 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 22))
+  Downloading pycparser-3.12-py3-none-any.whl.metadata (9.7 kB)
+Collecting requests==2.34.2 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 23))
+  Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting scikit-image==0.26.0 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 24))
+  Downloading scikit_image-0.26.0-cp312-cp312-win_amd64.whl.metadata (15 kB)
+Collecting scipy==1.18.0 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 25))
+  Downloading scipy-1.18.0-cp312-cp312-win_amd64.whl.metadata (61 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.1/61.1 kB 4.6 MB/s eta 0:00:00
+Collecting sympy==1.14.0 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 26))
+  Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting tifffile==2026.6.1 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 27))
+  Downloading tifffile-2026.6.1-py3-none-any.whl.metadata (33 kB)
+Collecting tqdm==4.70.1 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 28))
+  Downloading tqdm-4.70.1-py3-none-any.whl.metadata (57 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.4/57.4 kB 6.7 MB/s eta 0:00:00
+Collecting typing_extensions==4.16.0 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 29))
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting urllib3==2.8.0 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 30))
+  Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting vosk==0.3.45 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 31))
+  Downloading vosk-0.3.45-py3-none-win_amd64.whl.metadata (1.8 kB)
+Collecting websockets==17.4 (from -r offline-prototype/provisioning/windows/requirements-windows.lock (line 32))
+  Downloading websockets-17.4-cp312-cp312-win_amd64.whl.metadata (6.5 kB)
+Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 135.1/135.1 kB 4.9 MB/s eta 0:00:00
+Downloading cffi-2.1.1-cp312-cp312-win_amd64.whl (185 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 185.9/185.9 kB 15.4 MB/s eta 0:00:00
+Downloading charset_normalizer-3.5.2-cp312-cp312-win_amd64.whl (207 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 207.5/207.5 kB 14.4 MB/s eta 0:00:00
+Downloading coloredlogs-15.0.1-py2.py3-none-any.whl (46 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 46.0/46.0 kB 6.9 MB/s eta 0:00:00
+Downloading cryptography-46.0.3-cp311-abi3-win_amd64.whl (3.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.5/3.5 MB 2.2 MB/s eta 0:00:00
+Downloading flatbuffers-25.12.19-py2.py3-none-any.whl (26 kB)
+Downloading humanfriendly-10.0-py2.py3-none-any.whl (86 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 86.8/86.8 kB 8.5 MB/s eta 0:00:00
+Downloading idna-3.20-py3-none-any.whl (69 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.6/69.6 kB 10.1 MB/s eta 0:00:00
+Downloading imageio-2.37.3-py3-none-any.whl (317 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 317.6/317.6 kB 4.0 MB/s eta 0:00:00
+Downloading insightface-1.0.1-py3-none-any.whl (762 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 762.2/762.2 kB 32.5 MB/s eta 0:00:00
+Downloading lazy_loader-0.5-py3-none-any.whl (8.0 kB)
+Downloading ml_dtypes-0.5.4-cp312-cp312-win_amd64.whl (212 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 212.2/212.2 kB 26.4 MB/s eta 0:00:00
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 7.3 MB/s eta 0:00:00
+Downloading networkx-3.6.1-py3-none-any.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 12.4 MB/s eta 0:00:00
+Downloading numpy-2.4.6-cp312-cp312-win_amd64.whl (12.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.3/12.3 MB 2.4 MB/s eta 0:00:00
+Downloading onnx-1.22.0-cp312-abi3-win_amd64.whl (17.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.2/17.2 MB 3.1 MB/s eta 0:00:00
+Downloading onnxruntime-1.23.2-cp312-cp312-win_amd64.whl (13.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.5/13.5 MB 1.4 MB/s eta 0:00:00
+Downloading opencv_python-4.11.0.86-cp37-abi3-win_amd64.whl (39.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 39.5/39.5 MB 6.0 MB/s eta 0:00:00
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 130.0/130.0 kB 6.7 MB/s eta 0:00:00
+Downloading pillow-12.3.0-cp312-cp312-win_amd64.whl (7.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.2/7.2 MB 7.6 MB/s eta 0:00:00
+Downloading protobuf-7.36.2-cp310-abi3-win_amd64.whl (456 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 456.5/456.5 kB 6.0 MB/s eta 0:00:00
+Downloading pycparser-3.12-py3-none-any.whl (62 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.6/62.6 kB 5.2 MB/s eta 0:00:00
+Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.1/73.1 kB 5.3 MB/s eta 0:00:00
+Downloading scikit_image-0.26.0-cp312-cp312-win_amd64.whl (11.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.9/11.9 MB 6.3 MB/s eta 0:00:00
+Downloading scipy-1.18.0-cp312-cp312-win_amd64.whl (36.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 36.6/36.6 MB 2.3 MB/s eta 0:00:00
+Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 2.2 MB/s eta 0:00:00
+Downloading tifffile-2026.6.1-py3-none-any.whl (267 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 267.1/267.1 kB 2.4 MB/s eta 0:00:00
+Downloading tqdm-4.70.1-py3-none-any.whl (80 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 80.2/80.2 kB 2.4 MB/s eta 0:00:00
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.6/45.6 kB 1.9 MB/s eta 0:00:00
+Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 135.7/135.7 kB 2.4 MB/s eta 0:00:00
+Downloading vosk-0.3.45-py3-none-win_amd64.whl (14.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.0/14.0 MB 3.9 MB/s eta 0:00:00
+Downloading websockets-17.4-cp312-cp312-win_amd64.whl (219 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 219.6/219.6 kB 3.9 MB/s eta 0:00:00
+Saved ./offline-prototype/provisioning/windows/wheels/certifi-2026.10.23-py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/cffi-2.1.1-cp312-cp312-win_amd64.whl
+Saved ./offline-prototype/provisioning/windows/wheels/charset_normalizer-3.5.2-cp312-cp312-win_amd64.whl
+Saved ./offline-prototype/provisioning/windows/wheels/coloredlogs-15.0.1-py2.py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/cryptography-46.0.3-cp311-abi3-win_amd64.whl
+Saved ./offline-prototype/provisioning/windows/wheels/flatbuffers-25.12.19-py2.py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/humanfriendly-10.0-py2.py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/idna-3.20-py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/imageio-2.37.3-py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/insightface-1.0.1-py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/lazy_loader-0.5-py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/ml_dtypes-0.5.4-cp312-cp312-win_amd64.whl
+Saved ./offline-prototype/provisioning/windows/wheels/mpmath-1.3.0-py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/networkx-3.6.1-py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/numpy-2.4.6-cp312-cp312-win_amd64.whl
+Saved ./offline-prototype/provisioning/windows/wheels/onnx-1.22.0-cp312-abi3-win_amd64.whl
+Saved ./offline-prototype/provisioning/windows/wheels/onnxruntime-1.23.2-cp312-cp312-win_amd64.whl
+Saved ./offline-prototype/provisioning/windows/wheels/opencv_python-4.11.0.86-cp37-abi3-win_amd64.whl
+Saved ./offline-prototype/provisioning/windows/wheels/packaging-26.3-py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/pillow-12.3.0-cp312-cp312-win_amd64.whl
+Saved ./offline-prototype/provisioning/windows/wheels/protobuf-7.36.2-cp310-abi3-win_amd64.whl
+Saved ./offline-prototype/provisioning/windows/wheels/pycparser-3.12-py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/requests-2.34.2-py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/scikit_image-0.26.0-cp312-cp312-win_amd64.whl
+Saved ./offline-prototype/provisioning/windows/wheels/scipy-1.18.0-cp312-cp312-win_amd64.whl
+Saved ./offline-prototype/provisioning/windows/wheels/sympy-1.14.0-py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/tifffile-2026.6.1-py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/tqdm-4.70.1-py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/typing_extensions-4.16.0-py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/urllib3-2.8.0-py3-none-any.whl
+Saved ./offline-prototype/provisioning/windows/wheels/vosk-0.3.45-py3-none-win_amd64.whl
+Saved ./offline-prototype/provisioning/windows/wheels/websockets-17.4-cp312-cp312-win_amd64.whl
+Successfully downloaded certifi cffi charset-normalizer coloredlogs cryptography flatbuffers humanfriendly idna ImageIO insightface lazy-loader ml_dtypes mpmath networkx numpy onnx onnxruntime opencv-python packaging pillow protobuf pycparser requests scikit-image scipy sympy tifffile tqdm typing_extensions urllib3 vosk websockets

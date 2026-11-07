@@ -1,0 +1,14 @@
+Looking in links: offline-prototype/wheelhouse
+Processing ./offline-prototype/wheelhouse/srt-3.5.3.tar.gz
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: srt
+  Building wheel for srt (pyproject.toml): started
+  Building wheel for srt (pyproject.toml): finished with status 'done'
+  Created wheel for srt: filename=srt-3.5.3-py3-none-any.whl size=22512 sha256=03ef58f5926fec6282c60d4f2fc8d5ac2db3079da010ec50bc43347cb2b28d3c
+  Stored in directory: /home/kanika/Multibiometric_Code/offline-prototype/tmp/windows-cache/wheels/11/d7/4f/cfce65207a65711765c2154ee23a972673e857ad3511ffbd52
+Successfully built srt

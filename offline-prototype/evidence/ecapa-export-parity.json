@@ -1,0 +1,23 @@
+{
+  "status": "SYNTHETIC_PARITY_ONLY_NOT_QUALIFIED",
+  "source_checkpoint_sha256": "0575cb64845e6b9a10db9bcb74d5ac32b326b8dc90352671d345e2ee3d0126a2",
+  "export_sha256": "efe97a745ac95d887430aa8d9341175d48dc65a22e6143fb8c12cb9b153de0a6",
+  "rows": [
+    {
+      "samples": 16000,
+      "pytorch_vs_real_dft_cosine": 1.0,
+      "source_vs_onnx_cosine": 0.9999999403953552
+    },
+    {
+      "samples": 32000,
+      "pytorch_vs_real_dft_cosine": 0.9999999403953552,
+      "source_vs_onnx_cosine": 1.0
+    },
+    {
+      "samples": 48000,
+      "pytorch_vs_real_dft_cosine": 1.0,
+      "source_vs_onnx_cosine": 1.0
+    }
+  ],
+  "limitations": "Synthetic random waveforms only. No genuine/impostor recordings, no near-threshold real-media parity, no Windows target result."
+}

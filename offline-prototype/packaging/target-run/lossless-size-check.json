@@ -1,0 +1,7 @@
+{
+  "format": "ZIP-LZMA",
+  "bytes": 288336577,
+  "budget_bytes": 300000000,
+  "remaining_before_windows_closure": 11663423,
+  "status": "PARTIAL_PAYLOAD_ONLY_NOT_INSTALLER"
+}

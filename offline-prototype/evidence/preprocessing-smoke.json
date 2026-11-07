@@ -1,0 +1,24 @@
+{
+  "status": "GENERATED_AUDIO_PARITY_PASS",
+  "rows": [
+    {
+      "source_rate": 16000,
+      "source_channels": 1,
+      "exact_array_equal": true,
+      "sample_count": 32000
+    },
+    {
+      "source_rate": 44100,
+      "source_channels": 2,
+      "exact_array_equal": true,
+      "sample_count": 32000
+    },
+    {
+      "source_rate": 48000,
+      "source_channels": 1,
+      "exact_array_equal": true,
+      "sample_count": 32000
+    }
+  ],
+  "limitations": "Same Linux ffmpeg binary; not Windows codec/capture or real-media parity. New enrollment remains distinct from v1."
+}

@@ -1,0 +1,26 @@
+{
+  "artifact": "windows-target-run.zip",
+  "sha256": "1559c08cc0ce7281ba1b3649ee06054bfb231253db2d9fbaf81d87e7843d6d27",
+  "bytes": 608646900,
+  "limit_bytes": 300000000,
+  "under_target": false,
+  "over_target_bytes": 308646900,
+  "breakdown": {
+    "application_and_run_pack": {
+      "raw_bytes": 47887233,
+      "compressed_bytes": 12843493
+    },
+    "models_and_codecs": {
+      "raw_bytes": 609725053,
+      "compressed_bytes": 404143714
+    },
+    "runtime": {
+      "raw_bytes": 587731315,
+      "compressed_bytes": 190454591
+    }
+  },
+  "candidate_inventory_sha256": "8aba9dedeb42b2dd5775bd4a8d11b487656aa8d7d762a3718b46f83d0d9409ec",
+  "status": "ASSEMBLED_UNVERIFIED_ON_TARGET",
+  "compression": "ZIP DEFLATE level 9",
+  "notes": "Complete offline install/run bundle, including Windows runtime/Tk/VC/native dependencies/models/codecs/scripts. No model substitution or quantization."
+}

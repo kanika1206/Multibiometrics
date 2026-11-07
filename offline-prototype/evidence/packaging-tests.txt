@@ -1,0 +1,43 @@
+test_corrupt (test_assets.AssetTests.test_corrupt) ... ok
+test_development_never_release (test_assets.AssetTests.test_development_never_release) ... ok
+test_escape (test_assets.AssetTests.test_escape) ... ok
+test_pinned_matchers (test_compatibility.Compatibility.test_pinned_matchers) ... ok
+test_cleanup_failure_never_accepts (test_continuation.Continuation.test_cleanup_failure_never_accepts) ... ok
+test_consent (test_continuation.Continuation.test_consent) ... ok
+test_content (test_continuation.Continuation.test_content) ... ok
+test_enrollment_content_lifecycle (test_continuation.Continuation.test_enrollment_content_lifecycle) ... ok
+test_failed_confirmation_does_not_activate (test_continuation.Continuation.test_failed_confirmation_does_not_activate) ... ok
+test_segment_limit (test_continuation.Continuation.test_segment_limit) ... ok
+test_segments (test_continuation.Continuation.test_segments) ... ok
+test_specific_error (test_continuation.Continuation.test_specific_error) ... ok
+test_timeout (test_continuation.Continuation.test_timeout) ... ok
+test_aggregate (test_core.Core.test_aggregate) ... ok
+test_asr (test_core.Core.test_asr) ... ok
+test_concurrency (test_core.Core.test_concurrency) ... ok
+test_expiry_and_backwards (test_core.Core.test_expiry_and_backwards) ... ok
+test_finish_expiry_and_suspend (test_core.Core.test_finish_expiry_and_suspend) ... ok
+test_missing_model (test_core.Core.test_missing_model) ... ok
+test_replay_and_storage (test_core.Core.test_replay_and_storage) ... ok
+test_restart (test_core.Core.test_restart) ... ok
+test_scores_and_invalid (test_core.Core.test_scores_and_invalid) ... ok
+test_service (test_core.Core.test_service) ... ok
+test_thresholds (test_core.Core.test_thresholds) ... ok
+test_truth_table (test_core.Core.test_truth_table) ... ok
+test_vault_atomic_replace (test_core.Core.test_vault_atomic_replace) ... ok
+test_vault_key_loss (test_core.Core.test_vault_key_loss) ... ok
+test_vault_tamper (test_core.Core.test_vault_tamper) ... ok
+test_process_death_boundaries (test_crash.CrashRecovery.test_process_death_boundaries) ... ok
+test_invalid (test_ipc.IPC.test_invalid) ... ok
+test_network_hook (test_ipc.IPC.test_network_hook) ... ok
+test_requests_import_has_no_socket_probe (test_ipc.IPC.test_requests_import_has_no_socket_probe) ... ok
+test_roundtrip (test_ipc.IPC.test_roundtrip) ... ok
+test_worker_missing_assets (test_ipc.IPC.test_worker_missing_assets) ... ok
+test_acceptance_binds_payload_and_all_conditions (test_packaging.PackagingTests.test_acceptance_binds_payload_and_all_conditions) ... ok
+test_qualified_label_without_target_proof_rejected (test_packaging.PackagingTests.test_qualified_label_without_target_proof_rejected) ... ok
+test_state_names_and_acl (test_packaging.PackagingTests.test_state_names_and_acl) ... ok
+test_symlink_state_rejected (test_packaging.PackagingTests.test_symlink_state_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 38 tests in 2.121s
+
+OK

@@ -1,0 +1,97 @@
+{
+  "status": "PASS",
+  "forbidden_entries": [],
+  "distributions": [
+    "certifi-2026.10.23.dist-info",
+    "cffi-2.1.1.dist-info",
+    "charset_normalizer-3.5.2.dist-info",
+    "colorama-0.4.6.dist-info",
+    "coloredlogs-15.0.1.dist-info",
+    "cryptography-46.0.3.dist-info",
+    "flatbuffers-25.12.19.dist-info",
+    "humanfriendly-10.0.dist-info",
+    "idna-3.20.dist-info",
+    "imageio-2.37.3.dist-info",
+    "insightface-1.0.1.dist-info",
+    "lazy_loader-0.5.dist-info",
+    "ml_dtypes-0.5.4.dist-info",
+    "mpmath-1.3.0.dist-info",
+    "networkx-3.6.1.dist-info",
+    "numpy-2.4.6.dist-info",
+    "onnx-1.22.0.dist-info",
+    "onnxruntime-1.23.2.dist-info",
+    "opencv_python-4.11.0.86.dist-info",
+    "packaging-26.3.dist-info",
+    "pillow-12.3.0.dist-info",
+    "protobuf-7.36.2.dist-info",
+    "pycparser-3.12.dist-info",
+    "pyreadline3-3.5.4.dist-info",
+    "requests-2.34.2.dist-info",
+    "scikit_image-0.26.0.dist-info",
+    "scipy-1.18.0.dist-info",
+    "srt-3.5.3.dist-info",
+    "sympy-1.14.0.dist-info",
+    "tifffile-2026.6.1.dist-info",
+    "tqdm-4.70.1.dist-info",
+    "typing_extensions-4.16.0.dist-info",
+    "urllib3-2.8.0.dist-info",
+    "vosk-0.3.45.dist-info",
+    "websockets-17.4.dist-info"
+  ],
+  "top_components": [
+    {
+      "component": "Face models (detector + recognizer)",
+      "compressed_bytes": 175905370,
+      "raw_bytes": 191307687
+    },
+    {
+      "component": "Windows FFmpeg + ffprobe",
+      "compressed_bytes": 108868516,
+      "raw_bytes": 263368163
+    },
+    {
+      "component": "ECAPA ONNX model",
+      "compressed_bytes": 78253792,
+      "raw_bytes": 84145149
+    },
+    {
+      "component": "Vosk ASR model",
+      "compressed_bytes": 41114357,
+      "raw_bytes": 70898967
+    },
+    {
+      "component": "opencv-python",
+      "compressed_bytes": 39274231,
+      "raw_bytes": 113498866
+    },
+    {
+      "component": "CPython standalone",
+      "compressed_bytes": 37694754,
+      "raw_bytes": 130165594
+    },
+    {
+      "component": "scipy",
+      "compressed_bytes": 31419521,
+      "raw_bytes": 90282837
+    },
+    {
+      "component": "Inventory metadata",
+      "compressed_bytes": 25194015,
+      "raw_bytes": 93241798
+    },
+    {
+      "component": "vosk",
+      "compressed_bytes": 13886925,
+      "raw_bytes": 54067351
+    },
+    {
+      "component": "onnxruntime",
+      "compressed_bytes": 12568999,
+      "raw_bytes": 35498281
+    }
+  ],
+  "archive_bytes": 608646900,
+  "archive_sha256": "1559c08cc0ce7281ba1b3649ee06054bfb231253db2d9fbaf81d87e7843d6d27",
+  "qualification": "STATIC_ONLY; Windows remains unverified",
+  "runtime_retained": "ONNX required by ArcFace onnx.load; numpy._pytesttester and scipy._lib._testutils are eagerly imported runtime API scaffolding, not pytest installation. WHEEL metadata is not the wheel build package."
+}

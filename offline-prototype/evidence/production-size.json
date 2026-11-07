@@ -1,0 +1,41 @@
+{
+  "status": "INCOMPLETE_PRODUCTION_INPUTS_NOT_INSTALLER",
+  "groups": {
+    "application": {
+      "bytes": 46676,
+      "deflated_bytes": 18842
+    },
+    "ecapa-waveform.onnx": {
+      "bytes": 84145149,
+      "deflated_bytes": 78253792
+    },
+    "face": {
+      "bytes": 191307687,
+      "deflated_bytes": 175905370
+    },
+    "vosk-model-small-en-us-0.15": {
+      "bytes": 70898967,
+      "deflated_bytes": 41114357
+    }
+  },
+  "archive_bytes": 295297309,
+  "installer_limit_bytes": 300000000,
+  "headroom_before_windows_dependencies_bytes": 4702691,
+  "missing": [
+    "Windows Python with Tk/Tcl and standard library",
+    "Windows inference/native dependency closure",
+    "Windows ffmpeg/ffprobe and their dependency closure",
+    "redistribution notices and installer overhead"
+  ],
+  "excludes": [
+    "export-env",
+    ".venv",
+    "wheelhouse",
+    "ECAPA training/source checkpoints",
+    "unused buffalo_l age/landmark models",
+    "Linux codecs",
+    "tests",
+    "participant data"
+  ],
+  "policy": "No selected inference model substituted or quantized. ZIP size is measured, not an estimate of a final installer."
+}

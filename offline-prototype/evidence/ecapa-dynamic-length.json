@@ -1,0 +1,26 @@
+{
+  "status": "SYNTHETIC_DYNAMIC_LENGTH_PASS",
+  "rows": [
+    {
+      "samples": 16001,
+      "cosine": 1.0,
+      "pass": true
+    },
+    {
+      "samples": 32137,
+      "cosine": 1.0,
+      "pass": true
+    },
+    {
+      "samples": 96001,
+      "cosine": 0.9999998211860657,
+      "pass": true
+    },
+    {
+      "samples": 320000,
+      "cosine": 0.9999999403953552,
+      "pass": true
+    }
+  ],
+  "limitations": "Generated signals, not real speakers; no target or FAR/FRR claim"
+}

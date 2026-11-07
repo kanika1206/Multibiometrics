@@ -1,0 +1,1686 @@
+{
+  "provisioning/windows/runtime": [
+    {
+      "path": "Lib/site-packages/insightface/commands/__init__.py",
+      "bytes": 315,
+      "sha256": "ce1d542c0866f92e87d089bc3dbbed4178663048125cc712d58f22d841dcb072"
+    },
+    {
+      "path": "Lib/site-packages/insightface/commands/insightface_cli.py",
+      "bytes": 724,
+      "sha256": "01a929548866f2c27d93d43cad443bf4eee2f0f63bded9353a03b0bb485b80ac"
+    },
+    {
+      "path": "Lib/site-packages/insightface/commands/model_download.py",
+      "bytes": 1236,
+      "sha256": "aca98fb95fa4c8dd0eff99e3dc7c3f515b7db783f2600c752a616eac90cf8bbf"
+    },
+    {
+      "path": "Lib/site-packages/insightface/commands/rec_add_mask_param.py",
+      "bytes": 3878,
+      "sha256": "fedbe8c955aed4e6ee9d1d21cafa1256496a9b6857d828a46007cef6b74345dd"
+    },
+    {
+      "path": "Lib/site-packages/cffi/recompiler.py",
+      "bytes": 65140,
+      "sha256": "4c9545d3b985cd819357ab33a76ccfac977674928737e781fd2ba22621a5f4ac"
+    },
+    {
+      "path": "Lib/site-packages/cffi/setuptools_ext.py",
+      "bytes": 9566,
+      "sha256": "a59ae74ea54290632abbc37123191d6c8b65eb981e84c3f52e8ada51d4fbfb85"
+    },
+    {
+      "path": "Lib/site-packages/cffi/vengine_cpy.py",
+      "bytes": 43030,
+      "sha256": "ad1a2e610e819650085cd8d91933d45b9e2b07de76aa2de0726d7a4965d628b7"
+    },
+    {
+      "path": "Lib/site-packages/cffi/vengine_gen.py",
+      "bytes": 26931,
+      "sha256": "67f2aa685eabe789f98b886341385975bfb50c14c48a69d4e32e04fcac520838"
+    },
+    {
+      "path": "Lib/site-packages/cffi/verifier.py",
+      "bytes": 11154,
+      "sha256": "c48cd5f220cc859d7eaa15f74515f80d6a36934ed6a5c271761840157023ae66"
+    },
+    {
+      "path": "Lib/site-packages/onnx/checker.cc",
+      "bytes": 56076,
+      "sha256": "67fe1c9965cf4a5566bbec9adb44fd40c6d2e2c83be8c55c159e1dba4461c3b8"
+    },
+    {
+      "path": "Lib/site-packages/onnx/checker.h",
+      "bytes": 7244,
+      "sha256": "a227e693e61cc55887198e3521b51a598f51fdd8e2ab915d011bcc47b6377579"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/array_ref.h",
+      "bytes": 6141,
+      "sha256": "ed0e7da73e61fdaa98540849a4b7c3f7f8cb595de64f88e0b42303de1af4b2f0"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/assertions.cc",
+      "bytes": 1472,
+      "sha256": "842a5315f0bc6cc90d1aa16a817ab9df4ee5127940275116d0b1f3ef1305639c"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/assertions.h",
+      "bytes": 3131,
+      "sha256": "e76894c5c81a5f9fb719923ea70d8b503849e06d10e38277a323a5bcbb23372f"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/common.h",
+      "bytes": 1788,
+      "sha256": "90645f295a12abc1ec01bd29149903b61dadeb1cb1d430a8755bbe7b6fe59e68"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/constants.h",
+      "bytes": 1598,
+      "sha256": "b1990e5c7b76cfec2bee9caae3b65a1bfd48bf6a63e6da53244b4c91882647a5"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/file_utils.h",
+      "bytes": 1248,
+      "sha256": "d4ddaf61703e265bf9e0c75f704ccb4a37b79def8055d3a4496fbde4b2554caa"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/graph_node_list.h",
+      "bytes": 5681,
+      "sha256": "dec4bc90e40f41196a5a11831c26e438f0d6469b8e4c46a4c4b994c3d8b1b8eb"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/interned_strings.cc",
+      "bytes": 2095,
+      "sha256": "009a031c7591129f6a5666bdf375025f71ee9007b0a3556418ec0d6f602ff25e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/interned_strings.h",
+      "bytes": 8876,
+      "sha256": "c3d7a3a148b05bc0daa15dd508af686acc31d14570079c47d66fde285b2e108b"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/ir.h",
+      "bytes": 45177,
+      "sha256": "7b357ff67ffc10771d8fd3684cd57727f141eb29cd32427cbcc1ee927d1df02e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/ir_pb_converter.cc",
+      "bytes": 27283,
+      "sha256": "b7cb14e5a153f98ece156800595a000a452e8ba70f3c7c94de3b7c809113c69c"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/ir_pb_converter.h",
+      "bytes": 1330,
+      "sha256": "415d1c0d98ea2bd4a86651f549a271f6b1d26399504190594802c3bf66462241"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/model_helpers.cc",
+      "bytes": 990,
+      "sha256": "b89f9442812e84094de51b7cd5bbf436fa7d49ef18953258e704f81f4e96abbc"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/model_helpers.h",
+      "bytes": 661,
+      "sha256": "6b950331027282018a41819ad8964746d305f617247b6cd74614a387f7a2623f"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/path.h",
+      "bytes": 2836,
+      "sha256": "232d812fead101d6d4131e464413c53a172d9b1cc9ec5d85daca48c748e90414"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/platform_helpers.h",
+      "bytes": 395,
+      "sha256": "9c155e6a955ea5f74fbcbbed213bbd8d6ceac8cb6a882acc19b192f1ef5cc166"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/proto_util.h",
+      "bytes": 1487,
+      "sha256": "42c0058f4a2ff282e35dea25a979e049a7d58604c1395be4c5b8cbff40a6b154"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/safe_math.h",
+      "bytes": 2626,
+      "sha256": "e4d62130517b7fe7176cf73eb91612c1d8cd82d4e2f26e6cacc46287a3c22ff2"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/scoped_resource.h",
+      "bytes": 1948,
+      "sha256": "52c92b9e621b81a04ea2f5d68309aa26198e891bed5907143fe9435b5ef52b54"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/status.cc",
+      "bytes": 2049,
+      "sha256": "92aa35b15cb8e8887e6c5e9e090683872324cdb1e652ad479d85dacde50a32bb"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/status.h",
+      "bytes": 2227,
+      "sha256": "7967285527ddce09edfa42444667ed35749232dc39a313ed742506674a2af653"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/tensor.h",
+      "bytes": 6335,
+      "sha256": "638252ee1206cdaa2e9629119a9e15dad7a74ddd5dad266120ae9f80f705f427"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/visitor.h",
+      "bytes": 3069,
+      "sha256": "817f154e924505a735999706f7339cb264ad290de44ba73d7a90ec1db389afaa"
+    },
+    {
+      "path": "Lib/site-packages/onnx/cpp2py_export.cc",
+      "bytes": 41995,
+      "sha256": "443393ec66403f50c8cf66177a999586aeeb9a64264f3351bc9b976fc77d65a6"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/attr_proto_util.cc",
+      "bytes": 3534,
+      "sha256": "1c79a5748b6dd31e82dcd08c3fc24d244a47e0c8e005471e849a370589b09b2e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/attr_proto_util.h",
+      "bytes": 2134,
+      "sha256": "691514d6542c75b318b57fa6411dbbd5fb8bd1b331af28b24ef8a85f7224541d"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/controlflow/defs.cc",
+      "bytes": 8754,
+      "sha256": "79f19b3e350d42f41b7ba1d2926c0fa7ad7db8a8d7b297d4efad2d898193c032"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/controlflow/old.cc",
+      "bytes": 118401,
+      "sha256": "1ddade9574add4d086fab04c5b8660209b29d924162ef2a3e520ff064cafef3a"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/controlflow/utils.cc",
+      "bytes": 13938,
+      "sha256": "07cb4f3e719dd9162eda975ba99e2a81e0295e8bd62d0caa7212a4aab8bd517d"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/controlflow/utils.h",
+      "bytes": 509,
+      "sha256": "94287ee021c2637f25c12c4542528e1f7ad58cb83a42c22514c01614a7a215b4"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/data_propagators.h",
+      "bytes": 2630,
+      "sha256": "166d7e3a48c0c4fb7b574202fdf4a13f00e831bb1d5054090cd1d7097e4de6cd"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/data_type_utils.cc",
+      "bytes": 13749,
+      "sha256": "0ae9129320f44955300392b02298a00691393fe94c7d4217cb9587144815025f"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/data_type_utils.h",
+      "bytes": 2534,
+      "sha256": "3902ae2e47e42a3861478ca1d449d50a6c70dc6dca4ff6789757ca1477b65b7f"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/doc_strings.cc",
+      "bytes": 58193,
+      "sha256": "d501dc81ca7e288b7d3c8e18114262e23b09847d9209f01bbb6ab0ecb0343667"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/doc_strings.h",
+      "bytes": 3337,
+      "sha256": "c3376b15dedd07d130329df5c9116f1eb90819506345697cb22d40ba0cf22c0c"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/function.cc",
+      "bytes": 7176,
+      "sha256": "34a7449523120bfae075d7b3e6453fa14f60b2a09755b968e26a9b6d32a64aeb"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/function.h",
+      "bytes": 8741,
+      "sha256": "c8e193fb9e45f92601165c26a1933d0ec86a788c63d66dc52076666adcbe9765"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/generator/defs.cc",
+      "bytes": 24873,
+      "sha256": "0412c03c17ee78cf5acce9af238efb232abe3e875eff1c7bb76f2464df7f340b"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/generator/old.cc",
+      "bytes": 45327,
+      "sha256": "1b5fadd70affc65f24adadd36e3ba5627ff72ac8f9752f0b3ac10cd48c37338e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/generator/utils.cc",
+      "bytes": 3875,
+      "sha256": "56be3f7dbd17aa35fea6d99afbc618e10dc69c6680a4a4f10e100ff2da24d782"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/generator/utils.h",
+      "bytes": 984,
+      "sha256": "5baf57962d7c5c9884ddd2da3a99163954830cbb6afd9d08c5b796b168aefb21"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/image/defs.cc",
+      "bytes": 2828,
+      "sha256": "253b7fbf8ca30650e435ee3d5793f48dc9f5f8778397b015f73ae35c330596b6"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/logical/defs.cc",
+      "bytes": 12127,
+      "sha256": "2b2f7a356e4d1f5bb7b7f347f099df823d5adf2ddb74492c59e4155841e808d2"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/logical/old.cc",
+      "bytes": 10030,
+      "sha256": "40e8eaa9df194c1d6e43f8c26ebdd33589d82e6c0c820e2a9547d9e8dd6ff8ab"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/math/defs.cc",
+      "bytes": 130891,
+      "sha256": "0c07da544684790f66080feef0070731993edb20dc0d80178dfc6fe7f22f87f7"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/math/old.cc",
+      "bytes": 150564,
+      "sha256": "2a0dc2f865c7533acea7fabee2e62b7862773f89b3b0e30956ceeb9a5f3ebfc9"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/math/utils.cc",
+      "bytes": 11768,
+      "sha256": "f23cba00c98546bd385275f962396aa151b7c95b3a8aa4f15081643d260e0483"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/math/utils.h",
+      "bytes": 1907,
+      "sha256": "2cb99ab780fdf5518fbf80cc6bfc350ac5c58ce2439a50d4a87703a9ba50443a"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/nn/defs.cc",
+      "bytes": 226391,
+      "sha256": "8dfa25896c673ab97d0cd777d611447a4182a4099086ef49076d58c495697423"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/nn/old.cc",
+      "bytes": 201810,
+      "sha256": "95b8560f8272087a8c32e996cd8511cbf894221cc9a0bfad764ad8b074bf940a"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/nn/utils.cc",
+      "bytes": 10776,
+      "sha256": "eefb37c5847f419c9beeecabf99967f7955b1b4430296f85f3bd3b7d64a69c14"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/nn/utils.h",
+      "bytes": 973,
+      "sha256": "e82bec9cc2b608f14f09ebe23bc6690a216482e56eb8f91a8e58372a97e47617"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/object_detection/defs.cc",
+      "bytes": 8130,
+      "sha256": "785514d031f813df3794f35d1a717afa7a421bc916a708a08784c581c76b37ef"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/object_detection/old.cc",
+      "bytes": 11539,
+      "sha256": "a98210387b59f2f9c3a6acef9797034d10c3e5c996651efdf776b982b2256ee5"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/operator_sets.h",
+      "bytes": 99022,
+      "sha256": "5a2fa171a47fe19154462e93f74e5a53fe0d53cd62c4610ec9c8d949bd7c91c1"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/operator_sets_ml.h",
+      "bytes": 5223,
+      "sha256": "54accd4356d182e72a379f4acf9d4e47217d6beeb451d1954d8da0ac3970ddab"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/operator_sets_preview.h",
+      "bytes": 1484,
+      "sha256": "96e7afcac5217987892e1c9207cacee4210bf9f4c9d16d356d73e080770df9ee"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/operator_sets_training.h",
+      "bytes": 573,
+      "sha256": "e7b5c4f24531be286ef8134808d9170b94fdf00abcee7e00387361e1fce48bc8"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/optional/defs.cc",
+      "bytes": 6735,
+      "sha256": "4d00dd0dc3920e9926046191a52eb1eb5f68c38fe16e70d02d4c448cab98a2d8"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/optional/old.cc",
+      "bytes": 3515,
+      "sha256": "156d5576a46f9bbf8d1c7662ee299b79ff905cfd9931498e6baf556da8c334e2"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/parser.cc",
+      "bytes": 31452,
+      "sha256": "1dc478f6a653efde6cc04be9db42a86c0d69f5372f98238f26fcccc25a9fc0fc"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/parser.h",
+      "bytes": 15349,
+      "sha256": "9f003d4df259629ef0be9f40bfa3a2db3b6aa6db290ddd2505804211ba58e72d"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/preview/defs.cc",
+      "bytes": 21557,
+      "sha256": "ce07a68649cf3e162d95025bd20b47c43c0f4088595007270d62c71ed48ada09"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/printer.cc",
+      "bytes": 15337,
+      "sha256": "6065b8029e2228a9504c9d77d6da8467fbafe564854c495ecc79c357a20003bd"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/printer.h",
+      "bytes": 1474,
+      "sha256": "e255c5ff46c33a3a059d5c3f1ef7f9c6a24a87454869b85631668cd66f730cd9"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/quantization/defs.cc",
+      "bytes": 14738,
+      "sha256": "22a8b5976246126fb1db6e69d714741b1e4b7b8259647f0c1870200539c6bf86"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/quantization/old.cc",
+      "bytes": 45810,
+      "sha256": "e1f74bc964d89b8c3d4a656e0e2e0518ae7bf7a3ee03c1805fd52aeddc2b4f90"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/reduction/defs.cc",
+      "bytes": 6653,
+      "sha256": "2566ce22ebafb5a670a8a1b65b234f17d303b8131654d05b74d84292d48e9c32"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/reduction/old.cc",
+      "bytes": 19668,
+      "sha256": "4d5a22d8efae2a387e31c53b335fa0846deb2c5667672ff8d5ab44921d65dd81"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/reduction/utils.cc",
+      "bytes": 7050,
+      "sha256": "6c3f648f8d0391c8ea4f8aeb25b70fcef8b0be0ff2e02d97e1fbf0f1e1c162e4"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/reduction/utils.h",
+      "bytes": 1607,
+      "sha256": "32c5f4a86903815f053caa6b7abe32984eea7c5b0f91a20295185ef3ff6ed86e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/rnn/defs.cc",
+      "bytes": 14610,
+      "sha256": "f3779a94a4b373e10438e6117a1e108d1536d59db9aaaff8d26962de22c54f12"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/rnn/old.cc",
+      "bytes": 53203,
+      "sha256": "b08e008284e9e094859e95e1fc74c571b827e0d5a135211968cec30f9b72e6b3"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/schema.cc",
+      "bytes": 67555,
+      "sha256": "001ba0761a322c62cedd7daf5fb79fe5ff07e643f660147f70cc68431eb23b3b"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/schema.h",
+      "bytes": 56994,
+      "sha256": "c0e88b9802b4cb945ece8980b47e7f83ae6a3fe43bbc2d33c48d652a8a47d9a2"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/sequence/defs.cc",
+      "bytes": 27590,
+      "sha256": "18cbdae735a0bfbb35cd802e4537b91db5cab34a99036bcf8d320b322bdf4e7a"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/sequence/old.cc",
+      "bytes": 468,
+      "sha256": "72280bbd3668676c20e4ef87c921fa3235a612f4867d8174d8ecf2b5d3eae8eb"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/sequence/utils.cc",
+      "bytes": 8555,
+      "sha256": "3b3418efb6c2376cd40ed8594fb0a408b89b14d13faa0c06903c7c990418614a"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/sequence/utils.h",
+      "bytes": 607,
+      "sha256": "932cceb16bac515fb32deeed6e633a4d0f2bcaf6a73bc2b5ce67fe22918778e1"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/shape_inference.cc",
+      "bytes": 25266,
+      "sha256": "0f309a99f33b576cf59fa654f103cac3058acf34515d81ba7d3c476cdd2051a5"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/shape_inference.h",
+      "bytes": 40286,
+      "sha256": "3a0a40e977c10ca7d9b461a77a033c584cd31ae284da7e92e637a21df3c6aa31"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/tensor/defs.cc",
+      "bytes": 167189,
+      "sha256": "729d9d615395198c57c18157a450d65261ed4f929b949b98f81e39239775a561"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/tensor/old.cc",
+      "bytes": 347024,
+      "sha256": "68547bf7247276fe913cad638bd27fbc9b973f4d1a00073258367079e5f3ee40"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/tensor/utils.cc",
+      "bytes": 19640,
+      "sha256": "ddf24e678dec2a8a5bbbd13c25711413efbb516f6c3c38c2a5cf046696d589fc"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/tensor/utils.h",
+      "bytes": 1908,
+      "sha256": "049f40c79cfa816a390ac6e5e57165b2331443d1a12aef3f9b7f832afe4a7b2a"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/tensor_proto_util.cc",
+      "bytes": 13656,
+      "sha256": "388fce03520c9ee4ab2b5848f9763e4b4622d592154652e12c0658bf53dfbad2"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/tensor_proto_util.h",
+      "bytes": 460,
+      "sha256": "4a2fd47d3834e21999bfea0982c4978e3b6a99f2d7a6db88a9c15d599cffa662"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/tensor_util.cc",
+      "bytes": 3551,
+      "sha256": "20a97775edf94bb9c5d245be08c0406391161d29ef8f50947250c68b36f29a8f"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/tensor_util.h",
+      "bytes": 297,
+      "sha256": "2b21f5ea94640c71ae17c8578942922508c38f5e2685c9814ee1a62e66f01af6"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/text/defs.cc",
+      "bytes": 10666,
+      "sha256": "c3508d37789f2054cfcfed556aaaad5efd1779a595555080ca5ca65feb0e2025"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/traditionalml/defs.cc",
+      "bytes": 64754,
+      "sha256": "55dc3cb944e665290f6ce8d6a737013e257dae46daba609d9c3f53f7e0bb3736"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/traditionalml/old.cc",
+      "bytes": 34602,
+      "sha256": "9eaa9b2a49af1eb4feb48776d586a569fc42e8fbd20ce497d804005900ae5b4e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/traditionalml/utils.h",
+      "bytes": 1055,
+      "sha256": "25f874765e898b9320faa2f532c53cf4bf22df3a8ec8e6ed325f02181708ff6e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/training/defs.cc",
+      "bytes": 28497,
+      "sha256": "c2c5d8bad137c2eb7c346121621465a163709379cc9cb82ffe39dfa3bd4e00dc"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/type_builders.h",
+      "bytes": 5025,
+      "sha256": "f2b9527da76227c8029851d04445e0685d1d06c459e5df691c82eed0d8b221f3"
+    },
+    {
+      "path": "Lib/site-packages/onnx/inliner/inliner.cc",
+      "bytes": 28350,
+      "sha256": "0e1b5f5197b3485c1f89703aaba1a8b202d0dbe0e1ecb221f21343e287c29f2e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/inliner/inliner.h",
+      "bytes": 5750,
+      "sha256": "ab67c2bc58c2512dfc3a5e10feef2fd465572a577572c355121990a80a5b6a02"
+    },
+    {
+      "path": "Lib/site-packages/onnx/onnx-operators_pb.h",
+      "bytes": 241,
+      "sha256": "39cf286b1abef46118394d430059a68064a0e823511903dd81a66b57d3accf42"
+    },
+    {
+      "path": "Lib/site-packages/onnx/onnx_pb.h",
+      "bytes": 1799,
+      "sha256": "8f2c47d7a28ae891b70dfd3e0198954318aee240529bedc0d8b1f8d9a2be87d3"
+    },
+    {
+      "path": "Lib/site-packages/onnx/proto_utils.h",
+      "bytes": 2537,
+      "sha256": "9963f4097c2753c125440efeddae9adf0845af4c5e2b7d5d5ee17c8274450507"
+    },
+    {
+      "path": "Lib/site-packages/onnx/py_utils.h",
+      "bytes": 550,
+      "sha256": "cdc93a2e64bafe5fccdc837deac7ffaf4a4e7b6ad92cd25e55cc5576e3116af5"
+    },
+    {
+      "path": "Lib/site-packages/onnx/shape_inference/attribute_binder.h",
+      "bytes": 2503,
+      "sha256": "b3798220738951541e73c2bdacc5fba729627ef63d488c6a30e55ec098cbc4ba"
+    },
+    {
+      "path": "Lib/site-packages/onnx/shape_inference/implementation.cc",
+      "bytes": 46218,
+      "sha256": "774b9542dcf9cfc2f88d4518954b4cb1ca3a0c3867eb23f6ee1652ef06571605"
+    },
+    {
+      "path": "Lib/site-packages/onnx/shape_inference/implementation.h",
+      "bytes": 21366,
+      "sha256": "8c9f3552111efa83af78c8b4ea37e6b338a4113a297b499fc4374eb83275e712"
+    },
+    {
+      "path": "Lib/site-packages/onnx/string_utils.h",
+      "bytes": 1022,
+      "sha256": "d9b772503062af7fd2603b6ed6c51c464ec094434f1f443ded570352ea78be32"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/BaseConverter.h",
+      "bytes": 3765,
+      "sha256": "34ab6e7bf773581fbf6dce8bbe7de8ca29948592c79fbaa00773d86469d7f26e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/Attention_24_23.h",
+      "bytes": 1346,
+      "sha256": "390bb6dc633930a31828aafd34047da7963f417f0e5a9cb2ba0c12f5951042e2"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/adapter.h",
+      "bytes": 1921,
+      "sha256": "93a8244cd582add480f5bc31142442827a2e06c5f7bea440d9056202cfcf6021"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/axes_attribute_to_input.h",
+      "bytes": 1356,
+      "sha256": "2c11334397cace4507621fc204e78a8af88dfa1967b1c9a255badf6ea015fb84"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/axes_input_to_attribute.h",
+      "bytes": 2069,
+      "sha256": "70aed1a277139b27ca9661fd32841875dd107a00c5278c411b9cb864dca12187"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/axis_attribute_to_input.h",
+      "bytes": 2086,
+      "sha256": "13a21e76a8ac05f59e1abf2df2753a25cc02571f8ba8efda229c992b359450c0"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/axis_input_to_attribute.h",
+      "bytes": 2992,
+      "sha256": "bcb6b845ac6b09cd133b49e1e3a19f1a7b270b37b7bbd76c5d5705d08ea4130d"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/batch_normalization_13_14.h",
+      "bytes": 901,
+      "sha256": "1c894862d62de71418d346b0e5f99338fee6c5c76c3114ad6631fef9b256feed"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/broadcast_backward_compatibility.h",
+      "bytes": 2336,
+      "sha256": "10d415b8d268cefef45ea40c555b5d87f465b723da508548eb3975419c75d391"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/broadcast_forward_compatibility.h",
+      "bytes": 3412,
+      "sha256": "0fbe2ca23650174d0dc815c0927cccb52cb18258a6c9490da996ba9798004c5d"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/cast_9_8.h",
+      "bytes": 1006,
+      "sha256": "1ab7b3be37255f785689c495c5af455cd84d7265fd832addff0668669daa017d"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/clip_10_11.h",
+      "bytes": 1659,
+      "sha256": "2d8dbbfc4695112d0261124f16732187f9edb9d1fac75b2cfa3c6ecad55681cf"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/compatible.h",
+      "bytes": 732,
+      "sha256": "07585b8aa90f36cc3ad604e82453fdd2bf17e85e7c11f07216f2153b9705c0a7"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/dropout_11_12.h",
+      "bytes": 1277,
+      "sha256": "133078be92efd0c99d3eb846773a3cf0490ea05828a711e7f331e1b6653d0fc0"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/extend_supported_types.h",
+      "bytes": 3952,
+      "sha256": "c0b01d1aacf9bc3769ea3269f5b924c26ac5892d8508888cd39e6af8a4a8f458"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/gemm_6_7.h",
+      "bytes": 1883,
+      "sha256": "74c0499882cd81e648451b803402e50e27e4a6a0753b139fae2d1e289574d266"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/gemm_7_6.h",
+      "bytes": 2205,
+      "sha256": "27f19480e00dba25273e44289a790285dca9d5181b365902071fb35d4664bdb3"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/gridsample_19_20.h",
+      "bytes": 994,
+      "sha256": "a6c3ea55549377f0d321c4b18b736d5b569346e48d301ee6c2d704063109c52b"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/group_normalization_20_21.h",
+      "bytes": 4665,
+      "sha256": "ec68228a27a9477777d118aa1c965c8573b8300500c3e11e09851b43ec1a7374"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/maxpool_8_7.h",
+      "bytes": 986,
+      "sha256": "9eb17febad3a37464a73da65ac9cdd53b2fa512ba990d634491a3595efb250bc"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/no_previous_version.h",
+      "bytes": 839,
+      "sha256": "78dcb2b8eaa3f221dbba3f2588a33f8be76f5cea73242e0021fdbbb0ede81a7e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/pad_10_11.h",
+      "bytes": 1787,
+      "sha256": "d1d04786010d6b2fc2e761bf4208102deec37a9653f3450408be2ceea57bd858"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/q_dq_21_20.h",
+      "bytes": 2807,
+      "sha256": "0e05c0caa3e967205fae07dade0ab31d4b01e9b8e5e4ec1f428a9e5f22a76e86"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/range_27_26.h",
+      "bytes": 1930,
+      "sha256": "91862bee42c2b81fabc88fdbfcc2578ea0ed221e082b77556d295140c96cf742"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/remove_consumed_inputs.h",
+      "bytes": 800,
+      "sha256": "05218f3983283e6508b1b838bead3cbf79214f837919d311a835897ea940715f"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/reshape_4_5.h",
+      "bytes": 1506,
+      "sha256": "ac742e3393c747234f650b2b0c269f2d567b296f1783748b36c26c0fa1d04e60"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/reshape_5_4.h",
+      "bytes": 2168,
+      "sha256": "5269903d29b5d1efbcdf5031e2a8038377a2f7f64af5290681fe95838456459b"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/resize_10_11.h",
+      "bytes": 1501,
+      "sha256": "7006ab1cd72ec3a172a9828f4580133726ce01d78e244495f2c320351c19f74b"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/scan_8_9.h",
+      "bytes": 1810,
+      "sha256": "f780f70c128d19e710ded069f6cac14a69719394a6a2c4e17aac713071ece431"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/scan_9_8.h",
+      "bytes": 2989,
+      "sha256": "56cba4b0aaeb8f1b46cc2310ddaeddeacbc80a2e6042804ab648439f3ed13abb"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/scatter_10_11.h",
+      "bytes": 1419,
+      "sha256": "36f4f8d10fd20ea5a4fd9d09dc8380f731680c76c67a3129016ea5793d5f26ae"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/scatter_16_15.h",
+      "bytes": 2053,
+      "sha256": "65cb2ec5d1df09a80e711656d1a0d54bcfb06858d4b137be91cf904796cd5cc3"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/scatter_18_17.h",
+      "bytes": 1045,
+      "sha256": "72a22ae710326ca83cd8710d138dab09b32b26496be1c5481fa93fa96f512336"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/slice_9_10.h",
+      "bytes": 1555,
+      "sha256": "f1c80880b85d78f04ad94f64da6febeb17632a62adb3ae4fd2d6773861ded099"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/softmax_12_13.h",
+      "bytes": 2990,
+      "sha256": "290c2aec7449078d69a909f534c17cdb1df712ef7a546cf2c27fa0df76f9c057"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/softmax_13_12.h",
+      "bytes": 2286,
+      "sha256": "296a5377e39eafeea7e5c33917b7ddc74d30e04e8bc838712474010edffb9f57"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/split_12_13.h",
+      "bytes": 1249,
+      "sha256": "e66ac43cb98b8b973c80032a92f6809cbbc07cdc9e7ab539c72f0024e3404ebc"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/split_13_12.h",
+      "bytes": 1991,
+      "sha256": "421ab36c6f7993497cf4a684578cc92e142548b230ce6e99e7f5a92b3849e049"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/split_17_18.h",
+      "bytes": 1054,
+      "sha256": "d2f4e29b9d2094401ea9c08ec86779252a9e2f460bf29effb2333d0cafaa26b0"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/sum_8_7.h",
+      "bytes": 1133,
+      "sha256": "ba5578563c4fa48014efe281bf9b63cf60316df1765da3e5baeabf274bb1eaf4"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/topk_9_10.h",
+      "bytes": 1105,
+      "sha256": "08106d8b5ec778d874275a195e63277d29107146351c4b0f579d5decef1bed80"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/transformers.h",
+      "bytes": 2691,
+      "sha256": "35f2bc655074674a319258e7144f5762276fdde9e03f5a9caef7bb970e1e62d7"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/type_restriction.h",
+      "bytes": 1825,
+      "sha256": "e44201cac73eb25b265cecc120f3f689556e6672946beb024a1790ee7b6f8f51"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/upsample_6_7.h",
+      "bytes": 1653,
+      "sha256": "bd678b674a43e16cec093bf5072adf17ca372d17298dd0bc33ceef0f03a1df88"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/upsample_8_9.h",
+      "bytes": 1358,
+      "sha256": "375f2d3087fec24a4828ca2e769b2bc5b3d8ab2020b3e5a71b6f201f0722f5ce"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/upsample_9_10.h",
+      "bytes": 1288,
+      "sha256": "4ccd12b691d81ddca01027af8addb329748a7d18771929b7add6cd9b4bad8101"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/upsample_9_8.h",
+      "bytes": 2573,
+      "sha256": "c804f695f39ed213c41772bea44efc25234cf3343cd0e0e4f1fb04e18abe827f"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/convert.cc",
+      "bytes": 5664,
+      "sha256": "5bad417d7bfd5d817bd8e7646cd2237efb9dfa7bc930004048bb14109e186527"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/convert.h",
+      "bytes": 75380,
+      "sha256": "d8dbb003f8dfd2a2b63237fc4c70954df180845c67702442de5b3a604b54930e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/helper.cc",
+      "bytes": 2778,
+      "sha256": "af9dc1137dc2033104590fce85741856949705b84cab11df3adbed0876b48691"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/helper.h",
+      "bytes": 1631,
+      "sha256": "c38041fa8475025199b50ab40ac8c61a3a93c8e45f7dbfec3c654b019f87d352"
+    },
+    {
+      "path": "Lib/site-packages/sympy/utilities/pytest.py",
+      "bytes": 440,
+      "sha256": "89fa397e4390f781ca5e3cbf53ffe62c54a884d4463f67edf19e0fe60022e32c"
+    }
+  ],
+  "packaging/target-run/payload/runtime": [
+    {
+      "path": "Lib/site-packages/insightface/commands/__init__.py",
+      "bytes": 315,
+      "sha256": "ce1d542c0866f92e87d089bc3dbbed4178663048125cc712d58f22d841dcb072"
+    },
+    {
+      "path": "Lib/site-packages/insightface/commands/insightface_cli.py",
+      "bytes": 724,
+      "sha256": "01a929548866f2c27d93d43cad443bf4eee2f0f63bded9353a03b0bb485b80ac"
+    },
+    {
+      "path": "Lib/site-packages/insightface/commands/model_download.py",
+      "bytes": 1236,
+      "sha256": "aca98fb95fa4c8dd0eff99e3dc7c3f515b7db783f2600c752a616eac90cf8bbf"
+    },
+    {
+      "path": "Lib/site-packages/insightface/commands/rec_add_mask_param.py",
+      "bytes": 3878,
+      "sha256": "fedbe8c955aed4e6ee9d1d21cafa1256496a9b6857d828a46007cef6b74345dd"
+    },
+    {
+      "path": "Lib/site-packages/cffi/recompiler.py",
+      "bytes": 65140,
+      "sha256": "4c9545d3b985cd819357ab33a76ccfac977674928737e781fd2ba22621a5f4ac"
+    },
+    {
+      "path": "Lib/site-packages/cffi/setuptools_ext.py",
+      "bytes": 9566,
+      "sha256": "a59ae74ea54290632abbc37123191d6c8b65eb981e84c3f52e8ada51d4fbfb85"
+    },
+    {
+      "path": "Lib/site-packages/cffi/vengine_cpy.py",
+      "bytes": 43030,
+      "sha256": "ad1a2e610e819650085cd8d91933d45b9e2b07de76aa2de0726d7a4965d628b7"
+    },
+    {
+      "path": "Lib/site-packages/cffi/vengine_gen.py",
+      "bytes": 26931,
+      "sha256": "67f2aa685eabe789f98b886341385975bfb50c14c48a69d4e32e04fcac520838"
+    },
+    {
+      "path": "Lib/site-packages/cffi/verifier.py",
+      "bytes": 11154,
+      "sha256": "c48cd5f220cc859d7eaa15f74515f80d6a36934ed6a5c271761840157023ae66"
+    },
+    {
+      "path": "Lib/site-packages/onnx/checker.cc",
+      "bytes": 56076,
+      "sha256": "67fe1c9965cf4a5566bbec9adb44fd40c6d2e2c83be8c55c159e1dba4461c3b8"
+    },
+    {
+      "path": "Lib/site-packages/onnx/checker.h",
+      "bytes": 7244,
+      "sha256": "a227e693e61cc55887198e3521b51a598f51fdd8e2ab915d011bcc47b6377579"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/array_ref.h",
+      "bytes": 6141,
+      "sha256": "ed0e7da73e61fdaa98540849a4b7c3f7f8cb595de64f88e0b42303de1af4b2f0"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/assertions.cc",
+      "bytes": 1472,
+      "sha256": "842a5315f0bc6cc90d1aa16a817ab9df4ee5127940275116d0b1f3ef1305639c"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/assertions.h",
+      "bytes": 3131,
+      "sha256": "e76894c5c81a5f9fb719923ea70d8b503849e06d10e38277a323a5bcbb23372f"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/common.h",
+      "bytes": 1788,
+      "sha256": "90645f295a12abc1ec01bd29149903b61dadeb1cb1d430a8755bbe7b6fe59e68"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/constants.h",
+      "bytes": 1598,
+      "sha256": "b1990e5c7b76cfec2bee9caae3b65a1bfd48bf6a63e6da53244b4c91882647a5"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/file_utils.h",
+      "bytes": 1248,
+      "sha256": "d4ddaf61703e265bf9e0c75f704ccb4a37b79def8055d3a4496fbde4b2554caa"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/graph_node_list.h",
+      "bytes": 5681,
+      "sha256": "dec4bc90e40f41196a5a11831c26e438f0d6469b8e4c46a4c4b994c3d8b1b8eb"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/interned_strings.cc",
+      "bytes": 2095,
+      "sha256": "009a031c7591129f6a5666bdf375025f71ee9007b0a3556418ec0d6f602ff25e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/interned_strings.h",
+      "bytes": 8876,
+      "sha256": "c3d7a3a148b05bc0daa15dd508af686acc31d14570079c47d66fde285b2e108b"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/ir.h",
+      "bytes": 45177,
+      "sha256": "7b357ff67ffc10771d8fd3684cd57727f141eb29cd32427cbcc1ee927d1df02e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/ir_pb_converter.cc",
+      "bytes": 27283,
+      "sha256": "b7cb14e5a153f98ece156800595a000a452e8ba70f3c7c94de3b7c809113c69c"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/ir_pb_converter.h",
+      "bytes": 1330,
+      "sha256": "415d1c0d98ea2bd4a86651f549a271f6b1d26399504190594802c3bf66462241"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/model_helpers.cc",
+      "bytes": 990,
+      "sha256": "b89f9442812e84094de51b7cd5bbf436fa7d49ef18953258e704f81f4e96abbc"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/model_helpers.h",
+      "bytes": 661,
+      "sha256": "6b950331027282018a41819ad8964746d305f617247b6cd74614a387f7a2623f"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/path.h",
+      "bytes": 2836,
+      "sha256": "232d812fead101d6d4131e464413c53a172d9b1cc9ec5d85daca48c748e90414"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/platform_helpers.h",
+      "bytes": 395,
+      "sha256": "9c155e6a955ea5f74fbcbbed213bbd8d6ceac8cb6a882acc19b192f1ef5cc166"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/proto_util.h",
+      "bytes": 1487,
+      "sha256": "42c0058f4a2ff282e35dea25a979e049a7d58604c1395be4c5b8cbff40a6b154"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/safe_math.h",
+      "bytes": 2626,
+      "sha256": "e4d62130517b7fe7176cf73eb91612c1d8cd82d4e2f26e6cacc46287a3c22ff2"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/scoped_resource.h",
+      "bytes": 1948,
+      "sha256": "52c92b9e621b81a04ea2f5d68309aa26198e891bed5907143fe9435b5ef52b54"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/status.cc",
+      "bytes": 2049,
+      "sha256": "92aa35b15cb8e8887e6c5e9e090683872324cdb1e652ad479d85dacde50a32bb"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/status.h",
+      "bytes": 2227,
+      "sha256": "7967285527ddce09edfa42444667ed35749232dc39a313ed742506674a2af653"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/tensor.h",
+      "bytes": 6335,
+      "sha256": "638252ee1206cdaa2e9629119a9e15dad7a74ddd5dad266120ae9f80f705f427"
+    },
+    {
+      "path": "Lib/site-packages/onnx/common/visitor.h",
+      "bytes": 3069,
+      "sha256": "817f154e924505a735999706f7339cb264ad290de44ba73d7a90ec1db389afaa"
+    },
+    {
+      "path": "Lib/site-packages/onnx/cpp2py_export.cc",
+      "bytes": 41995,
+      "sha256": "443393ec66403f50c8cf66177a999586aeeb9a64264f3351bc9b976fc77d65a6"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/attr_proto_util.cc",
+      "bytes": 3534,
+      "sha256": "1c79a5748b6dd31e82dcd08c3fc24d244a47e0c8e005471e849a370589b09b2e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/attr_proto_util.h",
+      "bytes": 2134,
+      "sha256": "691514d6542c75b318b57fa6411dbbd5fb8bd1b331af28b24ef8a85f7224541d"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/controlflow/defs.cc",
+      "bytes": 8754,
+      "sha256": "79f19b3e350d42f41b7ba1d2926c0fa7ad7db8a8d7b297d4efad2d898193c032"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/controlflow/old.cc",
+      "bytes": 118401,
+      "sha256": "1ddade9574add4d086fab04c5b8660209b29d924162ef2a3e520ff064cafef3a"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/controlflow/utils.cc",
+      "bytes": 13938,
+      "sha256": "07cb4f3e719dd9162eda975ba99e2a81e0295e8bd62d0caa7212a4aab8bd517d"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/controlflow/utils.h",
+      "bytes": 509,
+      "sha256": "94287ee021c2637f25c12c4542528e1f7ad58cb83a42c22514c01614a7a215b4"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/data_propagators.h",
+      "bytes": 2630,
+      "sha256": "166d7e3a48c0c4fb7b574202fdf4a13f00e831bb1d5054090cd1d7097e4de6cd"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/data_type_utils.cc",
+      "bytes": 13749,
+      "sha256": "0ae9129320f44955300392b02298a00691393fe94c7d4217cb9587144815025f"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/data_type_utils.h",
+      "bytes": 2534,
+      "sha256": "3902ae2e47e42a3861478ca1d449d50a6c70dc6dca4ff6789757ca1477b65b7f"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/doc_strings.cc",
+      "bytes": 58193,
+      "sha256": "d501dc81ca7e288b7d3c8e18114262e23b09847d9209f01bbb6ab0ecb0343667"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/doc_strings.h",
+      "bytes": 3337,
+      "sha256": "c3376b15dedd07d130329df5c9116f1eb90819506345697cb22d40ba0cf22c0c"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/function.cc",
+      "bytes": 7176,
+      "sha256": "34a7449523120bfae075d7b3e6453fa14f60b2a09755b968e26a9b6d32a64aeb"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/function.h",
+      "bytes": 8741,
+      "sha256": "c8e193fb9e45f92601165c26a1933d0ec86a788c63d66dc52076666adcbe9765"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/generator/defs.cc",
+      "bytes": 24873,
+      "sha256": "0412c03c17ee78cf5acce9af238efb232abe3e875eff1c7bb76f2464df7f340b"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/generator/old.cc",
+      "bytes": 45327,
+      "sha256": "1b5fadd70affc65f24adadd36e3ba5627ff72ac8f9752f0b3ac10cd48c37338e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/generator/utils.cc",
+      "bytes": 3875,
+      "sha256": "56be3f7dbd17aa35fea6d99afbc618e10dc69c6680a4a4f10e100ff2da24d782"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/generator/utils.h",
+      "bytes": 984,
+      "sha256": "5baf57962d7c5c9884ddd2da3a99163954830cbb6afd9d08c5b796b168aefb21"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/image/defs.cc",
+      "bytes": 2828,
+      "sha256": "253b7fbf8ca30650e435ee3d5793f48dc9f5f8778397b015f73ae35c330596b6"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/logical/defs.cc",
+      "bytes": 12127,
+      "sha256": "2b2f7a356e4d1f5bb7b7f347f099df823d5adf2ddb74492c59e4155841e808d2"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/logical/old.cc",
+      "bytes": 10030,
+      "sha256": "40e8eaa9df194c1d6e43f8c26ebdd33589d82e6c0c820e2a9547d9e8dd6ff8ab"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/math/defs.cc",
+      "bytes": 130891,
+      "sha256": "0c07da544684790f66080feef0070731993edb20dc0d80178dfc6fe7f22f87f7"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/math/old.cc",
+      "bytes": 150564,
+      "sha256": "2a0dc2f865c7533acea7fabee2e62b7862773f89b3b0e30956ceeb9a5f3ebfc9"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/math/utils.cc",
+      "bytes": 11768,
+      "sha256": "f23cba00c98546bd385275f962396aa151b7c95b3a8aa4f15081643d260e0483"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/math/utils.h",
+      "bytes": 1907,
+      "sha256": "2cb99ab780fdf5518fbf80cc6bfc350ac5c58ce2439a50d4a87703a9ba50443a"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/nn/defs.cc",
+      "bytes": 226391,
+      "sha256": "8dfa25896c673ab97d0cd777d611447a4182a4099086ef49076d58c495697423"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/nn/old.cc",
+      "bytes": 201810,
+      "sha256": "95b8560f8272087a8c32e996cd8511cbf894221cc9a0bfad764ad8b074bf940a"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/nn/utils.cc",
+      "bytes": 10776,
+      "sha256": "eefb37c5847f419c9beeecabf99967f7955b1b4430296f85f3bd3b7d64a69c14"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/nn/utils.h",
+      "bytes": 973,
+      "sha256": "e82bec9cc2b608f14f09ebe23bc6690a216482e56eb8f91a8e58372a97e47617"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/object_detection/defs.cc",
+      "bytes": 8130,
+      "sha256": "785514d031f813df3794f35d1a717afa7a421bc916a708a08784c581c76b37ef"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/object_detection/old.cc",
+      "bytes": 11539,
+      "sha256": "a98210387b59f2f9c3a6acef9797034d10c3e5c996651efdf776b982b2256ee5"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/operator_sets.h",
+      "bytes": 99022,
+      "sha256": "5a2fa171a47fe19154462e93f74e5a53fe0d53cd62c4610ec9c8d949bd7c91c1"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/operator_sets_ml.h",
+      "bytes": 5223,
+      "sha256": "54accd4356d182e72a379f4acf9d4e47217d6beeb451d1954d8da0ac3970ddab"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/operator_sets_preview.h",
+      "bytes": 1484,
+      "sha256": "96e7afcac5217987892e1c9207cacee4210bf9f4c9d16d356d73e080770df9ee"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/operator_sets_training.h",
+      "bytes": 573,
+      "sha256": "e7b5c4f24531be286ef8134808d9170b94fdf00abcee7e00387361e1fce48bc8"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/optional/defs.cc",
+      "bytes": 6735,
+      "sha256": "4d00dd0dc3920e9926046191a52eb1eb5f68c38fe16e70d02d4c448cab98a2d8"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/optional/old.cc",
+      "bytes": 3515,
+      "sha256": "156d5576a46f9bbf8d1c7662ee299b79ff905cfd9931498e6baf556da8c334e2"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/parser.cc",
+      "bytes": 31452,
+      "sha256": "1dc478f6a653efde6cc04be9db42a86c0d69f5372f98238f26fcccc25a9fc0fc"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/parser.h",
+      "bytes": 15349,
+      "sha256": "9f003d4df259629ef0be9f40bfa3a2db3b6aa6db290ddd2505804211ba58e72d"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/preview/defs.cc",
+      "bytes": 21557,
+      "sha256": "ce07a68649cf3e162d95025bd20b47c43c0f4088595007270d62c71ed48ada09"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/printer.cc",
+      "bytes": 15337,
+      "sha256": "6065b8029e2228a9504c9d77d6da8467fbafe564854c495ecc79c357a20003bd"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/printer.h",
+      "bytes": 1474,
+      "sha256": "e255c5ff46c33a3a059d5c3f1ef7f9c6a24a87454869b85631668cd66f730cd9"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/quantization/defs.cc",
+      "bytes": 14738,
+      "sha256": "22a8b5976246126fb1db6e69d714741b1e4b7b8259647f0c1870200539c6bf86"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/quantization/old.cc",
+      "bytes": 45810,
+      "sha256": "e1f74bc964d89b8c3d4a656e0e2e0518ae7bf7a3ee03c1805fd52aeddc2b4f90"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/reduction/defs.cc",
+      "bytes": 6653,
+      "sha256": "2566ce22ebafb5a670a8a1b65b234f17d303b8131654d05b74d84292d48e9c32"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/reduction/old.cc",
+      "bytes": 19668,
+      "sha256": "4d5a22d8efae2a387e31c53b335fa0846deb2c5667672ff8d5ab44921d65dd81"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/reduction/utils.cc",
+      "bytes": 7050,
+      "sha256": "6c3f648f8d0391c8ea4f8aeb25b70fcef8b0be0ff2e02d97e1fbf0f1e1c162e4"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/reduction/utils.h",
+      "bytes": 1607,
+      "sha256": "32c5f4a86903815f053caa6b7abe32984eea7c5b0f91a20295185ef3ff6ed86e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/rnn/defs.cc",
+      "bytes": 14610,
+      "sha256": "f3779a94a4b373e10438e6117a1e108d1536d59db9aaaff8d26962de22c54f12"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/rnn/old.cc",
+      "bytes": 53203,
+      "sha256": "b08e008284e9e094859e95e1fc74c571b827e0d5a135211968cec30f9b72e6b3"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/schema.cc",
+      "bytes": 67555,
+      "sha256": "001ba0761a322c62cedd7daf5fb79fe5ff07e643f660147f70cc68431eb23b3b"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/schema.h",
+      "bytes": 56994,
+      "sha256": "c0e88b9802b4cb945ece8980b47e7f83ae6a3fe43bbc2d33c48d652a8a47d9a2"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/sequence/defs.cc",
+      "bytes": 27590,
+      "sha256": "18cbdae735a0bfbb35cd802e4537b91db5cab34a99036bcf8d320b322bdf4e7a"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/sequence/old.cc",
+      "bytes": 468,
+      "sha256": "72280bbd3668676c20e4ef87c921fa3235a612f4867d8174d8ecf2b5d3eae8eb"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/sequence/utils.cc",
+      "bytes": 8555,
+      "sha256": "3b3418efb6c2376cd40ed8594fb0a408b89b14d13faa0c06903c7c990418614a"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/sequence/utils.h",
+      "bytes": 607,
+      "sha256": "932cceb16bac515fb32deeed6e633a4d0f2bcaf6a73bc2b5ce67fe22918778e1"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/shape_inference.cc",
+      "bytes": 25266,
+      "sha256": "0f309a99f33b576cf59fa654f103cac3058acf34515d81ba7d3c476cdd2051a5"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/shape_inference.h",
+      "bytes": 40286,
+      "sha256": "3a0a40e977c10ca7d9b461a77a033c584cd31ae284da7e92e637a21df3c6aa31"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/tensor/defs.cc",
+      "bytes": 167189,
+      "sha256": "729d9d615395198c57c18157a450d65261ed4f929b949b98f81e39239775a561"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/tensor/old.cc",
+      "bytes": 347024,
+      "sha256": "68547bf7247276fe913cad638bd27fbc9b973f4d1a00073258367079e5f3ee40"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/tensor/utils.cc",
+      "bytes": 19640,
+      "sha256": "ddf24e678dec2a8a5bbbd13c25711413efbb516f6c3c38c2a5cf046696d589fc"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/tensor/utils.h",
+      "bytes": 1908,
+      "sha256": "049f40c79cfa816a390ac6e5e57165b2331443d1a12aef3f9b7f832afe4a7b2a"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/tensor_proto_util.cc",
+      "bytes": 13656,
+      "sha256": "388fce03520c9ee4ab2b5848f9763e4b4622d592154652e12c0658bf53dfbad2"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/tensor_proto_util.h",
+      "bytes": 460,
+      "sha256": "4a2fd47d3834e21999bfea0982c4978e3b6a99f2d7a6db88a9c15d599cffa662"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/tensor_util.cc",
+      "bytes": 3551,
+      "sha256": "20a97775edf94bb9c5d245be08c0406391161d29ef8f50947250c68b36f29a8f"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/tensor_util.h",
+      "bytes": 297,
+      "sha256": "2b21f5ea94640c71ae17c8578942922508c38f5e2685c9814ee1a62e66f01af6"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/text/defs.cc",
+      "bytes": 10666,
+      "sha256": "c3508d37789f2054cfcfed556aaaad5efd1779a595555080ca5ca65feb0e2025"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/traditionalml/defs.cc",
+      "bytes": 64754,
+      "sha256": "55dc3cb944e665290f6ce8d6a737013e257dae46daba609d9c3f53f7e0bb3736"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/traditionalml/old.cc",
+      "bytes": 34602,
+      "sha256": "9eaa9b2a49af1eb4feb48776d586a569fc42e8fbd20ce497d804005900ae5b4e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/traditionalml/utils.h",
+      "bytes": 1055,
+      "sha256": "25f874765e898b9320faa2f532c53cf4bf22df3a8ec8e6ed325f02181708ff6e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/training/defs.cc",
+      "bytes": 28497,
+      "sha256": "c2c5d8bad137c2eb7c346121621465a163709379cc9cb82ffe39dfa3bd4e00dc"
+    },
+    {
+      "path": "Lib/site-packages/onnx/defs/type_builders.h",
+      "bytes": 5025,
+      "sha256": "f2b9527da76227c8029851d04445e0685d1d06c459e5df691c82eed0d8b221f3"
+    },
+    {
+      "path": "Lib/site-packages/onnx/inliner/inliner.cc",
+      "bytes": 28350,
+      "sha256": "0e1b5f5197b3485c1f89703aaba1a8b202d0dbe0e1ecb221f21343e287c29f2e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/inliner/inliner.h",
+      "bytes": 5750,
+      "sha256": "ab67c2bc58c2512dfc3a5e10feef2fd465572a577572c355121990a80a5b6a02"
+    },
+    {
+      "path": "Lib/site-packages/onnx/onnx-operators_pb.h",
+      "bytes": 241,
+      "sha256": "39cf286b1abef46118394d430059a68064a0e823511903dd81a66b57d3accf42"
+    },
+    {
+      "path": "Lib/site-packages/onnx/onnx_pb.h",
+      "bytes": 1799,
+      "sha256": "8f2c47d7a28ae891b70dfd3e0198954318aee240529bedc0d8b1f8d9a2be87d3"
+    },
+    {
+      "path": "Lib/site-packages/onnx/proto_utils.h",
+      "bytes": 2537,
+      "sha256": "9963f4097c2753c125440efeddae9adf0845af4c5e2b7d5d5ee17c8274450507"
+    },
+    {
+      "path": "Lib/site-packages/onnx/py_utils.h",
+      "bytes": 550,
+      "sha256": "cdc93a2e64bafe5fccdc837deac7ffaf4a4e7b6ad92cd25e55cc5576e3116af5"
+    },
+    {
+      "path": "Lib/site-packages/onnx/shape_inference/attribute_binder.h",
+      "bytes": 2503,
+      "sha256": "b3798220738951541e73c2bdacc5fba729627ef63d488c6a30e55ec098cbc4ba"
+    },
+    {
+      "path": "Lib/site-packages/onnx/shape_inference/implementation.cc",
+      "bytes": 46218,
+      "sha256": "774b9542dcf9cfc2f88d4518954b4cb1ca3a0c3867eb23f6ee1652ef06571605"
+    },
+    {
+      "path": "Lib/site-packages/onnx/shape_inference/implementation.h",
+      "bytes": 21366,
+      "sha256": "8c9f3552111efa83af78c8b4ea37e6b338a4113a297b499fc4374eb83275e712"
+    },
+    {
+      "path": "Lib/site-packages/onnx/string_utils.h",
+      "bytes": 1022,
+      "sha256": "d9b772503062af7fd2603b6ed6c51c464ec094434f1f443ded570352ea78be32"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/BaseConverter.h",
+      "bytes": 3765,
+      "sha256": "34ab6e7bf773581fbf6dce8bbe7de8ca29948592c79fbaa00773d86469d7f26e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/Attention_24_23.h",
+      "bytes": 1346,
+      "sha256": "390bb6dc633930a31828aafd34047da7963f417f0e5a9cb2ba0c12f5951042e2"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/adapter.h",
+      "bytes": 1921,
+      "sha256": "93a8244cd582add480f5bc31142442827a2e06c5f7bea440d9056202cfcf6021"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/axes_attribute_to_input.h",
+      "bytes": 1356,
+      "sha256": "2c11334397cace4507621fc204e78a8af88dfa1967b1c9a255badf6ea015fb84"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/axes_input_to_attribute.h",
+      "bytes": 2069,
+      "sha256": "70aed1a277139b27ca9661fd32841875dd107a00c5278c411b9cb864dca12187"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/axis_attribute_to_input.h",
+      "bytes": 2086,
+      "sha256": "13a21e76a8ac05f59e1abf2df2753a25cc02571f8ba8efda229c992b359450c0"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/axis_input_to_attribute.h",
+      "bytes": 2992,
+      "sha256": "bcb6b845ac6b09cd133b49e1e3a19f1a7b270b37b7bbd76c5d5705d08ea4130d"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/batch_normalization_13_14.h",
+      "bytes": 901,
+      "sha256": "1c894862d62de71418d346b0e5f99338fee6c5c76c3114ad6631fef9b256feed"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/broadcast_backward_compatibility.h",
+      "bytes": 2336,
+      "sha256": "10d415b8d268cefef45ea40c555b5d87f465b723da508548eb3975419c75d391"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/broadcast_forward_compatibility.h",
+      "bytes": 3412,
+      "sha256": "0fbe2ca23650174d0dc815c0927cccb52cb18258a6c9490da996ba9798004c5d"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/cast_9_8.h",
+      "bytes": 1006,
+      "sha256": "1ab7b3be37255f785689c495c5af455cd84d7265fd832addff0668669daa017d"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/clip_10_11.h",
+      "bytes": 1659,
+      "sha256": "2d8dbbfc4695112d0261124f16732187f9edb9d1fac75b2cfa3c6ecad55681cf"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/compatible.h",
+      "bytes": 732,
+      "sha256": "07585b8aa90f36cc3ad604e82453fdd2bf17e85e7c11f07216f2153b9705c0a7"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/dropout_11_12.h",
+      "bytes": 1277,
+      "sha256": "133078be92efd0c99d3eb846773a3cf0490ea05828a711e7f331e1b6653d0fc0"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/extend_supported_types.h",
+      "bytes": 3952,
+      "sha256": "c0b01d1aacf9bc3769ea3269f5b924c26ac5892d8508888cd39e6af8a4a8f458"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/gemm_6_7.h",
+      "bytes": 1883,
+      "sha256": "74c0499882cd81e648451b803402e50e27e4a6a0753b139fae2d1e289574d266"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/gemm_7_6.h",
+      "bytes": 2205,
+      "sha256": "27f19480e00dba25273e44289a790285dca9d5181b365902071fb35d4664bdb3"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/gridsample_19_20.h",
+      "bytes": 994,
+      "sha256": "a6c3ea55549377f0d321c4b18b736d5b569346e48d301ee6c2d704063109c52b"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/group_normalization_20_21.h",
+      "bytes": 4665,
+      "sha256": "ec68228a27a9477777d118aa1c965c8573b8300500c3e11e09851b43ec1a7374"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/maxpool_8_7.h",
+      "bytes": 986,
+      "sha256": "9eb17febad3a37464a73da65ac9cdd53b2fa512ba990d634491a3595efb250bc"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/no_previous_version.h",
+      "bytes": 839,
+      "sha256": "78dcb2b8eaa3f221dbba3f2588a33f8be76f5cea73242e0021fdbbb0ede81a7e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/pad_10_11.h",
+      "bytes": 1787,
+      "sha256": "d1d04786010d6b2fc2e761bf4208102deec37a9653f3450408be2ceea57bd858"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/q_dq_21_20.h",
+      "bytes": 2807,
+      "sha256": "0e05c0caa3e967205fae07dade0ab31d4b01e9b8e5e4ec1f428a9e5f22a76e86"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/range_27_26.h",
+      "bytes": 1930,
+      "sha256": "91862bee42c2b81fabc88fdbfcc2578ea0ed221e082b77556d295140c96cf742"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/remove_consumed_inputs.h",
+      "bytes": 800,
+      "sha256": "05218f3983283e6508b1b838bead3cbf79214f837919d311a835897ea940715f"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/reshape_4_5.h",
+      "bytes": 1506,
+      "sha256": "ac742e3393c747234f650b2b0c269f2d567b296f1783748b36c26c0fa1d04e60"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/reshape_5_4.h",
+      "bytes": 2168,
+      "sha256": "5269903d29b5d1efbcdf5031e2a8038377a2f7f64af5290681fe95838456459b"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/resize_10_11.h",
+      "bytes": 1501,
+      "sha256": "7006ab1cd72ec3a172a9828f4580133726ce01d78e244495f2c320351c19f74b"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/scan_8_9.h",
+      "bytes": 1810,
+      "sha256": "f780f70c128d19e710ded069f6cac14a69719394a6a2c4e17aac713071ece431"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/scan_9_8.h",
+      "bytes": 2989,
+      "sha256": "56cba4b0aaeb8f1b46cc2310ddaeddeacbc80a2e6042804ab648439f3ed13abb"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/scatter_10_11.h",
+      "bytes": 1419,
+      "sha256": "36f4f8d10fd20ea5a4fd9d09dc8380f731680c76c67a3129016ea5793d5f26ae"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/scatter_16_15.h",
+      "bytes": 2053,
+      "sha256": "65cb2ec5d1df09a80e711656d1a0d54bcfb06858d4b137be91cf904796cd5cc3"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/scatter_18_17.h",
+      "bytes": 1045,
+      "sha256": "72a22ae710326ca83cd8710d138dab09b32b26496be1c5481fa93fa96f512336"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/slice_9_10.h",
+      "bytes": 1555,
+      "sha256": "f1c80880b85d78f04ad94f64da6febeb17632a62adb3ae4fd2d6773861ded099"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/softmax_12_13.h",
+      "bytes": 2990,
+      "sha256": "290c2aec7449078d69a909f534c17cdb1df712ef7a546cf2c27fa0df76f9c057"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/softmax_13_12.h",
+      "bytes": 2286,
+      "sha256": "296a5377e39eafeea7e5c33917b7ddc74d30e04e8bc838712474010edffb9f57"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/split_12_13.h",
+      "bytes": 1249,
+      "sha256": "e66ac43cb98b8b973c80032a92f6809cbbc07cdc9e7ab539c72f0024e3404ebc"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/split_13_12.h",
+      "bytes": 1991,
+      "sha256": "421ab36c6f7993497cf4a684578cc92e142548b230ce6e99e7f5a92b3849e049"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/split_17_18.h",
+      "bytes": 1054,
+      "sha256": "d2f4e29b9d2094401ea9c08ec86779252a9e2f460bf29effb2333d0cafaa26b0"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/sum_8_7.h",
+      "bytes": 1133,
+      "sha256": "ba5578563c4fa48014efe281bf9b63cf60316df1765da3e5baeabf274bb1eaf4"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/topk_9_10.h",
+      "bytes": 1105,
+      "sha256": "08106d8b5ec778d874275a195e63277d29107146351c4b0f579d5decef1bed80"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/transformers.h",
+      "bytes": 2691,
+      "sha256": "35f2bc655074674a319258e7144f5762276fdde9e03f5a9caef7bb970e1e62d7"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/type_restriction.h",
+      "bytes": 1825,
+      "sha256": "e44201cac73eb25b265cecc120f3f689556e6672946beb024a1790ee7b6f8f51"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/upsample_6_7.h",
+      "bytes": 1653,
+      "sha256": "bd678b674a43e16cec093bf5072adf17ca372d17298dd0bc33ceef0f03a1df88"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/upsample_8_9.h",
+      "bytes": 1358,
+      "sha256": "375f2d3087fec24a4828ca2e769b2bc5b3d8ab2020b3e5a71b6f201f0722f5ce"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/upsample_9_10.h",
+      "bytes": 1288,
+      "sha256": "4ccd12b691d81ddca01027af8addb329748a7d18771929b7add6cd9b4bad8101"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/adapters/upsample_9_8.h",
+      "bytes": 2573,
+      "sha256": "c804f695f39ed213c41772bea44efc25234cf3343cd0e0e4f1fb04e18abe827f"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/convert.cc",
+      "bytes": 5664,
+      "sha256": "5bad417d7bfd5d817bd8e7646cd2237efb9dfa7bc930004048bb14109e186527"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/convert.h",
+      "bytes": 75380,
+      "sha256": "d8dbb003f8dfd2a2b63237fc4c70954df180845c67702442de5b3a604b54930e"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/helper.cc",
+      "bytes": 2778,
+      "sha256": "af9dc1137dc2033104590fce85741856949705b84cab11df3adbed0876b48691"
+    },
+    {
+      "path": "Lib/site-packages/onnx/version_converter/helper.h",
+      "bytes": 1631,
+      "sha256": "c38041fa8475025199b50ab40ac8c61a3a93c8e45f7dbfec3c654b019f87d352"
+    },
+    {
+      "path": "Lib/site-packages/sympy/utilities/pytest.py",
+      "bytes": 440,
+      "sha256": "89fa397e4390f781ca5e3cbf53ffe62c54a884d4463f67edf19e0fe60022e32c"
+    }
+  ]
+}

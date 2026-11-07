@@ -1,0 +1,4 @@
+{
+  "owned_tmp_pip_paths": [],
+  "finding": "No matching remnants observed; no arbitrary /tmp deletion performed. Historical temporary names unavailable; cannot prove absence of every historical temp file. No pip process is launched using external temp paths in this continuation."
+}

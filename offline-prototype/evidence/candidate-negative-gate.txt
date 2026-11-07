@@ -1,0 +1,2 @@
+usage: build_candidate.py [-h] --runtime RUNTIME --output OUTPUT
+build_candidate.py: error: Missing separately provisioned Windows Python runtime

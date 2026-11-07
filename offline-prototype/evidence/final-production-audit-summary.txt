@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "forbidden_entries": [],
+  "top_components": [
+    {
+      "component": "Face models (detector + recognizer)",
+      "compressed_bytes": 175905370,
+      "raw_bytes": 191307687
+    },
+    {
+      "component": "Windows FFmpeg + ffprobe",
+      "compressed_bytes": 108868516,
+      "raw_bytes": 263368163
+    },
+    {
+      "component": "ECAPA ONNX model",
+      "compressed_bytes": 78253792,
+      "raw_bytes": 84145149
+    },
+    {
+      "component": "Vosk ASR model",
+      "compressed_bytes": 41114357,
+      "raw_bytes": 70898967
+    },
+    {
+      "component": "opencv-python",
+      "compressed_bytes": 39274231,
+      "raw_bytes": 113498866
+    },
+    {
+      "component": "CPython standalone",
+      "compressed_bytes": 37694754,
+      "raw_bytes": 130165594
+    },
+    {
+      "component": "scipy",
+      "compressed_bytes": 31419521,
+      "raw_bytes": 90282837
+    },
+    {
+      "component": "Inventory metadata",
+      "compressed_bytes": 25194015,
+      "raw_bytes": 93241798
+    },
+    {
+      "component": "vosk",
+      "compressed_bytes": 13886925,
+      "raw_bytes": 54067351
+    },
+    {
+      "component": "onnxruntime",
+      "compressed_bytes": 12568999,
+      "raw_bytes": 35498281
+    }
+  ],
+  "archive_bytes": 608646900,
+  "archive_sha256": "1559c08cc0ce7281ba1b3649ee06054bfb231253db2d9fbaf81d87e7843d6d27",
+  "qualification": "STATIC_ONLY; Windows remains unverified",
+  "runtime_retained": "ONNX required by ArcFace onnx.load; numpy._pytesttester and scipy._lib._testutils are eagerly imported runtime API scaffolding, not pytest installation. WHEEL metadata is not the wheel build package."
+}

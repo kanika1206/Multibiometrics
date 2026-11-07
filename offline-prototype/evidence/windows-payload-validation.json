@@ -1,0 +1,8 @@
+{
+  "status": "PASS_STATIC_ONLY",
+  "candidate_inventory_sha256": "bd158817a1dc7d07311897cd770fa59645e4b55436876e689a954cf639df5703",
+  "archive_files_verified": 6839,
+  "source_payload_match": true,
+  "production_gate": "NOT_READY: package is not qualified",
+  "windows_execution": "UNVERIFIED-ON-TARGET"
+}

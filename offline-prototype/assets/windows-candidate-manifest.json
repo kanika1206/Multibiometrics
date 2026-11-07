@@ -1,0 +1,110 @@
+{
+  "platform": "win_amd64",
+  "files": [
+    {
+      "path": "assets/ecapa-waveform.onnx",
+      "destination": "ecapa-waveform.onnx",
+      "sha256": "efe97a745ac95d887430aa8d9341175d48dc65a22e6143fb8c12cb9b153de0a6"
+    },
+    {
+      "path": "assets/face/det_10g.onnx",
+      "destination": "face/det_10g.onnx",
+      "sha256": "5838f7fe053675b1c7a08b633df49e7af5495cee0493c7dcf6697200b85b5b91"
+    },
+    {
+      "path": "assets/face/w600k_r50.onnx",
+      "destination": "face/w600k_r50.onnx",
+      "sha256": "4c06341c33c2ca1f86781dab0e829f88ad5b64be9fba56e56bc9ebdefc619e43"
+    },
+    {
+      "path": "assets/vosk-model-small-en-us-0.15/README",
+      "destination": "vosk-model-small-en-us-0.15/README",
+      "sha256": "c0cf286e4f7783306c5f6469b37db69228fb16803b03cae661edb2d7bba64ebb"
+    },
+    {
+      "path": "assets/vosk-model-small-en-us-0.15/am/final.mdl",
+      "destination": "vosk-model-small-en-us-0.15/am/final.mdl",
+      "sha256": "75370a0137f9daf8f469dedd7daa4513ae7a621f03240c6e512e2b50b656a7b6"
+    },
+    {
+      "path": "assets/vosk-model-small-en-us-0.15/conf/mfcc.conf",
+      "destination": "vosk-model-small-en-us-0.15/conf/mfcc.conf",
+      "sha256": "1e2228006d01d805ad1c267fee9f79709ca87ac51bd82b0e3f5c69ba543f0fc4"
+    },
+    {
+      "path": "assets/vosk-model-small-en-us-0.15/conf/model.conf",
+      "destination": "vosk-model-small-en-us-0.15/conf/model.conf",
+      "sha256": "8f14cb1eeb07c762c371db648c6be688d347236155ca0f64fb13b6567a8ce81f"
+    },
+    {
+      "path": "assets/vosk-model-small-en-us-0.15/graph/Gr.fst",
+      "destination": "vosk-model-small-en-us-0.15/graph/Gr.fst",
+      "sha256": "023c8b7e30704a9e37765c635c252e608a02f361235bf94abdcf2a5225d85b20"
+    },
+    {
+      "path": "assets/vosk-model-small-en-us-0.15/graph/HCLr.fst",
+      "destination": "vosk-model-small-en-us-0.15/graph/HCLr.fst",
+      "sha256": "5caafba3081e1646545ac6bff0dd7a318e53dcbdc86f237909ce1d2ac1293d34"
+    },
+    {
+      "path": "assets/vosk-model-small-en-us-0.15/graph/disambig_tid.int",
+      "destination": "vosk-model-small-en-us-0.15/graph/disambig_tid.int",
+      "sha256": "9ad87cc166d0998f08f758f47a6223a120dfffcbee805c4849c3aa5e6bb3c0fc"
+    },
+    {
+      "path": "assets/vosk-model-small-en-us-0.15/graph/phones/word_boundary.int",
+      "destination": "vosk-model-small-en-us-0.15/graph/phones/word_boundary.int",
+      "sha256": "da199d9c991e0e84681ddbb34627b915b26302d50a8fdaa23c51e2bc3a50b5c3"
+    },
+    {
+      "path": "assets/vosk-model-small-en-us-0.15/ivector/final.dubm",
+      "destination": "vosk-model-small-en-us-0.15/ivector/final.dubm",
+      "sha256": "8c5d7dd69d2122313baaf19f61f35dd3fa18b70c62ac0687e311e1c46e6daca7"
+    },
+    {
+      "path": "assets/vosk-model-small-en-us-0.15/ivector/final.ie",
+      "destination": "vosk-model-small-en-us-0.15/ivector/final.ie",
+      "sha256": "3f37faf90c375b9e4740b569398b5829ed9cc07d19be6d441f72c3b71d7efcc6"
+    },
+    {
+      "path": "assets/vosk-model-small-en-us-0.15/ivector/final.mat",
+      "destination": "vosk-model-small-en-us-0.15/ivector/final.mat",
+      "sha256": "ddd83586dc5f928cda8738b922c85ffe38fc789cb5f9151a712ca12f37265382"
+    },
+    {
+      "path": "assets/vosk-model-small-en-us-0.15/ivector/global_cmvn.stats",
+      "destination": "vosk-model-small-en-us-0.15/ivector/global_cmvn.stats",
+      "sha256": "33be09afcc80059847a275c3d043b51f1ab954c7c2438ddbbf4745e8ba144ff9"
+    },
+    {
+      "path": "assets/vosk-model-small-en-us-0.15/ivector/online_cmvn.conf",
+      "destination": "vosk-model-small-en-us-0.15/ivector/online_cmvn.conf",
+      "sha256": "a2f3571754b64297cb7efb2e7ca3df61995c5a45fcbb97188f90613552bb2dfe"
+    },
+    {
+      "path": "assets/vosk-model-small-en-us-0.15/ivector/splice.conf",
+      "destination": "vosk-model-small-en-us-0.15/ivector/splice.conf",
+      "sha256": "9f0c5f7c82d18eaf25d8bce470efa9f7741f88411fe428774bc0a9bb69a24756"
+    },
+    {
+      "path": "provisioning/windows/ffmpeg/ffmpeg-n8.1-latest-win64-lgpl-8.1/bin/ffmpeg.exe",
+      "destination": "windows-tools/ffmpeg.exe",
+      "sha256": "896537df94a49decaab75e9d5c9e19fdf1e8335f7f8e2f719cb917132063e06c"
+    },
+    {
+      "path": "provisioning/windows/ffmpeg/ffmpeg-n8.1-latest-win64-lgpl-8.1/bin/ffprobe.exe",
+      "destination": "windows-tools/ffprobe.exe",
+      "sha256": "d07d1cd9b883f7bfa4e6e7c801633190a26fb3e11a9e4374ddc8c261ca201f0c"
+    },
+    {
+      "path": "provisioning/windows/ffmpeg/ffmpeg-n8.1-latest-win64-lgpl-8.1/LICENSE.txt",
+      "destination": "windows-tools/LICENSE.txt",
+      "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768"
+    },
+    {
+      "path": "provisioning/windows/release-manifest.json",
+      "destination": "release-manifest.json",
+      "sha256": "e9a95118d6939658eded4ae7170bf18a76f717c2a0f1039f2b4d4f1fa7a006b9"
+    }
+  ]
+}
